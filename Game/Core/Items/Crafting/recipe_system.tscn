@@ -1,0 +1,24 @@
+[gd_scene load_steps=7 format=3 uid="uid://c6j0k61m6fxb5"]
+
+[ext_resource type="Script" path="res://Game/Core/World/RecipeSystem.cs" id="1_vfmbe"]
+[ext_resource type="PackedScene" uid="uid://dxnn3lyvbf6j1" path="res://Game/Core/Items/Crafting/recipe_type.tscn" id="2_ag28b"]
+[ext_resource type="PackedScene" uid="uid://dahht6ipycqxk" path="res://Game/Core/Items/Crafting/recipe.tscn" id="3_mqc5y"]
+[ext_resource type="PackedScene" uid="uid://djk84sbp4v0cp" path="res://Game/Content/Airship_Tiles/metal_tile.tscn" id="4_aegyo"]
+[ext_resource type="Texture2D" uid="uid://dpdmgx16hkded" path="res://Game/Assets/Items/Item_Sprites.png" id="5_8u107"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mnpr1"]
+atlas = ExtResource("5_8u107")
+region = Rect2(0, 0, 8, 8)
+
+[node name="RecipeSystem" type="Node"]
+script = ExtResource("1_vfmbe")
+
+[node name="WorkbenchCrafting" parent="." instance=ExtResource("2_ag28b")]
+
+[node name="Recipe" parent="WorkbenchCrafting" instance=ExtResource("3_mqc5y")]
+inputItemsIDs = PackedStringArray("vanilla.basic_bullet")
+inputItemQuantities = PackedInt32Array(3)
+outputItemIDs = Array[PackedScene]([ExtResource("4_aegyo")])
+outputItemQuantities = PackedInt32Array(0)
+RecipeTexture = SubResource("AtlasTexture_mnpr1")
+RecipeName = "test"

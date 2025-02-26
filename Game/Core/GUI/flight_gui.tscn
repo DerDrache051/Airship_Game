@@ -1,0 +1,55 @@
+[gd_scene load_steps=2 format=3 uid="uid://5xw0t2aejb2d"]
+
+[sub_resource type="Theme" id="Theme_iwo5j"]
+
+[node name="FlightGUI" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Velocity and Weight" type="Panel" parent="."]
+layout_mode = 0
+offset_left = 980.0
+offset_top = 480.0
+offset_right = 1147.0
+offset_bottom = 644.0
+theme = SubResource("Theme_iwo5j")
+
+[node name="Label2" type="Label" parent="Velocity and Weight"]
+offset_left = 8.0
+offset_top = 34.0
+offset_right = 158.0
+offset_bottom = 57.0
+text = "Velocity"
+
+[node name="Label" type="Label" parent="Velocity and Weight"]
+layout_mode = 0
+offset_left = 8.0
+offset_top = 11.0
+offset_right = 158.0
+offset_bottom = 34.0
+text = "Positon"
+
+[node name="Label3" type="Label" parent="Velocity and Weight"]
+offset_left = 8.0
+offset_top = 57.0
+offset_right = 158.0
+offset_bottom = 80.0
+text = "Weight"
+
+[node name="Label4" type="Label" parent="Velocity and Weight"]
+offset_left = 8.0
+offset_top = 80.0
+offset_right = 158.0
+offset_bottom = 103.0
+text = "Engine"
+
+[node name="Label5" type="Label" parent="Velocity and Weight"]
+offset_left = 8.0
+offset_top = 103.0
+offset_right = 158.0
+offset_bottom = 126.0
+text = "Lift"

@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://wdterhqnd1gw"]
+
+[ext_resource type="Script" path="res://Game/Core/World/Grid.cs" id="1_luk0n"]
+
+[node name="Grid" type="CharacterBody2D"]
+script = ExtResource("1_luk0n")

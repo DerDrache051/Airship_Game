@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://bnl0o3xru0uvt"]
+
+[ext_resource type="PackedScene" uid="uid://c017tb61dwttp" path="res://Game/Core/World/inventory_tile.tscn" id="1_iwccq"]
+
+[node name="InventoryTile" instance=ExtResource("1_iwccq")]
+UI_ID = 2
+
+[node name="Inventory" parent="." index="0"]
+InventorySize = 13

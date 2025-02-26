@@ -1,0 +1,72 @@
+[gd_scene load_steps=7 format=3 uid="uid://3yhqp8i7ungy"]
+
+[ext_resource type="Script" path="res://Game/Core/GUI/Cursor.cs" id="1_lqus5"]
+[ext_resource type="Texture2D" uid="uid://bjqyg4o025drn" path="res://Game/Assets/Cursor_Sprites.png" id="2_gura8"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ym6u5"]
+atlas = ExtResource("2_gura8")
+region = Rect2(0, 0, 5, 5)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3f45d"]
+atlas = ExtResource("2_gura8")
+region = Rect2(5, 0, 5, 5)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_aej3a"]
+atlas = ExtResource("2_gura8")
+region = Rect2(0, 5, 5, 5)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4yyxe"]
+atlas = ExtResource("2_gura8")
+region = Rect2(5, 5, 5, 5)
+
+[node name="Control" type="Control" node_paths=PackedStringArray("CursorTextures")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -1152.0
+offset_bottom = -648.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_lqus5")
+CursorTextures = [NodePath("TextureRect"), NodePath("TextureRect2"), NodePath("TextureRect3"), NodePath("TextureRect4")]
+
+[node name="TextureRect" type="TextureRect" parent="."]
+texture_filter = 1
+layout_mode = 0
+offset_left = -8.0
+offset_top = -8.0
+offset_right = 8.0
+offset_bottom = 8.0
+mouse_filter = 2
+texture = SubResource("AtlasTexture_ym6u5")
+
+[node name="TextureRect2" type="TextureRect" parent="."]
+texture_filter = 1
+layout_mode = 0
+offset_left = -8.0
+offset_top = -8.0
+offset_right = 8.0
+offset_bottom = 8.0
+mouse_filter = 2
+texture = SubResource("AtlasTexture_3f45d")
+
+[node name="TextureRect3" type="TextureRect" parent="."]
+texture_filter = 1
+layout_mode = 0
+offset_left = -8.0
+offset_top = -8.0
+offset_right = 8.0
+offset_bottom = 8.0
+mouse_filter = 2
+texture = SubResource("AtlasTexture_aej3a")
+
+[node name="TextureRect4" type="TextureRect" parent="."]
+texture_filter = 1
+layout_mode = 0
+offset_left = -8.0
+offset_top = -8.0
+offset_right = 8.0
+offset_bottom = 8.0
+mouse_filter = 2
+texture = SubResource("AtlasTexture_4yyxe")

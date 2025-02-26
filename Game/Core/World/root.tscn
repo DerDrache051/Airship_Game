@@ -1,0 +1,73 @@
+[gd_scene load_steps=27 format=3 uid="uid://hx0unydlx7hi"]
+
+[ext_resource type="PackedScene" uid="uid://bf6lmgavncbly" path="res://Game/Core/World/ship.tscn" id="3_0icvf"]
+[ext_resource type="PackedScene" uid="uid://cs33mlos2n30h" path="res://Game/Core/World/player_character.tscn" id="3_g4m4h"]
+[ext_resource type="PackedScene" uid="uid://dqwx3ni56ibba" path="res://Game/Content/Airship_Tiles/test_island.tscn" id="4_2luwq"]
+[ext_resource type="PackedScene" uid="uid://c6y5hwyc1qut5" path="res://Game/Content/Airship_Tiles/background_grass_tile.tscn" id="5_2m4er"]
+[ext_resource type="PackedScene" uid="uid://rsn43iyanlo4" path="res://Game/Content/Airship_Tiles/background_dirt_tile.tscn" id="6_71hkp"]
+[ext_resource type="PackedScene" uid="uid://cypkt3ew24hov" path="res://Game/Content/Airship_Tiles/background_stone_tile.tscn" id="7_4i8en"]
+[ext_resource type="Script" path="res://Game/Core/World/Registry.cs" id="8_csvrp"]
+[ext_resource type="PackedScene" uid="uid://c1rkkwtcu6l65" path="res://Game/Content/Items/small_basic_bullet.tscn" id="9_uiq27"]
+[ext_resource type="PackedScene" uid="uid://rvnalvrp2d02" path="res://Game/Content/Items/Steel_Pickaxe.tscn" id="10_0s54u"]
+[ext_resource type="PackedScene" uid="uid://cs44p48l0rwk8" path="res://Game/Content/Airship_Tiles/dirt_tile.tscn" id="11_stgup"]
+[ext_resource type="PackedScene" uid="uid://cpoymar1oxpv" path="res://Game/Content/Airship_Tiles/grass_tile.tscn" id="12_u1fdk"]
+[ext_resource type="PackedScene" uid="uid://7k5gp47ug3xq" path="res://Game/Content/Airship_Tiles/helm.tscn" id="13_56717"]
+[ext_resource type="PackedScene" uid="uid://cshlmg2lnndje" path="res://Game/Content/Airship_Tiles/levitite_baloon.tscn" id="14_cs1tr"]
+[ext_resource type="PackedScene" uid="uid://djk84sbp4v0cp" path="res://Game/Content/Airship_Tiles/metal_tile.tscn" id="15_actrf"]
+[ext_resource type="PackedScene" uid="uid://dfsyk2ld76hu8" path="res://Game/Content/Airship_Tiles/reinforced_wood_tile.tscn" id="16_g15w8"]
+[ext_resource type="PackedScene" uid="uid://cubt6mw4dupdk" path="res://Game/Content/Airship_Tiles/small_burner_engine.tscn" id="17_k4sxb"]
+[ext_resource type="PackedScene" uid="uid://ho40dxc8sj54" path="res://Game/Content/Airship_Tiles/stone_tile.tscn" id="18_iyxvy"]
+[ext_resource type="PackedScene" uid="uid://cdsjapauo4ssp" path="res://Game/Content/Airship_Tiles/torch.tscn" id="19_jcsy0"]
+[ext_resource type="PackedScene" uid="uid://v872aibaf5s3" path="res://Game/Content/Airship_Tiles/workbench.tscn" id="20_sxyiv"]
+[ext_resource type="PackedScene" uid="uid://fiem4dgpg40v" path="res://Game/Core/GUI/in_game_overlay.tscn" id="21_7ok12"]
+[ext_resource type="PackedScene" uid="uid://dbch04d4s8m4t" path="res://Game/Core/GUI/player_inventory_gui.tscn" id="22_mk4b8"]
+[ext_resource type="PackedScene" uid="uid://cgo6awdoxc12u" path="res://Game/Core/GUI/crafting_ui.tscn" id="23_01es2"]
+[ext_resource type="Texture2D" uid="uid://dcvry553x61ut" path="res://Game/Assets/background.jpg" id="23_lq2ke"]
+[ext_resource type="Script" path="res://Game/Core/World/UI_Selector.cs" id="24_yqj8c"]
+[ext_resource type="PackedScene" uid="uid://3yhqp8i7ungy" path="res://Game/Core/GUI/cursor.tscn" id="25_kpj0n"]
+[ext_resource type="PackedScene" uid="uid://c6j0k61m6fxb5" path="res://Game/Core/Items/Crafting/recipe_system.tscn" id="26_s0yoa"]
+
+[node name="Root" type="Node2D"]
+texture_filter = 1
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_scale = Vector2(0, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer"]
+texture_filter = 2
+position = Vector2(174.75, 104.5)
+scale = Vector2(1.55818, 1.84153)
+texture = ExtResource("23_lq2ke")
+
+[node name="ClientPlayer" parent="." instance=ExtResource("3_g4m4h")]
+position = Vector2(247, 3)
+
+[node name="Ship" parent="." instance=ExtResource("3_0icvf")]
+position = Vector2(229, 37)
+DebugSpawn = true
+
+[node name="Island" parent="." instance=ExtResource("4_2luwq")]
+position = Vector2(126, 190)
+VerticalSize = 20
+BackgroundGrass = ExtResource("5_2m4er")
+BackgroundDirt = ExtResource("6_71hkp")
+BackgroundStone = ExtResource("7_4i8en")
+
+[node name="Registry" type="Node" parent="."]
+script = ExtResource("8_csvrp")
+Items = Array[PackedScene]([ExtResource("9_uiq27"), ExtResource("10_0s54u")])
+Tiles = Array[PackedScene]([ExtResource("11_stgup"), ExtResource("12_u1fdk"), ExtResource("13_56717"), ExtResource("14_cs1tr"), ExtResource("15_actrf"), ExtResource("16_g15w8"), ExtResource("17_k4sxb"), ExtResource("18_iyxvy"), ExtResource("19_jcsy0"), ExtResource("20_sxyiv")])
+UIs = Array[PackedScene]([ExtResource("21_7ok12"), ExtResource("22_mk4b8"), ExtResource("23_01es2")])
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+script = ExtResource("24_yqj8c")
+
+[node name="Control" parent="CanvasLayer" instance=ExtResource("25_kpj0n")]
+offset_left = -576.0
+offset_top = -324.0
+offset_right = -1728.0
+offset_bottom = -972.0
+
+[node name="RecipeSystem" parent="." instance=ExtResource("26_s0yoa")]

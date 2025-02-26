@@ -1,0 +1,14 @@
+[gd_scene load_steps=4 format=3 uid="uid://rvnalvrp2d02"]
+
+[ext_resource type="PackedScene" uid="uid://ccdim1yvr8knl" path="res://Game/Core/Items/pickaxe_item.tscn" id="1_7ufuk"]
+[ext_resource type="Texture2D" uid="uid://dpdmgx16hkded" path="res://Game/Assets/Items/Item_Sprites.png" id="2_ikuft"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_onooy"]
+atlas = ExtResource("2_ikuft")
+region = Rect2(0, 0, 8, 8)
+
+[node name="PickaxeItem" instance=ExtResource("1_7ufuk")]
+ID = "vanilla.steel_pickaxe"
+DisplayName = "Steel Pickaxe"
+ItemTexture = SubResource("AtlasTexture_onooy")
+cursorState = 2

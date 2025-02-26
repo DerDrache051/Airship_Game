@@ -1,0 +1,14 @@
+[gd_scene load_steps=4 format=3 uid="uid://c1rkkwtcu6l65"]
+
+[ext_resource type="PackedScene" uid="uid://dywe70koqakb0" path="res://Game/Core/Items/item.tscn" id="1_h1v0t"]
+[ext_resource type="Texture2D" uid="uid://dpdmgx16hkded" path="res://Game/Assets/Items/Item_Sprites.png" id="2_168tx"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_eoiyg"]
+atlas = ExtResource("2_168tx")
+region = Rect2(8, 8, 8, 8)
+
+[node name="Item" instance=ExtResource("1_h1v0t")]
+MaxStackSize = 16
+ID = "vanilla.basic_bullet"
+DisplayName = "Small Basic Ammo"
+ItemTexture = SubResource("AtlasTexture_eoiyg")

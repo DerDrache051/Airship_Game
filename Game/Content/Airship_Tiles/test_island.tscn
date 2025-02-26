@@ -1,0 +1,16 @@
+[gd_scene load_steps=5 format=3 uid="uid://dqwx3ni56ibba"]
+
+[ext_resource type="Script" path="res://GeneratedIsland.cs" id="1_4m06x"]
+[ext_resource type="PackedScene" uid="uid://cpoymar1oxpv" path="res://Game/Content/Airship_Tiles/grass_tile.tscn" id="2_2xs8q"]
+[ext_resource type="PackedScene" uid="uid://cs44p48l0rwk8" path="res://Game/Content/Airship_Tiles/dirt_tile.tscn" id="3_nnyr1"]
+[ext_resource type="PackedScene" uid="uid://ho40dxc8sj54" path="res://Game/Content/Airship_Tiles/stone_tile.tscn" id="4_jupwl"]
+
+[node name="CharacterBody2D" type="CharacterBody2D"]
+script = ExtResource("1_4m06x")
+HorizontalSize = 80
+VerticalSize = 10
+HillMultiplier = 1
+SurfaceJaggedness = 2
+Grass = ExtResource("2_2xs8q")
+Dirt = ExtResource("3_nnyr1")
+Stone = ExtResource("4_jupwl")

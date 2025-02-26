@@ -1,0 +1,15 @@
+[gd_scene load_steps=4 format=3 uid="uid://dfl2a6hha5ypc"]
+
+[ext_resource type="PackedScene" uid="uid://btid0ccdcd7xc" path="res://Game/Core/World/tile.tscn" id="1_i1o1d"]
+[ext_resource type="Texture2D" uid="uid://b52c347jwl86w" path="res://Game/Assets/Airship_Tiles/Ship_Tile_Sprites_8.png" id="2_tq85h"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hdomn"]
+atlas = ExtResource("2_tq85h")
+region = Rect2(0, 0, 8, 8)
+
+[node name="Tile" instance=ExtResource("1_i1o1d")]
+texture_filter = 1
+ID = "vanilla.wood_tile"
+DisplayName = "Wood"
+flammable = true
+CollisionLayer = SubResource("AtlasTexture_hdomn")

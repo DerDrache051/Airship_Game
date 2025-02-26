@@ -1,0 +1,70 @@
+[gd_scene load_steps=6 format=3 uid="uid://vf8wlkmwj6bb"]
+
+[ext_resource type="Script" path="res://Game/Core/GUI/ItemDisplay.cs" id="1_dl2eg"]
+[ext_resource type="Texture2D" uid="uid://coib7on855rec" path="res://Game/Assets/GUI/item_display_frame.png" id="1_g7tsh"]
+[ext_resource type="SystemFont" uid="uid://dgvkmv1h6l3e4" path="res://Game/Assets/other_resources/game_font.tres" id="3_hs37q"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5dncy"]
+atlas = ExtResource("1_g7tsh")
+region = Rect2(0, 0, 96, 96)
+
+[sub_resource type="LabelSettings" id="LabelSettings_8r4ry"]
+font = ExtResource("3_hs37q")
+
+[node name="ItemDisplay" type="TextureRect" groups=["ItemContainer"]]
+anchors_preset = -1
+anchor_left = 0.016
+anchor_top = 0.028
+anchor_right = 0.016
+anchor_bottom = 0.028
+offset_left = -18.432
+offset_top = -18.144
+offset_right = 17.568
+offset_bottom = 17.856
+texture = SubResource("AtlasTexture_5dncy")
+expand_mode = 1
+script = ExtResource("1_dl2eg")
+
+[node name="Label" type="Label" parent="."]
+z_index = 20
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.597
+anchor_top = 0.597
+anchor_right = 0.597
+anchor_bottom = 0.597
+offset_left = -11.492
+offset_top = -11.492
+offset_right = 11.508
+offset_bottom = 11.508
+label_settings = SubResource("LabelSettings_8r4ry")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -15.0
+offset_top = -15.0
+offset_right = 15.0
+offset_bottom = 15.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ReferenceRect" type="ReferenceRect" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -16.0
+offset_top = -16.0
+offset_right = 16.0
+offset_bottom = 16.0
+border_color = Color(0.566873, 0.555917, 0.0300686, 1)
+border_width = 2.0
+editor_only = false

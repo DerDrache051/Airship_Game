@@ -1,0 +1,23 @@
+[gd_scene load_steps=6 format=3 uid="uid://cdnnxcp7yp4xu"]
+
+[ext_resource type="PackedScene" uid="uid://btid0ccdcd7xc" path="res://Game/Core/World/tile.tscn" id="1_aqiev"]
+[ext_resource type="Material" uid="uid://b8vjxm17w3ybb" path="res://Game/Core/Visual/light.tres" id="2_3sekc"]
+
+[sub_resource type="ImageTexture" id="ImageTexture_75git"]
+
+[sub_resource type="Gradient" id="Gradient_ul10k"]
+offsets = PackedFloat32Array(0, 0.648649, 1)
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_tmioe"]
+gradient = SubResource("Gradient_ul10k")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+
+[node name="Tile" instance=ExtResource("1_aqiev")]
+CanBeReplaced = true
+ForegroundDecorationLayer = SubResource("ImageTexture_75git")
+
+[node name="Sprite2D" type="Sprite2D" parent="." index="0"]
+material = ExtResource("2_3sekc")
+texture = SubResource("GradientTexture2D_tmioe")

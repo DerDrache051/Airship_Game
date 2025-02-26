@@ -1,0 +1,694 @@
+[gd_scene load_steps=2 format=3 uid="uid://bba4tw8ysthvs"]
+
+[ext_resource type="PackedScene" uid="uid://vf8wlkmwj6bb" path="res://Game/Core/GUI/ItemDisplay.tscn" id="1_g62n4"]
+
+[node name="PlayerInventory" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="ItemDisplay" parent="." instance=ExtResource("1_g62n4")]
+layout_mode = 0
+anchors_preset = 0
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_left = 0.0
+offset_top = 0.0
+offset_right = 36.0
+offset_bottom = 36.0
+slot = 10
+PlayerInventorySlot = true
+
+[node name="ItemDisplay2" parent="." instance=ExtResource("1_g62n4")]
+layout_mode = 0
+anchors_preset = 0
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_left = 36.0
+offset_top = 0.0
+offset_right = 72.0
+offset_bottom = 36.0
+slot = 11
+PlayerInventorySlot = true
+
+[node name="ItemDisplay3" parent="." instance=ExtResource("1_g62n4")]
+layout_mode = 0
+anchors_preset = 0
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_left = 71.0
+offset_top = 0.0
+offset_right = 107.0
+offset_bottom = 36.0
+slot = 12
+PlayerInventorySlot = true
+
+[node name="ItemDisplay4" parent="." instance=ExtResource("1_g62n4")]
+layout_mode = 0
+anchors_preset = 0
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_left = 107.0
+offset_top = 0.0
+offset_right = 143.0
+offset_bottom = 36.0
+slot = 13
+PlayerInventorySlot = true
+
+[node name="ItemDisplay5" parent="." instance=ExtResource("1_g62n4")]
+layout_mode = 0
+anchors_preset = 0
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_left = 143.0
+offset_top = 0.0
+offset_right = 179.0
+offset_bottom = 36.0
+slot = 14
+PlayerInventorySlot = true
+
+[node name="ItemDisplay6" parent="." instance=ExtResource("1_g62n4")]
+layout_mode = 0
+anchors_preset = 0
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_left = 179.0
+offset_top = 0.0
+offset_right = 215.0
+offset_bottom = 36.0
+slot = 15
+PlayerInventorySlot = true
+
+[node name="ItemDisplay7" parent="." instance=ExtResource("1_g62n4")]
+layout_mode = 0
+anchors_preset = 0
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_left = 215.0
+offset_top = 0.0
+offset_right = 251.0
+offset_bottom = 36.0
+slot = 16
+PlayerInventorySlot = true
+
+[node name="ItemDisplay8" parent="." instance=ExtResource("1_g62n4")]
+layout_mode = 0
+anchors_preset = 0
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_left = 251.0
+offset_top = 0.0
+offset_right = 287.0
+offset_bottom = 36.0
+slot = 17
+PlayerInventorySlot = true
+
+[node name="ItemDisplay9" parent="." instance=ExtResource("1_g62n4")]
+layout_mode = 0
+anchors_preset = 0
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_left = 287.0
+offset_top = 0.0
+offset_right = 323.0
+offset_bottom = 36.0
+slot = 18
+PlayerInventorySlot = true
+
+[node name="ItemDisplay10" parent="." instance=ExtResource("1_g62n4")]
+layout_mode = 0
+anchors_preset = 0
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_left = 0.0
+offset_top = 35.0
+offset_right = 36.0
+offset_bottom = 71.0
+slot = 19
+PlayerInventorySlot = true
+
+[node name="ItemDisplay11" parent="." instance=ExtResource("1_g62n4")]
+layout_mode = 0
+anchors_preset = 0
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_left = 36.0
+offset_top = 35.0
+offset_right = 72.0
+offset_bottom = 71.0
+slot = 20
+PlayerInventorySlot = true
+
+[node name="ItemDisplay12" parent="." instance=ExtResource("1_g62n4")]
+layout_mode = 0
+anchors_preset = 0
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_left = 71.0
+offset_top = 35.0
+offset_right = 107.0
+offset_bottom = 71.0
+slot = 21
+PlayerInventorySlot = true
+
+[node name="ItemDisplay13" parent="." instance=ExtResource("1_g62n4")]
+layout_mode = 0
+anchors_preset = 0
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_left = 107.0
+offset_top = 35.0
+offset_right = 143.0
+offset_bottom = 71.0
+slot = 22
+PlayerInventorySlot = true
+
+[node name="ItemDisplay14" parent="." instance=ExtResource("1_g62n4")]
+layout_mode = 0
+anchors_preset = 0
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_left = 143.0
+offset_top = 35.0
+offset_right = 179.0
+offset_bottom = 71.0
+slot = 23
+PlayerInventorySlot = true
+
+[node name="ItemDisplay15" parent="." instance=ExtResource("1_g62n4")]
+layout_mode = 0
+anchors_preset = 0
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_left = 179.0
+offset_top = 35.0
+offset_right = 215.0
+offset_bottom = 71.0
+slot = 24
+PlayerInventorySlot = true
+
+[node name="ItemDisplay16" parent="." instance=ExtResource("1_g62n4")]
+layout_mode = 0
+anchors_preset = 0
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_left = 215.0
+offset_top = 35.0
+offset_right = 251.0
+offset_bottom = 71.0
+slot = 25
+PlayerInventorySlot = true
+
+[node name="ItemDisplay17" parent="." instance=ExtResource("1_g62n4")]
+layout_mode = 0
+anchors_preset = 0
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_left = 251.0
+offset_top = 35.0
+offset_right = 287.0
+offset_bottom = 71.0
+slot = 26
+PlayerInventorySlot = true
+
+[node name="ItemDisplay18" parent="." instance=ExtResource("1_g62n4")]
+layout_mode = 0
+anchors_preset = 0
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_left = 287.0
+offset_top = 35.0
+offset_right = 323.0
+offset_bottom = 71.0
+slot = 27
+PlayerInventorySlot = true
+
+[node name="ItemDisplay19" parent="." instance=ExtResource("1_g62n4")]
+layout_mode = 0
+anchors_preset = 0
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_left = 0.0
+offset_top = 71.0
+offset_right = 36.0
+offset_bottom = 107.0
+slot = 28
+PlayerInventorySlot = true
+
+[node name="ItemDisplay20" parent="." instance=ExtResource("1_g62n4")]
+layout_mode = 0
+anchors_preset = 0
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_left = 36.0
+offset_top = 71.0
+offset_right = 72.0
+offset_bottom = 107.0
+slot = 29
+PlayerInventorySlot = true
+
+[node name="ItemDisplay21" parent="." instance=ExtResource("1_g62n4")]
+layout_mode = 0
+anchors_preset = 0
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_left = 71.0
+offset_top = 71.0
+offset_right = 107.0
+offset_bottom = 107.0
+slot = 30
+PlayerInventorySlot = true
+
+[node name="ItemDisplay22" parent="." instance=ExtResource("1_g62n4")]
+layout_mode = 0
+anchors_preset = 0
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_left = 107.0
+offset_top = 71.0
+offset_right = 143.0
+offset_bottom = 107.0
+slot = 31
+PlayerInventorySlot = true
+
+[node name="ItemDisplay23" parent="." instance=ExtResource("1_g62n4")]
+layout_mode = 0
+anchors_preset = 0
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_left = 143.0
+offset_top = 71.0
+offset_right = 179.0
+offset_bottom = 107.0
+slot = 32
+PlayerInventorySlot = true
+
+[node name="ItemDisplay24" parent="." instance=ExtResource("1_g62n4")]
+layout_mode = 0
+anchors_preset = 0
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_left = 179.0
+offset_top = 71.0
+offset_right = 215.0
+offset_bottom = 107.0
+slot = 33
+PlayerInventorySlot = true
+
+[node name="ItemDisplay25" parent="." instance=ExtResource("1_g62n4")]
+layout_mode = 0
+anchors_preset = 0
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_left = 215.0
+offset_top = 71.0
+offset_right = 251.0
+offset_bottom = 107.0
+slot = 34
+PlayerInventorySlot = true
+
+[node name="ItemDisplay26" parent="." instance=ExtResource("1_g62n4")]
+layout_mode = 0
+anchors_preset = 0
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_left = 251.0
+offset_top = 71.0
+offset_right = 287.0
+offset_bottom = 107.0
+slot = 35
+PlayerInventorySlot = true
+
+[node name="ItemDisplay27" parent="." instance=ExtResource("1_g62n4")]
+layout_mode = 0
+anchors_preset = 0
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_left = 287.0
+offset_top = 71.0
+offset_right = 323.0
+offset_bottom = 107.0
+slot = 36
+PlayerInventorySlot = true
+
+[node name="ItemDisplay28" parent="." instance=ExtResource("1_g62n4")]
+layout_mode = 0
+anchors_preset = 0
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_left = 0.0
+offset_top = 106.0
+offset_right = 36.0
+offset_bottom = 142.0
+slot = 37
+PlayerInventorySlot = true
+
+[node name="ItemDisplay29" parent="." instance=ExtResource("1_g62n4")]
+layout_mode = 0
+anchors_preset = 0
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_left = 36.0
+offset_top = 106.0
+offset_right = 72.0
+offset_bottom = 142.0
+slot = 38
+PlayerInventorySlot = true
+
+[node name="ItemDisplay30" parent="." instance=ExtResource("1_g62n4")]
+layout_mode = 0
+anchors_preset = 0
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_left = 71.0
+offset_top = 106.0
+offset_right = 107.0
+offset_bottom = 142.0
+slot = 39
+PlayerInventorySlot = true
+
+[node name="ItemDisplay31" parent="." instance=ExtResource("1_g62n4")]
+layout_mode = 0
+anchors_preset = 0
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_left = 107.0
+offset_top = 106.0
+offset_right = 143.0
+offset_bottom = 142.0
+slot = 40
+PlayerInventorySlot = true
+
+[node name="ItemDisplay32" parent="." instance=ExtResource("1_g62n4")]
+layout_mode = 0
+anchors_preset = 0
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_left = 143.0
+offset_top = 106.0
+offset_right = 179.0
+offset_bottom = 142.0
+slot = 41
+PlayerInventorySlot = true
+
+[node name="ItemDisplay33" parent="." instance=ExtResource("1_g62n4")]
+layout_mode = 0
+anchors_preset = 0
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_left = 179.0
+offset_top = 106.0
+offset_right = 215.0
+offset_bottom = 142.0
+slot = 42
+PlayerInventorySlot = true
+
+[node name="ItemDisplay34" parent="." instance=ExtResource("1_g62n4")]
+layout_mode = 0
+anchors_preset = 0
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_left = 215.0
+offset_top = 106.0
+offset_right = 251.0
+offset_bottom = 142.0
+slot = 43
+PlayerInventorySlot = true
+
+[node name="ItemDisplay35" parent="." instance=ExtResource("1_g62n4")]
+layout_mode = 0
+anchors_preset = 0
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_left = 251.0
+offset_top = 106.0
+offset_right = 287.0
+offset_bottom = 142.0
+slot = 44
+PlayerInventorySlot = true
+
+[node name="ItemDisplay36" parent="." instance=ExtResource("1_g62n4")]
+layout_mode = 0
+anchors_preset = 0
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_left = 287.0
+offset_top = 106.0
+offset_right = 323.0
+offset_bottom = 142.0
+slot = 45
+PlayerInventorySlot = true
+
+[node name="ItemDisplay37" parent="." instance=ExtResource("1_g62n4")]
+layout_mode = 0
+anchors_preset = 0
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_left = 0.0
+offset_top = 148.0
+offset_right = 36.0
+offset_bottom = 184.0
+slot = 1
+PlayerInventorySlot = true
+
+[node name="ItemDisplay38" parent="." instance=ExtResource("1_g62n4")]
+layout_mode = 0
+anchors_preset = 0
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_left = 36.0
+offset_top = 148.0
+offset_right = 72.0
+offset_bottom = 184.0
+slot = 2
+PlayerInventorySlot = true
+
+[node name="ItemDisplay39" parent="." instance=ExtResource("1_g62n4")]
+layout_mode = 0
+anchors_preset = 0
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_left = 71.0
+offset_top = 148.0
+offset_right = 107.0
+offset_bottom = 184.0
+slot = 3
+PlayerInventorySlot = true
+
+[node name="ItemDisplay40" parent="." instance=ExtResource("1_g62n4")]
+layout_mode = 0
+anchors_preset = 0
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_left = 107.0
+offset_top = 148.0
+offset_right = 143.0
+offset_bottom = 184.0
+slot = 4
+PlayerInventorySlot = true
+
+[node name="ItemDisplay41" parent="." instance=ExtResource("1_g62n4")]
+layout_mode = 0
+anchors_preset = 0
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_left = 143.0
+offset_top = 148.0
+offset_right = 179.0
+offset_bottom = 184.0
+slot = 5
+PlayerInventorySlot = true
+
+[node name="ItemDisplay42" parent="." instance=ExtResource("1_g62n4")]
+layout_mode = 0
+anchors_preset = 0
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_left = 179.0
+offset_top = 148.0
+offset_right = 215.0
+offset_bottom = 184.0
+slot = 6
+PlayerInventorySlot = true
+
+[node name="ItemDisplay43" parent="." instance=ExtResource("1_g62n4")]
+layout_mode = 0
+anchors_preset = 0
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_left = 215.0
+offset_top = 148.0
+offset_right = 251.0
+offset_bottom = 184.0
+slot = 7
+PlayerInventorySlot = true
+
+[node name="ItemDisplay44" parent="." instance=ExtResource("1_g62n4")]
+layout_mode = 0
+anchors_preset = 0
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_left = 251.0
+offset_top = 148.0
+offset_right = 287.0
+offset_bottom = 184.0
+slot = 8
+PlayerInventorySlot = true
+
+[node name="ItemDisplay45" parent="." instance=ExtResource("1_g62n4")]
+layout_mode = 0
+anchors_preset = 0
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_left = 287.0
+offset_top = 148.0
+offset_right = 323.0
+offset_bottom = 184.0
+PlayerInventorySlot = true
+
+[node name="ItemDisplay46" parent="." instance=ExtResource("1_g62n4")]
+layout_mode = 0
+anchors_preset = 0
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_left = 346.0
+offset_top = 0.0
+offset_right = 382.0
+offset_bottom = 36.0
+slot = 46
+PlayerInventorySlot = true
+
+[node name="ItemDisplay47" parent="." instance=ExtResource("1_g62n4")]
+layout_mode = 0
+anchors_preset = 0
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_left = 346.0
+offset_top = 35.0
+offset_right = 382.0
+offset_bottom = 71.0
+slot = 47
+PlayerInventorySlot = true
+
+[node name="ItemDisplay48" parent="." instance=ExtResource("1_g62n4")]
+layout_mode = 0
+anchors_preset = 0
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_left = 346.0
+offset_top = 71.0
+offset_right = 382.0
+offset_bottom = 107.0
+slot = 48
+PlayerInventorySlot = true
+
+[node name="ItemDisplay49" parent="." instance=ExtResource("1_g62n4")]
+layout_mode = 0
+anchors_preset = 0
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_left = 346.0
+offset_top = 106.0
+offset_right = 382.0
+offset_bottom = 142.0
+slot = 49
+PlayerInventorySlot = true

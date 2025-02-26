@@ -1,0 +1,145 @@
+[gd_scene load_steps=2 format=3 uid="uid://fiem4dgpg40v"]
+
+[ext_resource type="PackedScene" uid="uid://vf8wlkmwj6bb" path="res://Game/Core/GUI/ItemDisplay.tscn" id="1_6au8m"]
+
+[node name="InGameOverlay" type="Control"]
+layout_mode = 3
+anchor_right = 0.992
+anchor_bottom = 1.008
+offset_right = 0.215942
+offset_bottom = -0.184021
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Hotbar" type="Control" parent="."]
+anchors_preset = 0
+offset_left = 516.0
+offset_top = 579.0
+offset_right = 556.0
+offset_bottom = 619.0
+
+[node name="ItemDisplay" parent="." instance=ExtResource("1_6au8m")]
+layout_mode = 0
+anchors_preset = 0
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_left = 373.0
+offset_top = 580.0
+offset_right = 409.0
+offset_bottom = 616.0
+slot = 1
+PlayerInventorySlot = true
+
+[node name="ItemDisplay2" parent="." instance=ExtResource("1_6au8m")]
+layout_mode = 0
+anchors_preset = 0
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_left = 409.0
+offset_top = 580.0
+offset_right = 445.0
+offset_bottom = 616.0
+slot = 2
+PlayerInventorySlot = true
+
+[node name="ItemDisplay3" parent="." instance=ExtResource("1_6au8m")]
+layout_mode = 0
+anchors_preset = 0
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_left = 445.0
+offset_top = 580.0
+offset_right = 481.0
+offset_bottom = 616.0
+slot = 3
+PlayerInventorySlot = true
+
+[node name="ItemDisplay4" parent="." instance=ExtResource("1_6au8m")]
+layout_mode = 0
+anchors_preset = 0
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_left = 481.0
+offset_top = 580.0
+offset_right = 517.0
+offset_bottom = 616.0
+slot = 4
+PlayerInventorySlot = true
+
+[node name="ItemDisplay5" parent="." instance=ExtResource("1_6au8m")]
+layout_mode = 0
+anchors_preset = 0
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_left = 517.0
+offset_top = 580.0
+offset_right = 553.0
+offset_bottom = 616.0
+slot = 5
+PlayerInventorySlot = true
+
+[node name="ItemDisplay6" parent="." instance=ExtResource("1_6au8m")]
+layout_mode = 0
+anchors_preset = 0
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_left = 553.0
+offset_top = 580.0
+offset_right = 589.0
+offset_bottom = 616.0
+slot = 6
+PlayerInventorySlot = true
+
+[node name="ItemDisplay7" parent="." instance=ExtResource("1_6au8m")]
+layout_mode = 0
+anchors_preset = 0
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_left = 589.0
+offset_top = 580.0
+offset_right = 625.0
+offset_bottom = 616.0
+slot = 7
+PlayerInventorySlot = true
+
+[node name="ItemDisplay8" parent="." instance=ExtResource("1_6au8m")]
+layout_mode = 0
+anchors_preset = 0
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_left = 625.0
+offset_top = 580.0
+offset_right = 661.0
+offset_bottom = 616.0
+slot = 8
+PlayerInventorySlot = true
+
+[node name="ItemDisplay9" parent="." instance=ExtResource("1_6au8m")]
+layout_mode = 0
+anchors_preset = 0
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_left = 661.0
+offset_top = 580.0
+offset_right = 697.0
+offset_bottom = 616.0
+slot = 9
+PlayerInventorySlot = true

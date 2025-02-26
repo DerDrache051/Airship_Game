@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://dahht6ipycqxk"]
+
+[ext_resource type="Script" path="res://Game/Core/Items/Crafting/Recipe.cs" id="1_287ad"]
+
+[node name="Recipe" type="Node"]
+script = ExtResource("1_287ad")
+outputItemIDs = Array[PackedScene]([])

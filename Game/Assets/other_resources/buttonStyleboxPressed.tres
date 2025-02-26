@@ -1,0 +1,14 @@
+[gd_resource type="StyleBoxTexture" load_steps=3 format=3 uid="uid://dqn1tuauly76k"]
+
+[ext_resource type="Texture2D" uid="uid://b52c347jwl86w" path="res://Game/Assets/Airship_Tiles/Ship_Tile_Sprites_8.png" id="1_ig28g"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kiaxl"]
+atlas = ExtResource("1_ig28g")
+region = Rect2(16, 0, 8, 8)
+
+[resource]
+texture = SubResource("AtlasTexture_kiaxl")
+axis_stretch_horizontal = 2
+axis_stretch_vertical = 2
+region_rect = Rect2(0, 0, 8, 8)
+modulate_color = Color(1, 1, 1, 0.827451)

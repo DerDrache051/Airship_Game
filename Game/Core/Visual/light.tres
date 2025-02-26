@@ -1,0 +1,7 @@
+[gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://b8vjxm17w3ybb"]
+
+[ext_resource type="Shader" path="res://Game/Core/Visual/light.gdshader" id="1_48bap"]
+
+[resource]
+shader = ExtResource("1_48bap")
+shader_parameter/intensity = 10.0

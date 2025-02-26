@@ -1,0 +1,8 @@
+[gd_scene load_steps=3 format=3 uid="uid://btid0ccdcd7xc"]
+
+[ext_resource type="Script" path="res://Game/Core/World/Tile.cs" id="1_0uj6a"]
+[ext_resource type="PackedScene" uid="uid://6h10q3jpndd5" path="res://Game/Core/World/item_entity.tscn" id="2_dwr7d"]
+
+[node name="Tile" type="Node2D"]
+script = ExtResource("1_0uj6a")
+itemEntity = ExtResource("2_dwr7d")

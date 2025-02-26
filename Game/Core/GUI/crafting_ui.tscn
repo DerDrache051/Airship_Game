@@ -1,0 +1,139 @@
+[gd_scene load_steps=6 format=3 uid="uid://cgo6awdoxc12u"]
+
+[ext_resource type="Script" path="res://Game/Core/GUI/CraftingUi.cs" id="1_od84a"]
+[ext_resource type="PackedScene" uid="uid://o5wyudsh8s13" path="res://Game/Core/GUI/gui_base.tscn" id="1_ynmrd"]
+[ext_resource type="PackedScene" uid="uid://bba4tw8ysthvs" path="res://Game/Core/GUI/player_item_slots.tscn" id="2_tn8f8"]
+[ext_resource type="PackedScene" uid="uid://vf8wlkmwj6bb" path="res://Game/Core/GUI/ItemDisplay.tscn" id="3_xhu6h"]
+[ext_resource type="Script" path="res://Game/Core/GUI/CraftingRecipeList.cs" id="4_y063p"]
+
+[node name="Crafting_UI" type="Control" node_paths=PackedStringArray("CraftingRecipeList")]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("1_od84a")
+RecipeType = "WorkbenchCrafting"
+CraftingRecipeList = NodePath("ItemList")
+
+[node name="PlayerInventoryGUI" parent="." instance=ExtResource("1_ynmrd")]
+layout_mode = 1
+
+[node name="PlayerInventory" parent="." instance=ExtResource("2_tn8f8")]
+offset_left = 212.0
+offset_top = 348.0
+offset_right = 252.0
+offset_bottom = 388.0
+
+[node name="CraftingSlots" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 251.0
+offset_top = 105.0
+offset_right = 291.0
+offset_bottom = 145.0
+
+[node name="ItemDisplay9" parent="CraftingSlots" instance=ExtResource("3_xhu6h")]
+layout_mode = 1
+offset_left = 101.36
+offset_top = 134.88
+offset_right = 137.36
+offset_bottom = 170.88
+slot = 11
+
+[node name="ItemDisplay10" parent="CraftingSlots" instance=ExtResource("3_xhu6h")]
+layout_mode = 1
+offset_left = 65.36
+offset_top = 134.88
+offset_right = 101.36
+offset_bottom = 170.88
+slot = 10
+
+[node name="ItemDisplay11" parent="CraftingSlots" instance=ExtResource("3_xhu6h")]
+layout_mode = 1
+offset_left = 29.36
+offset_top = 134.88
+offset_right = 65.36
+offset_bottom = 170.88
+slot = 9
+
+[node name="ItemDisplay12" parent="CraftingSlots" instance=ExtResource("3_xhu6h")]
+layout_mode = 1
+offset_left = 137.36
+offset_top = 134.88
+offset_right = 173.36
+offset_bottom = 170.88
+slot = 12
+
+[node name="ItemDisplay" parent="CraftingSlots" instance=ExtResource("3_xhu6h")]
+layout_mode = 1
+offset_left = 101.36
+offset_top = 99.88
+offset_right = 137.36
+offset_bottom = 135.88
+slot = 7
+
+[node name="ItemDisplay2" parent="CraftingSlots" instance=ExtResource("3_xhu6h")]
+layout_mode = 1
+offset_left = 65.36
+offset_top = 99.88
+offset_right = 101.36
+offset_bottom = 135.88
+slot = 6
+
+[node name="ItemDisplay3" parent="CraftingSlots" instance=ExtResource("3_xhu6h")]
+layout_mode = 1
+offset_left = 29.36
+offset_top = 99.88
+offset_right = 65.36
+offset_bottom = 135.88
+slot = 5
+
+[node name="ItemDisplay4" parent="CraftingSlots" instance=ExtResource("3_xhu6h")]
+layout_mode = 1
+offset_left = 137.36
+offset_top = 99.88
+offset_right = 173.36
+offset_bottom = 135.88
+slot = 8
+
+[node name="ItemDisplay5" parent="CraftingSlots" instance=ExtResource("3_xhu6h")]
+layout_mode = 1
+offset_left = 29.36
+offset_top = 63.88
+offset_right = 65.36
+offset_bottom = 99.88
+slot = 1
+
+[node name="ItemDisplay6" parent="CraftingSlots" instance=ExtResource("3_xhu6h")]
+layout_mode = 1
+offset_left = 137.36
+offset_top = 63.88
+offset_right = 173.36
+offset_bottom = 99.88
+slot = 4
+
+[node name="ItemDisplay7" parent="CraftingSlots" instance=ExtResource("3_xhu6h")]
+layout_mode = 1
+offset_left = 101.36
+offset_top = 63.88
+offset_right = 137.36
+offset_bottom = 99.88
+slot = 3
+
+[node name="ItemDisplay8" parent="CraftingSlots" instance=ExtResource("3_xhu6h")]
+layout_mode = 1
+offset_left = 65.36
+offset_top = 63.88
+offset_right = 101.36
+offset_bottom = 99.88
+slot = 2
+
+[node name="ItemList" type="ItemList" parent="."]
+texture_filter = 1
+layout_mode = 0
+offset_left = 606.0
+offset_top = 120.0
+offset_right = 943.0
+offset_bottom = 534.0
+fixed_icon_size = Vector2i(20, 20)
+script = ExtResource("4_y063p")

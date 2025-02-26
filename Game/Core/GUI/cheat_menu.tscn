@@ -1,0 +1,53 @@
+[gd_scene load_steps=4 format=3 uid="uid://dc4kqqh6rextu"]
+
+[ext_resource type="Script" path="res://Game/Core/GUI/TileCheatList.cs" id="1_jj5si"]
+[ext_resource type="Script" path="res://Game/Core/GUI/PlayerInventoryTabBar.cs" id="1_os1pc"]
+[ext_resource type="Script" path="res://Game/Core/GUI/ItemCheatList.cs" id="2_ojt3q"]
+
+[node name="CheatMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TileCheatList" type="ItemList" parent="."]
+texture_filter = 1
+layout_mode = 0
+offset_left = 196.0
+offset_top = 130.0
+offset_right = 864.0
+offset_bottom = 570.0
+fixed_icon_size = Vector2i(25, 25)
+script = ExtResource("1_jj5si")
+
+[node name="ItemCheatList" type="ItemList" parent="."]
+texture_filter = 1
+layout_mode = 0
+offset_left = 194.0
+offset_top = 128.0
+offset_right = 865.0
+offset_bottom = 572.0
+fixed_icon_size = Vector2i(25, 25)
+script = ExtResource("2_ojt3q")
+
+[node name="TabBar" type="TabBar" parent="." node_paths=PackedStringArray("Tabs")]
+layout_mode = 0
+offset_left = 196.0
+offset_top = 77.0
+offset_right = 855.0
+offset_bottom = 117.0
+current_tab = 1
+tab_alignment = 1
+tab_count = 5
+tab_0/title = "Admin Tools"
+tab_0/disabled = true
+tab_1/title = "give Items"
+tab_2/title = "give Tiles"
+tab_3/title = "spawn Entities"
+tab_3/disabled = true
+tab_4/title = "Run Script"
+tab_4/disabled = true
+script = ExtResource("1_os1pc")
+Tabs = [null, NodePath("../ItemCheatList"), NodePath("../TileCheatList"), null, null, null, null]

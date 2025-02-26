@@ -1,0 +1,25 @@
+[gd_scene load_steps=3 format=3 uid="uid://o5wyudsh8s13"]
+
+[ext_resource type="Texture2D" uid="uid://qx4rol3n7icy" path="res://Game/Assets/Airship_Tiles/airship_tiles_1.png" id="1_xtuml"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_stfct"]
+atlas = ExtResource("1_xtuml")
+region = Rect2(0, 0, 8, 8)
+
+[node name="PlayerInventoryGUI" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Background" type="TextureRect" parent="."]
+modulate = Color(0.691357, 0.691357, 0.691357, 0.415686)
+texture_filter = 1
+layout_mode = 0
+offset_left = 189.0
+offset_top = 106.0
+offset_right = 954.0
+offset_bottom = 555.0
+texture = SubResource("AtlasTexture_stfct")

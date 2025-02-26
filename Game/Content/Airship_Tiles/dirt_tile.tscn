@@ -1,0 +1,14 @@
+[gd_scene load_steps=4 format=3 uid="uid://cs44p48l0rwk8"]
+
+[ext_resource type="PackedScene" uid="uid://btid0ccdcd7xc" path="res://Game/Core/World/tile.tscn" id="1_o5w4w"]
+[ext_resource type="Texture2D" uid="uid://excs03jvakpi" path="res://Game/Assets/Airship_Tiles/World_Tiles.png" id="2_c6ayc"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yjgf6"]
+atlas = ExtResource("2_c6ayc")
+region = Rect2(16, 0, 8, 8)
+
+[node name="Tile" instance=ExtResource("1_o5w4w")]
+Weight = 30
+ID = "vanilla.dirt_tile"
+DisplayName = "Dirt"
+CollisionLayer = SubResource("AtlasTexture_yjgf6")

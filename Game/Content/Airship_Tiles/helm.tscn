@@ -1,0 +1,16 @@
+[gd_scene load_steps=5 format=3 uid="uid://7k5gp47ug3xq"]
+
+[ext_resource type="PackedScene" uid="uid://btid0ccdcd7xc" path="res://Game/Core/World/tile.tscn" id="1_07a0g"]
+[ext_resource type="Script" path="res://Game/Core/World/Helm_Tile.cs" id="2_aa1jx"]
+[ext_resource type="Texture2D" uid="uid://b52c347jwl86w" path="res://Game/Assets/Airship_Tiles/Ship_Tile_Sprites_8.png" id="3_vad8c"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3i7p0"]
+atlas = ExtResource("3_vad8c")
+region = Rect2(16, 8, 8, 16)
+
+[node name="Tile" groups=["Interaction"] instance=ExtResource("1_07a0g")]
+script = ExtResource("2_aa1jx")
+UI_ID = 3
+SizeY = 2
+itemEntity = null
+InteractionLayer = SubResource("AtlasTexture_3i7p0")

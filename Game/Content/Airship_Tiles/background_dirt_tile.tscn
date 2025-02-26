@@ -1,0 +1,14 @@
+[gd_scene load_steps=4 format=3 uid="uid://rsn43iyanlo4"]
+
+[ext_resource type="PackedScene" uid="uid://btid0ccdcd7xc" path="res://Game/Core/World/tile.tscn" id="1_ldw3f"]
+[ext_resource type="Texture2D" uid="uid://excs03jvakpi" path="res://Game/Assets/Airship_Tiles/World_Tiles.png" id="2_4mtt2"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gik8l"]
+atlas = ExtResource("2_4mtt2")
+region = Rect2(16, 0, 8, 8)
+
+[node name="Tile" instance=ExtResource("1_ldw3f")]
+Weight = 30
+ID = "vanilla.grass_tile"
+DisplayName = "Grass"
+BackgroundLayer = SubResource("AtlasTexture_gik8l")

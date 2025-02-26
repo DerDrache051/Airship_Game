@@ -1,0 +1,10 @@
+[gd_scene load_steps=4 format=3 uid="uid://b1emwdix7xngc"]
+
+[ext_resource type="PackedScene" uid="uid://dywe70koqakb0" path="res://Game/Core/Items/item.tscn" id="1_181m5"]
+[ext_resource type="Script" path="res://Game/Core/Items/debug_tile_remover.cs" id="2_4gu5n"]
+[ext_resource type="Texture2D" uid="uid://dvrbwc6u7fv20" path="res://icon.svg" id="3_kminc"]
+
+[node name="debug_tile_remover" instance=ExtResource("1_181m5")]
+script = ExtResource("2_4gu5n")
+ItemTexture = ExtResource("3_kminc")
+cursorState = 2

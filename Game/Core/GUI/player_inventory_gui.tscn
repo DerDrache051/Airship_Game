@@ -1,0 +1,52 @@
+[gd_scene load_steps=5 format=3 uid="uid://dbch04d4s8m4t"]
+
+[ext_resource type="PackedScene" uid="uid://o5wyudsh8s13" path="res://Game/Core/GUI/gui_base.tscn" id="1_r04ma"]
+[ext_resource type="PackedScene" uid="uid://bba4tw8ysthvs" path="res://Game/Core/GUI/player_item_slots.tscn" id="2_yj1b8"]
+[ext_resource type="Script" path="res://Game/Core/GUI/PlayerInventoryTabBar.cs" id="3_bhg7l"]
+[ext_resource type="PackedScene" uid="uid://dc4kqqh6rextu" path="res://Game/Core/GUI/cheat_menu.tscn" id="4_hp73m"]
+
+[node name="PlayerInventoryGUI" instance=ExtResource("1_r04ma")]
+
+[node name="Background" parent="." index="0"]
+modulate = Color(0.690196, 0.690196, 0.690196, 0.596078)
+offset_left = 221.0
+offset_top = 91.0
+offset_right = 881.0
+offset_bottom = 540.0
+
+[node name="PlayerInventory" parent="." index="1" instance=ExtResource("2_yj1b8")]
+offset_left = 381.0
+offset_top = 332.0
+offset_right = 421.0
+offset_bottom = 372.0
+
+[node name="TabBar" type="TabBar" parent="." index="2" node_paths=PackedStringArray("Tabs")]
+layout_mode = 0
+offset_left = 221.0
+offset_top = 93.0
+offset_right = 880.0
+offset_bottom = 133.0
+current_tab = 0
+tab_alignment = 1
+tab_count = 7
+tab_0/title = "Inventory"
+tab_1/title = "Skills"
+tab_1/disabled = true
+tab_2/title = "Crew"
+tab_2/disabled = true
+tab_3/title = "Book of Knowledge"
+tab_3/disabled = true
+tab_4/title = "Options"
+tab_4/disabled = true
+tab_5/title = "Multiplayer"
+tab_5/disabled = true
+tab_6/title = "Cheats"
+script = ExtResource("3_bhg7l")
+Tabs = [NodePath("../PlayerInventory"), null, null, null, null, null, NodePath("../CheatMenu")]
+
+[node name="CheatMenu" parent="." index="3" instance=ExtResource("4_hp73m")]
+layout_mode = 1
+offset_left = 23.0
+offset_top = 55.0
+offset_right = 23.0
+offset_bottom = 55.0
