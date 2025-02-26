@@ -1,0 +1,25 @@
+[gd_scene load_steps=3 format=3 uid="uid://dhagi8nq43woc"]
+
+[ext_resource type="PackedScene" uid="uid://d18fhhpoihqhb" path="res://Game/Core/World/entity.tscn" id="1_d5yrw"]
+[ext_resource type="Script" path="res://AnimatedEntity.cs" id="2_xky8m"]
+
+[node name="AnimatedEntity" node_paths=PackedStringArray("animationPlayer") instance=ExtResource("1_d5yrw")]
+script = ExtResource("2_xky8m")
+animationLibrary = null
+animationPlayer = NodePath("AnimationPlayer")
+
+[node name="LeftLeg" type="Node2D" parent="." index="0"]
+
+[node name="RightLeg" type="Node2D" parent="." index="1"]
+
+[node name="Torso" type="Node2D" parent="." index="2"]
+
+[node name="RightArm" type="Node2D" parent="." index="3"]
+
+[node name="LeftArm" type="Node2D" parent="." index="4"]
+
+[node name="Head" type="Node2D" parent="." index="5"]
+
+[node name="InHandItem" type="Node2D" parent="." index="6"]
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." index="7"]

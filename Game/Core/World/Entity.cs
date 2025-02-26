@@ -7,13 +7,13 @@ public partial class Entity:CharacterBody2D,IDamageable{
     [Export] public Node Team;
     [Export] public String DisplayName;
 
-    [Export] public float PhysicalDamageMultiplier;//Piercing and Impact
-    [Export] public float FireDamageMultiplier;
-    [Export] public float ExplosionDamageMultiplier;
-    [Export] public float ElectricDamageMultiplier;
-    [Export] public float MagicDamageMultiplier;
-    [Export] public float PoisonDamageMultiplier;
-    [Export] public int DamageReduction;
+    [Export] public float PhysicalDamageMultiplier=1;//Piercing and Impact
+    [Export] public float FireDamageMultiplier=1;
+    [Export] public float ExplosionDamageMultiplier=1;
+    [Export] public float ElectricDamageMultiplier=1;
+    [Export] public float MagicDamageMultiplier=1;
+    [Export] public float PoisonDamageMultiplier=1;
+    [Export] public int DamageReduction=0;
     public int health;
     public Grid lastCollidedGrid;
     private Vector2 previousGridPosition;
@@ -44,11 +44,19 @@ public partial class Entity:CharacterBody2D,IDamageable{
         base._PhysicsProcess(delta);
     }
     public float dealDamage(float damage,DamageTypes damageTypes,Node2D source,Node2D projectile){
-        if(damageTypes == DamageTypes.True)health-=(int)damage;
+        float actualDamage=damage;
+        if (damageTypes == DamageTypes.Explosion)actualDamage *= ExplosionDamageMultiplier;
+        if (damageTypes == DamageTypes.Fire)actualDamage *= FireDamageMultiplier;
+        if (damageTypes == DamageTypes.Electric)actualDamage *= ElectricDamageMultiplier;
+        if (damageTypes == DamageTypes.Magic)actualDamage *= MagicDamageMultiplier;
+        if (damageTypes == DamageTypes.Poison)actualDamage *= PoisonDamageMultiplier;
+        if (damageTypes == DamageTypes.Piercing)actualDamage *= PhysicalDamageMultiplier;
+        if (damageTypes == DamageTypes.Impact)actualDamage *= PhysicalDamageMultiplier;
+        health-=(int)actualDamage;
         if(health<=0){
             QueueFree();
         }
-        return health;
+        return actualDamage;
     }
 
 }
