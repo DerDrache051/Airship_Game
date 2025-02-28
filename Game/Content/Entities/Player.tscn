@@ -1,0 +1,103 @@
+[gd_scene load_steps=19 format=3 uid="uid://cvw7m07ahsp61"]
+
+[ext_resource type="PackedScene" uid="uid://dhagi8nq43woc" path="res://Game/Core/World/animated_entity.tscn" id="1_37575"]
+[ext_resource type="Script" path="res://Game/Core/World/PlayerCharacter.cs" id="2_fouph"]
+[ext_resource type="AnimationLibrary" uid="uid://bpppwxvx74vi8" path="res://Game/Assets/Entities/humanoid_animations.res" id="2_xjseo"]
+[ext_resource type="Texture2D" uid="uid://b2r0s3e5oj78k" path="res://Game/Assets/Entities/New Piskel.png" id="3_6vnxw"]
+[ext_resource type="PackedScene" uid="uid://cme4yhfrk70b8" path="res://Game/Core/Items/inventory.tscn" id="6_ora7t"]
+[ext_resource type="PackedScene" uid="uid://rvnalvrp2d02" path="res://Game/Content/Items/Steel_Pickaxe.tscn" id="7_kgf6f"]
+[ext_resource type="Script" path="res://Game/Core/World/BuildPreview.cs" id="8_drh0h"]
+[ext_resource type="Script" path="res://Game/Core/World/InteractionHighlight.cs" id="9_hgsyu"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_weo1d"]
+atlas = ExtResource("3_6vnxw")
+region = Rect2(0, 0, 8, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pswss"]
+atlas = ExtResource("3_6vnxw")
+region = Rect2(8, 0, 8, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0jrhk"]
+atlas = ExtResource("3_6vnxw")
+region = Rect2(0, 8, 8, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fqgv2"]
+atlas = ExtResource("3_6vnxw")
+region = Rect2(8, 8, 8, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pia0y"]
+atlas = ExtResource("3_6vnxw")
+region = Rect2(0, 16, 8, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wjnn0"]
+atlas = ExtResource("3_6vnxw")
+region = Rect2(8, 16, 8, 8)
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_vuvf5"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_en5ab"]
+radius = 3.7
+height = 16.0
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_ko1lu"]
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_bi17l"]
+size = Vector2(5, 5)
+
+[node name="AnimatedEntity" instance=ExtResource("1_37575")]
+script = ExtResource("2_fouph")
+animationLibrary = ExtResource("2_xjseo")
+
+[node name="Sprite2D" type="Sprite2D" parent="LeftLeg" index="0"]
+position = Vector2(-1, 6)
+texture = SubResource("AtlasTexture_weo1d")
+
+[node name="Sprite2D" type="Sprite2D" parent="RightLeg" index="0"]
+position = Vector2(2, 6)
+texture = SubResource("AtlasTexture_pswss")
+
+[node name="Sprite2D" type="Sprite2D" parent="Torso" index="0"]
+texture = SubResource("AtlasTexture_0jrhk")
+
+[node name="Sprite2D" type="Sprite2D" parent="RightArm" index="0"]
+position = Vector2(2, -2)
+texture = SubResource("AtlasTexture_fqgv2")
+
+[node name="Sprite2D" type="Sprite2D" parent="LeftArm" index="0"]
+position = Vector2(3, -3)
+texture = SubResource("AtlasTexture_pia0y")
+
+[node name="InHandItem" parent="LeftArm" index="1"]
+position = Vector2(6, -2)
+
+[node name="Sprite2D" type="Sprite2D" parent="Head" index="0"]
+position = Vector2(0, -7)
+texture = SubResource("AtlasTexture_wjnn0")
+
+[node name="AnimationPlayer" parent="." index="6"]
+libraries = {
+"": ExtResource("2_xjseo"),
+"humanoid_animations": SubResource("AnimationLibrary_vuvf5")
+}
+speed_scale = 3.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." index="7"]
+position = Vector2(0, 2)
+shape = SubResource("CapsuleShape2D_en5ab")
+
+[node name="Camera2D" type="Camera2D" parent="." index="8"]
+zoom = Vector2(5, 5)
+
+[node name="Inventory" parent="." index="9" instance=ExtResource("6_ora7t")]
+InventorySize = 50
+StartingItems = Array[PackedScene]([ExtResource("7_kgf6f")])
+
+[node name="BuildPreview" type="Sprite2D" parent="." index="10"]
+z_index = 100
+script = ExtResource("8_drh0h")
+breakRectangle = SubResource("PlaceholderTexture2D_ko1lu")
+
+[node name="InteractionHighlight" type="Sprite2D" parent="." index="11"]
+z_index = 100
+texture = SubResource("PlaceholderTexture2D_bi17l")
+script = ExtResource("9_hgsyu")

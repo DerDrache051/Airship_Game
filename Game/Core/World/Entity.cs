@@ -43,7 +43,7 @@ public partial class Entity:CharacterBody2D,IDamageable{
 
         base._PhysicsProcess(delta);
     }
-    public float dealDamage(float damage,DamageTypes damageTypes,Node2D source,Node2D projectile){
+    public virtual float dealDamage(float damage,DamageTypes damageTypes,Node2D source,Node2D projectile){
         float actualDamage=damage;
         if (damageTypes == DamageTypes.Explosion)actualDamage *= ExplosionDamageMultiplier;
         if (damageTypes == DamageTypes.Fire)actualDamage *= FireDamageMultiplier;

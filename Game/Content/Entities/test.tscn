@@ -1,0 +1,83 @@
+[gd_scene load_steps=14 format=3 uid="uid://87fl7bee7w0t"]
+
+[ext_resource type="PackedScene" uid="uid://dhagi8nq43woc" path="res://Game/Core/World/animated_entity.tscn" id="1_1p2be"]
+[ext_resource type="AnimationLibrary" uid="uid://bpppwxvx74vi8" path="res://Game/Assets/Entities/humanoid_animations.res" id="2_p2miu"]
+[ext_resource type="Texture2D" uid="uid://b2r0s3e5oj78k" path="res://Game/Assets/Entities/New Piskel.png" id="2_wxio4"]
+[ext_resource type="Texture2D" uid="uid://cpnrb2wc421wa" path="res://Game/Assets/Items/Item_Sprites.png" id="4_it4gn"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_weo1d"]
+atlas = ExtResource("2_wxio4")
+region = Rect2(0, 0, 8, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pswss"]
+atlas = ExtResource("2_wxio4")
+region = Rect2(8, 0, 8, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0jrhk"]
+atlas = ExtResource("2_wxio4")
+region = Rect2(0, 8, 8, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fqgv2"]
+atlas = ExtResource("2_wxio4")
+region = Rect2(8, 8, 8, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pia0y"]
+atlas = ExtResource("2_wxio4")
+region = Rect2(0, 16, 8, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_o1a1l"]
+atlas = ExtResource("4_it4gn")
+region = Rect2(8, 0, 8, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wjnn0"]
+atlas = ExtResource("2_wxio4")
+region = Rect2(8, 16, 8, 8)
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_vuvf5"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_en5ab"]
+radius = 7.0
+height = 26.0
+
+[node name="AnimatedEntity" instance=ExtResource("1_1p2be")]
+animationLibrary = ExtResource("2_p2miu")
+
+[node name="Sprite2D" type="Sprite2D" parent="LeftLeg" index="0"]
+position = Vector2(-1, 6)
+texture = SubResource("AtlasTexture_weo1d")
+
+[node name="Sprite2D" type="Sprite2D" parent="RightLeg" index="0"]
+position = Vector2(2, 6)
+texture = SubResource("AtlasTexture_pswss")
+
+[node name="Sprite2D" type="Sprite2D" parent="Torso" index="0"]
+texture = SubResource("AtlasTexture_0jrhk")
+
+[node name="Sprite2D" type="Sprite2D" parent="RightArm" index="0"]
+position = Vector2(2, -2)
+texture = SubResource("AtlasTexture_fqgv2")
+
+[node name="Sprite2D" type="Sprite2D" parent="LeftArm" index="0"]
+position = Vector2(3, -3)
+texture = SubResource("AtlasTexture_pia0y")
+
+[node name="InHandItem" parent="LeftArm" index="1"]
+position = Vector2(6, -2)
+
+[node name="Sprite2D" type="Sprite2D" parent="LeftArm/InHandItem" index="0"]
+position = Vector2(4, -4)
+texture = SubResource("AtlasTexture_o1a1l")
+
+[node name="Sprite2D" type="Sprite2D" parent="Head" index="0"]
+position = Vector2(0, -7)
+texture = SubResource("AtlasTexture_wjnn0")
+
+[node name="AnimationPlayer" parent="." index="6"]
+libraries = {
+"": ExtResource("2_p2miu"),
+"humanoid_animations": SubResource("AnimationLibrary_vuvf5")
+}
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." index="7"]
+visible = false
+shape = SubResource("CapsuleShape2D_en5ab")

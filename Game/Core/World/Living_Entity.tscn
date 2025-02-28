@@ -1,0 +1,17 @@
+[gd_scene load_steps=4 format=3 uid="uid://dxd8b2h5fnft2"]
+
+[ext_resource type="PackedScene" uid="uid://dhagi8nq43woc" path="res://Game/Core/World/animated_entity.tscn" id="1_mkurx"]
+[ext_resource type="Script" path="res://Game/Core/World/LivingEntity.cs" id="2_vipfi"]
+[ext_resource type="Script" path="res://Game/Core/World/EntityController.cs" id="3_qudo3"]
+
+[node name="AnimatedEntity" instance=ExtResource("1_mkurx")]
+script = ExtResource("2_vipfi")
+Speed = 0.0
+canFly = false
+JumpVelocity = 0.0
+
+[node name="EntityController" type="Node" parent="." index="7" node_paths=PackedStringArray("Behaviors")]
+script = ExtResource("3_qudo3")
+Behaviors = []
+
+[node name="Node" type="Node" parent="EntityController" index="0"]
