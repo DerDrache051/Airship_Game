@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://fiem4dgpg40v"]
+[gd_scene load_steps=3 format=3 uid="uid://fiem4dgpg40v"]
 
 [ext_resource type="PackedScene" uid="uid://vf8wlkmwj6bb" path="res://Game/Core/GUI/ItemDisplay.tscn" id="1_6au8m"]
+[ext_resource type="Script" path="res://Game/Core/GUI/HealthBar.cs" id="2_ugb4j"]
 
 [node name="InGameOverlay" type="Control"]
 layout_mode = 3
@@ -143,3 +144,11 @@ offset_right = 697.0
 offset_bottom = 616.0
 slot = 9
 PlayerInventorySlot = true
+
+[node name="ProgressBar" type="ProgressBar" parent="."]
+layout_mode = 0
+offset_left = 374.0
+offset_top = 549.0
+offset_right = 517.0
+offset_bottom = 578.0
+script = ExtResource("2_ugb4j")

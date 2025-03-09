@@ -1,9 +1,0 @@
-[gd_scene load_steps=3 format=3 uid="uid://xcafakpcnnrv"]
-
-[ext_resource type="PackedScene" uid="uid://btid0ccdcd7xc" path="res://Game/Core/World/tile.tscn" id="1_tl07b"]
-[ext_resource type="Script" path="res://Game/Core/World/Levitating_Tile.cs" id="2_xa13g"]
-
-[node name="LevitatingTile" instance=ExtResource("1_tl07b")]
-script = ExtResource("2_xa13g")
-LevitationPower = 400
-itemEntity = null

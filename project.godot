@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="Airship_Game"
-run/main_scene="res://Game/Core/World/root.tscn"
+run/main_scene="res://Game/Core/World/Game.tscn"
 config/features=PackedStringArray("4.3", "C#", "GL Compatibility")
 config/icon="res://icon.svg"
 
@@ -29,6 +29,7 @@ project/assembly_name="Airship_Game"
 ItemContainer="Accepts item drag_and_drop"
 Entity=""
 Interaction=""
+Player=""
 
 [godot_resource_groups]
 

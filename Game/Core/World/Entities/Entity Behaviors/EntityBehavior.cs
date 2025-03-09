@@ -1,5 +1,11 @@
 using Godot;
 public abstract partial class EntityBehavior:Node{
+
+    public LivingEntity controlledEntity;
+    public override void _Ready()
+	{
+		controlledEntity=GetParent().GetParent<LivingEntity>();
+	}
     public abstract Vector2 getDesiredVelocity();//where should the entity move
     public abstract bool shouldJump();//should the entity jump. not needed on flying entities
     public abstract bool isFinished();//is the behavior finished. always return true if the action should not block other actions

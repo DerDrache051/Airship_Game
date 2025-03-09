@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://6h10q3jpndd5"]
 
-[ext_resource type="PackedScene" uid="uid://d18fhhpoihqhb" path="res://Game/Core/World/entity.tscn" id="1_nc0k1"]
-[ext_resource type="Script" path="res://Game/Core/World/ItemEntity.cs" id="2_erymg"]
+[ext_resource type="PackedScene" uid="uid://d18fhhpoihqhb" path="res://Game/Core/World/Entities/entity.tscn" id="1_nc0k1"]
+[ext_resource type="Script" path="res://Game/Core/World/Entities/ItemEntity.cs" id="2_erymg"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_25ob3"]
 radius = 2.0

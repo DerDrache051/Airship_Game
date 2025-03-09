@@ -5,14 +5,14 @@ public partial class AnimatedEntity : Entity
 {
 	[ExportGroup("Animation")]
 
-	[Export] public AnimationLibrary animationLibrary;
+	[Export] public String animationLibrary;
+
 	[Export] public AnimationPlayer animationPlayer;
 
 	[Export] public Sprite2D itemInHand;
 
-
     public void PlayAnimation(String animationName){
-		animationPlayer.Play(animationName);
+		animationPlayer.Play(animationLibrary+"/"+animationName);
 	}
 	public bool isAnimationFinished(){
 		return animationPlayer.CurrentAnimation==""||animationPlayer.CurrentAnimation=="walk"||animationPlayer.CurrentAnimation=="idle";
@@ -37,7 +37,7 @@ public partial class AnimatedEntity : Entity
         base._PhysicsProcess(delta);
     }
 	public override float dealDamage(float damage,DamageTypes damageTypes,Node2D source,Node2D projectile){
-		PlayAnimation("hit");
+		PlayAnimation("hurt");
 		return base.dealDamage(damage,damageTypes,source,projectile);
 	}
 

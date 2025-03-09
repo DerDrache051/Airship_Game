@@ -1,8 +1,8 @@
 [gd_scene load_steps=6 format=3 uid="uid://cshlmg2lnndje"]
 
-[ext_resource type="PackedScene" uid="uid://xcafakpcnnrv" path="res://Game/Core/World/levitating_tile.tscn" id="1_5adfn"]
-[ext_resource type="Texture2D" uid="uid://b52c347jwl86w" path="res://Game/Assets/Airship_Tiles/Ship_Tile_Sprites_8.png" id="2_jf4kn"]
-[ext_resource type="PackedScene" uid="uid://6h10q3jpndd5" path="res://Game/Core/World/item_entity.tscn" id="3_mf0jp"]
+[ext_resource type="PackedScene" uid="uid://xcafakpcnnrv" path="res://Game/Core/World/Tiles/levitating_tile.tscn" id="1_5adfn"]
+[ext_resource type="Texture2D" uid="uid://3f5x5jx45p2p" path="res://Game/Assets/Airship_Tiles/Ship_Tile_Sprites_8.png" id="2_jf4kn"]
+[ext_resource type="PackedScene" uid="uid://6h10q3jpndd5" path="res://Game/Core/World/Entities/item_entity.tscn" id="3_mf0jp"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_52uym"]
 atlas = ExtResource("2_jf4kn")

@@ -14,9 +14,18 @@ public partial class Entity:CharacterBody2D,IDamageable{
     [Export] public float MagicDamageMultiplier=1;
     [Export] public float PoisonDamageMultiplier=1;
     [Export] public int DamageReduction=0;
+    [Export] public bool isInvulnerable=false;
+    [Export] public bool isUntargetable=false;
+
+    public bool isOnCooldown;
     public int health;
     public Grid lastCollidedGrid;
     private Vector2 previousGridPosition;
+    public override void _Ready()
+    {
+        health=maxHealth;
+        base._Ready();
+    }
     public override void _PhysicsProcess(double delta)
     {
         MoveAndSlide();
@@ -44,6 +53,7 @@ public partial class Entity:CharacterBody2D,IDamageable{
         base._PhysicsProcess(delta);
     }
     public virtual float dealDamage(float damage,DamageTypes damageTypes,Node2D source,Node2D projectile){
+        if(isInvulnerable&&damageTypes!=DamageTypes.True)return 0;
         float actualDamage=damage;
         if (damageTypes == DamageTypes.Explosion)actualDamage *= ExplosionDamageMultiplier;
         if (damageTypes == DamageTypes.Fire)actualDamage *= FireDamageMultiplier;
@@ -58,5 +68,12 @@ public partial class Entity:CharacterBody2D,IDamageable{
         }
         return actualDamage;
     }
-
+    public void resetCooldown(){
+        isOnCooldown=false;
+    }
+    public async void setCooldown(float time){
+        isOnCooldown=true;
+        await ToSignal(GetTree().CreateTimer(time, false, false, false),"timeout");
+        isOnCooldown=false;
+    }
 }

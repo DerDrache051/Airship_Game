@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://c017tb61dwttp"]
 
-[ext_resource type="PackedScene" uid="uid://b8t46cshswy8v" path="res://Game/Core/World/ui_tile.tscn" id="1_5gxtq"]
-[ext_resource type="Script" path="res://Game/Core/World/InventoryTile.cs" id="2_udl25"]
+[ext_resource type="PackedScene" uid="uid://b8t46cshswy8v" path="res://Game/Core/World/Tiles/ui_tile.tscn" id="1_5gxtq"]
+[ext_resource type="Script" path="res://Game/Core/World/Tiles/InventoryTile.cs" id="2_udl25"]
 [ext_resource type="PackedScene" uid="uid://cme4yhfrk70b8" path="res://Game/Core/Items/inventory.tscn" id="3_ev1o8"]
 
 [node name="InventoryTile" node_paths=PackedStringArray("inventory") instance=ExtResource("1_5gxtq")]

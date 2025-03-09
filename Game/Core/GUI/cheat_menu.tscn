@@ -1,8 +1,10 @@
-[gd_scene load_steps=4 format=3 uid="uid://dc4kqqh6rextu"]
+[gd_scene load_steps=6 format=3 uid="uid://dc4kqqh6rextu"]
 
 [ext_resource type="Script" path="res://Game/Core/GUI/TileCheatList.cs" id="1_jj5si"]
 [ext_resource type="Script" path="res://Game/Core/GUI/PlayerInventoryTabBar.cs" id="1_os1pc"]
 [ext_resource type="Script" path="res://Game/Core/GUI/ItemCheatList.cs" id="2_ojt3q"]
+[ext_resource type="Script" path="res://Game/Core/GUI/EntitySpawnList.cs" id="4_ngkkn"]
+[ext_resource type="Script" path="res://Game/Core/GUI/InvoulnerableToggle.cs" id="5_cuucn"]
 
 [node name="CheatMenu" type="Control"]
 layout_mode = 3
@@ -38,16 +40,39 @@ offset_left = 196.0
 offset_top = 77.0
 offset_right = 855.0
 offset_bottom = 117.0
-current_tab = 1
+current_tab = 0
 tab_alignment = 1
 tab_count = 5
 tab_0/title = "Admin Tools"
-tab_0/disabled = true
 tab_1/title = "give Items"
 tab_2/title = "give Tiles"
 tab_3/title = "spawn Entities"
-tab_3/disabled = true
 tab_4/title = "Run Script"
 tab_4/disabled = true
 script = ExtResource("1_os1pc")
-Tabs = [null, NodePath("../ItemCheatList"), NodePath("../TileCheatList"), null, null, null, null]
+Tabs = [NodePath("../Admin_Tools"), NodePath("../ItemCheatList"), NodePath("../TileCheatList"), NodePath("../EntitySpawnList"), null, null, null]
+
+[node name="EntitySpawnList" type="ItemList" parent="."]
+texture_filter = 1
+offset_left = 194.0
+offset_top = 128.0
+offset_right = 865.0
+offset_bottom = 572.0
+fixed_icon_size = Vector2i(25, 25)
+script = ExtResource("4_ngkkn")
+
+[node name="Admin_Tools" type="Panel" parent="."]
+layout_mode = 0
+offset_left = 194.0
+offset_top = 127.0
+offset_right = 867.0
+offset_bottom = 570.0
+
+[node name="CheckBox" type="CheckBox" parent="Admin_Tools"]
+layout_mode = 0
+offset_left = 62.0
+offset_top = 51.0
+offset_right = 198.0
+offset_bottom = 82.0
+text = "Invoulnerable"
+script = ExtResource("5_cuucn")

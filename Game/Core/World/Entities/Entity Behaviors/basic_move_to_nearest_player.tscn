@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://ddi0x8o36nniu"]
+
+[ext_resource type="Script" path="res://Game/Core/World/Entities/Entity Behaviors/BasicMoveToNearestPlayer.cs" id="1_xi7xq"]
+
+[node name="BasicMoveToNearestPlayer" type="Node"]
+script = ExtResource("1_xi7xq")

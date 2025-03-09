@@ -1,6 +1,6 @@
 [gd_scene load_steps=6 format=3 uid="uid://cdnnxcp7yp4xu"]
 
-[ext_resource type="PackedScene" uid="uid://btid0ccdcd7xc" path="res://Game/Core/World/tile.tscn" id="1_aqiev"]
+[ext_resource type="PackedScene" uid="uid://btid0ccdcd7xc" path="res://Game/Core/World/Tiles/tile.tscn" id="1_aqiev"]
 [ext_resource type="Material" uid="uid://b8vjxm17w3ybb" path="res://Game/Core/Visual/light.tres" id="2_3sekc"]
 
 [sub_resource type="ImageTexture" id="ImageTexture_75git"]

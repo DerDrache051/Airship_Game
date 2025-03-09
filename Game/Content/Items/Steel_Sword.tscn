@@ -1,0 +1,17 @@
+[gd_scene load_steps=5 format=3 uid="uid://b7e5gthxfljt6"]
+
+[ext_resource type="PackedScene" uid="uid://dywe70koqakb0" path="res://Game/Core/Items/item.tscn" id="1_vfftp"]
+[ext_resource type="Script" path="res://Game/Core/Items/MeleWeapon.cs" id="2_u1nx6"]
+[ext_resource type="Texture2D" uid="uid://cpnrb2wc421wa" path="res://Game/Assets/Items/Item_Sprites.png" id="3_uq5fr"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4fi6j"]
+atlas = ExtResource("3_uq5fr")
+region = Rect2(8, 0, 8, 8)
+
+[node name="Steel_Sword" instance=ExtResource("1_vfftp")]
+script = ExtResource("2_u1nx6")
+damage = 3.0
+damageType = 0
+ID = "vanilla.Steel_Sword"
+DisplayName = "Steel Sword"
+ItemTexture = SubResource("AtlasTexture_4fi6j")

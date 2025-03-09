@@ -1,0 +1,84 @@
+[gd_scene load_steps=14 format=3 uid="uid://bvs2crymhqni6"]
+
+[ext_resource type="PackedScene" uid="uid://dxd8b2h5fnft2" path="res://Game/Core/World/Entities/Living_Entity.tscn" id="1_jk2up"]
+[ext_resource type="AnimationLibrary" uid="uid://b14kj05gblnl6" path="res://Game/Assets/Entities/humanoid_animations.res" id="2_a10k0"]
+[ext_resource type="PackedScene" uid="uid://ddi0x8o36nniu" path="res://Game/Core/World/Entities/Entity Behaviors/basic_move_to_nearest_player.tscn" id="2_xhgdp"]
+[ext_resource type="Texture2D" uid="uid://b2r0s3e5oj78k" path="res://Game/Assets/Entities/New Piskel.png" id="3_so43y"]
+[ext_resource type="PackedScene" uid="uid://c3mwxbgs6vy5t" path="res://Game/Core/World/Entities/Entity Behaviors/mele_attack_player.tscn" id="5_erlle"]
+[ext_resource type="Script" path="res://Game/Core/World/Entities/Entity Behaviors/SelectPlayerAsTarget.cs" id="6_cdid6"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_d4jrf"]
+atlas = ExtResource("3_so43y")
+region = Rect2(0, 0, 8, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wwygo"]
+atlas = ExtResource("3_so43y")
+region = Rect2(8, 0, 8, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mogri"]
+atlas = ExtResource("3_so43y")
+region = Rect2(0, 8, 8, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7wjcf"]
+atlas = ExtResource("3_so43y")
+region = Rect2(8, 8, 8, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pelf5"]
+atlas = ExtResource("3_so43y")
+region = Rect2(0, 16, 8, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_b4qhr"]
+atlas = ExtResource("3_so43y")
+region = Rect2(8, 16, 8, 8)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_h7g20"]
+size = Vector2(7, 15)
+
+[node name="AnimatedEntity" node_paths=PackedStringArray("EntityController") instance=ExtResource("1_jk2up")]
+Speed = 90.0
+JumpVelocity = 300.0
+EntityController = NodePath("EntityController")
+animationLibrary = "humanoid_animations"
+DisplayName = "Test Mele Enemy"
+
+[node name="Sprite2D" type="Sprite2D" parent="LeftLeg" index="0"]
+position = Vector2(-1, 6)
+texture = SubResource("AtlasTexture_d4jrf")
+
+[node name="Sprite2D2" type="Sprite2D" parent="RightLeg" index="0"]
+position = Vector2(2, 6)
+texture = SubResource("AtlasTexture_wwygo")
+
+[node name="Sprite2D3" type="Sprite2D" parent="Torso" index="0"]
+texture = SubResource("AtlasTexture_mogri")
+
+[node name="Sprite2D4" type="Sprite2D" parent="RightArm" index="0"]
+position = Vector2(2, -2)
+texture = SubResource("AtlasTexture_7wjcf")
+
+[node name="Sprite2D5" type="Sprite2D" parent="LeftArm" index="1"]
+position = Vector2(3, -3)
+texture = SubResource("AtlasTexture_pelf5")
+
+[node name="Sprite2D6" type="Sprite2D" parent="Head" index="0"]
+position = Vector2(0, -7)
+texture = SubResource("AtlasTexture_b4qhr")
+
+[node name="AnimationPlayer" parent="." index="6"]
+libraries = {
+"humanoid_animations": ExtResource("2_a10k0")
+}
+speed_scale = 3.0
+
+[node name="EntityController" parent="." index="7" node_paths=PackedStringArray("Behaviors")]
+Behaviors = [NodePath("MeleAttackPlayer"), NodePath("BasicMoveToNearestPlayer"), NodePath("SelectPlayerAsTarget")]
+
+[node name="BasicMoveToNearestPlayer" parent="EntityController" index="0" instance=ExtResource("2_xhgdp")]
+
+[node name="MeleAttackPlayer" parent="EntityController" index="1" instance=ExtResource("5_erlle")]
+
+[node name="SelectPlayerAsTarget" type="Node" parent="EntityController" index="2"]
+script = ExtResource("6_cdid6")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." index="8"]
+shape = SubResource("RectangleShape2D_h7g20")

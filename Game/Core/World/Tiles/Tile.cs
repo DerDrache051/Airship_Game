@@ -171,8 +171,9 @@ public partial class Tile : Node2D, IDamageable
 		if (Health <= 0)
 		{
 			Health = 0;
-			ParentGrid.onTileDestroyed(this);
 			dropItems();
+			ParentGrid.onTileDestroyed(this);
+			
 		}
 
 		return actualDamage;
@@ -192,7 +193,7 @@ public partial class Tile : Node2D, IDamageable
 					item.Position = Position;
 					GetTree().Root.AddChild(item);
 					}
-					else if(Drops[i]!=null)
+					else if(Drops[i]==null)
 					{
 						dropTileItem();
 					}
@@ -233,8 +234,8 @@ public partial class Tile : Node2D, IDamageable
 	public void dropTileItem(){
 			ItemEntity item = (ItemEntity)itemEntity.Instantiate();
 			item.item = getTileItem();
-			item.Position = Position;
-			GetTree().Root.AddChild(item);
+			item.GlobalPosition = GlobalPosition;
+			GameWorld.Instance.AddChild(item);
 	}
 	public virtual bool canBePickedUp(){
 		return true;

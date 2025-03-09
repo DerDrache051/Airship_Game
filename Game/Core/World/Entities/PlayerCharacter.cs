@@ -8,7 +8,7 @@ public partial class PlayerCharacter : AnimatedEntity
 {
 
 	public const float Speed = 100.0f;
-	public const float JumpVelocity = -200.0f;
+	public const float JumpVelocity = -400.0f;
 
 	public Vector2 direction;
 	public bool controlPlayer = true;
@@ -93,13 +93,13 @@ public partial class PlayerCharacter : AnimatedEntity
 		}
 		if (Input.IsActionJustPressed("UseItemPrimary"))
 		{
-			animationPlayer.Play("attack");
+			PlayAnimation("attack");
 			if (inventory.GetItem(SelectedItemSlot) != null)
 				inventory.GetItem(SelectedItemSlot).onPrimaryInteraction(this);
 		}
 		if (Input.IsActionJustPressed("UseItemSecondary"))
 		{
-			animationPlayer.Play("interact");
+			PlayAnimation("interact");
 			if (inventory.GetItem(SelectedItemSlot) != null)
 				inventory.GetItem(SelectedItemSlot).onSecondaryInteraction(this);
 		}

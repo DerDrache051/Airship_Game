@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://bf6lmgavncbly"]
 
-[ext_resource type="PackedScene" uid="uid://wdterhqnd1gw" path="res://Game/Core/World/grid.tscn" id="1_stfmh"]
-[ext_resource type="Script" path="res://Game/Core/World/Ship.cs" id="2_g48kx"]
+[ext_resource type="PackedScene" uid="uid://wdterhqnd1gw" path="res://Game/Core/World/Grids/grid.tscn" id="1_stfmh"]
+[ext_resource type="Script" path="res://Game/Core/World/Grids/Ship.cs" id="2_g48kx"]
 
 [node name="Ship" instance=ExtResource("1_stfmh")]
 process_priority = -20
