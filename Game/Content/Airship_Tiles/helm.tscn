@@ -9,6 +9,7 @@ atlas = ExtResource("3_vad8c")
 region = Rect2(16, 8, 8, 16)
 
 [node name="Tile" groups=["Interaction"] instance=ExtResource("1_07a0g")]
+process_mode = 1
 script = ExtResource("2_aa1jx")
 UI_ID = 3
 SizeY = 2

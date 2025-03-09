@@ -32,7 +32,7 @@ public partial class PickaxeItem : Item
 		if (node is PlayerCharacter)
 		{
 			PlayerCharacter pc = (PlayerCharacter)node;
-			if (pc.lastCollidedGrid == null) return;
+			if (pc.lastCollidedGrid == null||pc.Team!=pc.lastCollidedGrid.team) return;
 			if (pc.GlobalPosition.DistanceTo(pc.CurserPosition) < 50)
 			{
 				Vector2 placementPos = pc.CurserPosition - pc.lastCollidedGrid.Position;

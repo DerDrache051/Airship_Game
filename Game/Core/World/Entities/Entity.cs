@@ -38,16 +38,9 @@ public partial class Entity:CharacterBody2D,IDamageable{
                 if (lastCollidedGrid != grid)
                 {
                     lastCollidedGrid = grid;
-                    previousGridPosition = lastCollidedGrid.GlobalPosition;
+                    
                 }
             }
-        }
-
-        if (lastCollidedGrid != null)
-        {
-            Vector2 gridMovement = lastCollidedGrid.GlobalPosition - previousGridPosition;
-            GlobalPosition += gridMovement;
-            previousGridPosition = lastCollidedGrid.GlobalPosition;
         }
 
         base._PhysicsProcess(delta);

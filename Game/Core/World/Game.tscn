@@ -48,12 +48,15 @@ position = Vector2(174.75, 104.5)
 scale = Vector2(1.55818, 1.84153)
 texture = ExtResource("2_vyjmp")
 
-[node name="Ship" parent="Game_World" instance=ExtResource("3_0vltt")]
+[node name="Ship" parent="Game_World" node_paths=PackedStringArray("team") instance=ExtResource("3_0vltt")]
 position = Vector2(222, -27)
 DebugSpawn = true
+team = NodePath("../Player")
 
 [node name="Island" parent="Game_World" instance=ExtResource("4_n6ose")]
 position = Vector2(126, 190)
+collision_layer = 3
+collision_mask = 2
 VerticalSize = 20
 BackgroundGrass = ExtResource("5_d3p2n")
 BackgroundDirt = ExtResource("6_x7tq8")

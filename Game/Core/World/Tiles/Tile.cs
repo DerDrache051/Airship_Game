@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using Godot;
 
@@ -46,6 +47,8 @@ public partial class Tile : Node2D, IDamageable
 	[Export] public Texture2D BackgroundLayer;
 	[Export] public Texture2D BehindShipMapDecorationLayer;
 	[Export] public Texture2D BehindShipMapLayer;
+
+	[Export] public Texture2D DamageTexture;
 	
 	public bool[] Layers = new bool[9];
 	public Grid ParentGrid = null;
@@ -57,6 +60,8 @@ public partial class Tile : Node2D, IDamageable
 	public bool hasBorderLight;
 	public int LightUpdateLevel;
 
+	public Sprite2D damageSprite;
+
 	// Called when the node enters the scene tree for the first time.
 	public Tile()
 	{
@@ -64,13 +69,14 @@ public partial class Tile : Node2D, IDamageable
 	}
 	public override void _Ready()
 	{
-		
+
 
 	}
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
 	public override void _Process(double delta)
 	{
+
 	}
 	public void makeInvisible(){
 		Visible=false;
@@ -92,16 +98,6 @@ public partial class Tile : Node2D, IDamageable
 	public virtual bool canTileAdd(Grid grid, int x, int y)
 	{
 		Health=MaxHealth;
-		if(ForegroundDecorationLayer!=null)AddChild(CreateTileSprite(ForegroundDecorationLayer,grid,0));
-		if(CollisionLayer!=null){AddChild(CreateTileSprite(CollisionLayer,grid,1));}
-		if(InBetweenDecorationLayer!=null)AddChild(CreateTileSprite(InBetweenDecorationLayer,grid,2));
-		if(InteractionLayer!=null)AddChild(CreateTileSprite(InteractionLayer,grid,3));
-		if(ConnectionLayer!=null)AddChild(CreateTileSprite(ConnectionLayer,grid,4));
-		if(BackgroundDecorationLayer!=null)AddChild(CreateTileSprite(BackgroundDecorationLayer,grid,5));
-		if(BackgroundLayer!=null)AddChild(CreateTileSprite(BackgroundLayer,grid,6));
-		if(BehindShipMapDecorationLayer!=null)AddChild(CreateTileSprite(BehindShipMapDecorationLayer,grid,7));
-		if(BehindShipMapLayer!=null)AddChild(CreateTileSprite(BehindShipMapLayer,grid,8));
-
 		Layers[0] = ForegroundDecorationLayer!=null;
 		Layers[1] = CollisionLayer!=null;
 		Layers[2] = InBetweenDecorationLayer!=null;
@@ -111,10 +107,6 @@ public partial class Tile : Node2D, IDamageable
 		Layers[6] = BackgroundLayer!=null;
 		Layers[7] = BehindShipMapDecorationLayer!=null;
 		Layers[8] = BehindShipMapLayer!=null;
-		if(lightReduction==0){
-			if(Layers[1])lightReduction=3;
-			else lightReduction=1;
-		}
 		return true;
 	}
 
@@ -127,12 +119,15 @@ public partial class Tile : Node2D, IDamageable
 	}
 	public void onTileAddGrid(Grid grid)
 	{
+		
 		if (ParentGrid == null && grid != null)
 		{
+			
 			grid.Weight += Weight;
-			this.onTileAdd();
 			ParentGrid = grid;
+			this.onTileAdd();
 		}
+		readyTile();
 	}
 	public void onTileRemoveGrid(Grid grid)
 	{
@@ -167,7 +162,7 @@ public partial class Tile : Node2D, IDamageable
 		}
 
 		Health -= (int)actualDamage;
-
+		damageSprite.SelfModulate=new Color(1,1,1,Math.Min(1-((float)Health/(float)MaxHealth),1));
 		if (Health <= 0)
 		{
 			Health = 0;
@@ -274,5 +269,30 @@ public partial class Tile : Node2D, IDamageable
 		tile.BehindShipMapLayer=BehindShipMapLayer;
 		//tile.Layers=Layers;
 		return tile;	
+	}
+	public void readyTile(){
+		if(ForegroundDecorationLayer!=null)AddChild(CreateTileSprite(ForegroundDecorationLayer,ParentGrid,0));
+		if(CollisionLayer!=null){AddChild(CreateTileSprite(CollisionLayer,ParentGrid,1));}
+		if(InBetweenDecorationLayer!=null)AddChild(CreateTileSprite(InBetweenDecorationLayer,ParentGrid,2));
+		if(InteractionLayer!=null)AddChild(CreateTileSprite(InteractionLayer,ParentGrid,3));
+		if(ConnectionLayer!=null)AddChild(CreateTileSprite(ConnectionLayer,ParentGrid,4));
+		if(BackgroundDecorationLayer!=null)AddChild(CreateTileSprite(BackgroundDecorationLayer,ParentGrid,5));
+		if(BackgroundLayer!=null)AddChild(CreateTileSprite(BackgroundLayer,ParentGrid,6));
+		if(BehindShipMapDecorationLayer!=null)AddChild(CreateTileSprite(BehindShipMapDecorationLayer,ParentGrid,7));
+		if(BehindShipMapLayer!=null)AddChild(CreateTileSprite(BehindShipMapLayer,ParentGrid,8));
+
+		for(int i=0;i<Layers.Length;i++){
+			if(Layers[i]) {
+				damageSprite=CreateTileSprite(DamageTexture,ParentGrid,i);
+				damageSprite.ZIndex+=1;
+				damageSprite.SelfModulate=new Color(1,1,1,0);
+				AddChild(damageSprite);
+				break;
+			}
+		}
+		if(lightReduction==0){
+			if(Layers[1])lightReduction=3;
+			else lightReduction=1;
+		}
 	}
 }
