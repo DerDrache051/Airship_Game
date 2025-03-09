@@ -54,6 +54,7 @@ Tabs = [NodePath("../Admin_Tools"), NodePath("../ItemCheatList"), NodePath("../T
 
 [node name="EntitySpawnList" type="ItemList" parent="."]
 texture_filter = 1
+layout_mode = 0
 offset_left = 194.0
 offset_top = 128.0
 offset_right = 865.0
