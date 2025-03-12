@@ -1,0 +1,15 @@
+[gd_scene load_steps=4 format=3 uid="uid://dgkw7ralm4q0f"]
+
+[ext_resource type="PackedScene" uid="uid://r1isnts2d7iw" path="res://Game/Core/World/Projectiles/projectile.tscn" id="1_4rxgi"]
+[ext_resource type="Texture2D" uid="uid://cpnrb2wc421wa" path="res://Game/Assets/Items/Item_Sprites.png" id="2_4y8xb"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8rpw5"]
+atlas = ExtResource("2_4y8xb")
+region = Rect2(8, 8, 8, 8)
+
+[node name="Projectile" instance=ExtResource("1_4rxgi")]
+ProjectileTexture = SubResource("AtlasTexture_8rpw5")
+ProjectileSpeed = 20.0
+ProjectileRadius = 2.0
+DisplayName = "test"
+ID = "test.test"

@@ -8,10 +8,11 @@ using System.Linq;
 using System.Security.Cryptography.X509Certificates;
 using System.Threading;
 
-public partial class Grid : CharacterBody2D, IDamageable
+public partial class Grid : RigidBody2D, IDamageable
 {
 	[Export] public int TilePixelSize = 8;
 	[Export] public Node team;
+	[Export] public bool isStatic=true;
 	public System.Collections.Generic.Dictionary<String, Tile> Tiles = new();
 	public System.Collections.Generic.Dictionary<String, Rid> physicsShapes = new();
 	public List<Polygon2D> polygon;
@@ -30,8 +31,7 @@ public partial class Grid : CharacterBody2D, IDamageable
 		isLive = true;
 		RecalulatePhysicsShapes();
 		RecalculateLights();
-		if (this.GetType() == typeof(Grid))
-			PhysicsServer2D.BodySetMode(GetRid(), PhysicsServer2D.BodyMode.Static);
+		if(isStatic)PhysicsServer2D.BodySetMode(GetRid(), PhysicsServer2D.BodyMode.Static);
 	}
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.

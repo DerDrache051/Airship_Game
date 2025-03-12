@@ -1,0 +1,22 @@
+[gd_scene load_steps=3 format=3 uid="uid://cplnoxn83swwf"]
+
+[ext_resource type="PackedScene" uid="uid://wdterhqnd1gw" path="res://Game/Core/World/Grids/grid.tscn" id="1_i5h0h"]
+[ext_resource type="Script" path="res://Game/Core/World/Tiles/GeneratedIsland.cs" id="2_5vmrq"]
+
+[node name="Floating_Island" instance=ExtResource("1_i5h0h")]
+script = ExtResource("2_5vmrq")
+HorizontalSize = 40
+VerticalSize = 20
+SizeOffsett = 5
+HillMultiplier = 5
+DirtLayer = 5
+SurfaceJaggedness = 1
+BottomJaggedness = 1
+Grass = null
+Dirt = null
+Stone = null
+BackgroundGrass = null
+BackgroundDirt = null
+BackgroundStone = null
+CaveSize = 1
+CaveSizeOffset = 1

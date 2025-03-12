@@ -28,31 +28,20 @@ public partial class Ship : Grid
 			addTile("res://Game/Content/Airship_Tiles/small_burner_engine.tscn", 2, 1);
 			addTile("res://Game/Content/Airship_Tiles/helm.tscn", 4, 0);
 		}
+		this.LinearDamp=70;
 		base._Ready();
 	}
 
-	// Called every frame. 'delta' is the elapsed time since the previous frame.
-	public override void _Process(double delta)
-	{
-		//GD.Print(Weight);
-		if (Weight == 0) recalulateWeight();
-		if (Weight == 0)
-		{
-			PhysicsServer2D.BodyClearShapes(GetRid());
-			GetParent().RemoveChild(this);
-			Dispose();
-			return;
-		}
-		int LevitationFactor = LevitationPower / Weight;
-		int EnginePowerFactor = EnginePower / Weight;
-		Vector2 Movement = new Vector2(DesiredMovement.X * EnginePowerFactor, DesiredMovement.Y * LevitationFactor);
-		if (Weight > LevitationPower) Movement.Y += gravity;
-		Velocity = Movement.LimitLength(100);
-		//GD.Print(Velocity);
-		MoveAndSlide();
-		//GD.Print(Weight);
-		base._Process(delta);
-	}
+    // Called every frame. 'delta' is the elapsed time since the previous frame.
+    public override void _IntegrateForces(PhysicsDirectBodyState2D state)
+    {
+		this.Mass=Weight;
+		if(LevitationPower>Weight)this.GravityScale=0;
+		else this.GravityScale=1;
+		DesiredMovement = DesiredMovement.Normalized();
+		state.ApplyCentralForce(new Vector2(DesiredMovement.X * EnginePower, DesiredMovement.Y * LevitationPower)* gravity);
+        base._IntegrateForces(state);
+    }
 	public void BreakShip()
 	{
 		LinkedList<LinkedList<int[]>> tileLists = new();

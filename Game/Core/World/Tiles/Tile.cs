@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Runtime.CompilerServices;
 using Godot;
 
 
@@ -290,9 +291,11 @@ public partial class Tile : Node2D, IDamageable
 				break;
 			}
 		}
+		damageSprite.SelfModulate=new Color(1,1,1,0);
 		if(lightReduction==0){
 			if(Layers[1])lightReduction=3;
 			else lightReduction=1;
 		}
 	}
+	
 }

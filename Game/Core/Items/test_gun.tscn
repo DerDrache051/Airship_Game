@@ -1,0 +1,16 @@
+[gd_scene load_steps=5 format=3 uid="uid://dcqkd4m7rnujx"]
+
+[ext_resource type="PackedScene" uid="uid://b872knh0qng7y" path="res://Game/Core/Items/projectile_spawning_item.tscn" id="1_bqjk6"]
+[ext_resource type="PackedScene" uid="uid://dgkw7ralm4q0f" path="res://Game/Core/World/Projectiles/testProjectile.tscn" id="2_pp5f7"]
+[ext_resource type="Texture2D" uid="uid://cpnrb2wc421wa" path="res://Game/Assets/Items/Item_Sprites.png" id="3_rkkf8"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_iptx4"]
+atlas = ExtResource("3_rkkf8")
+region = Rect2(0, 8, 8, 8)
+
+[node name="ProjectileSpawningItem" instance=ExtResource("1_bqjk6")]
+ProjectileScene = ExtResource("2_pp5f7")
+ID = "testgun"
+DisplayName = "Test Gun"
+ItemTexture = SubResource("AtlasTexture_iptx4")
+cursorState = 1

@@ -1,6 +1,13 @@
-[gd_scene load_steps=2 format=3 uid="uid://wdterhqnd1gw"]
+[gd_scene load_steps=3 format=3 uid="uid://wdterhqnd1gw"]
 
 [ext_resource type="Script" path="res://Game/Core/World/Grids/Grid.cs" id="1_luk0n"]
 
-[node name="Grid" type="CharacterBody2D"]
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_p8shl"]
+friction = 0.5
+
+[node name="Grid" type="RigidBody2D"]
+collision_layer = 3
+collision_mask = 2
+physics_material_override = SubResource("PhysicsMaterial_p8shl")
+lock_rotation = true
 script = ExtResource("1_luk0n")

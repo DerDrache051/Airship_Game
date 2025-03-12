@@ -18,33 +18,16 @@ public partial class Helm_Tile : UiTile, IIntractable
 	}
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
-	public override void _Process(double delta)
+	public override void _PhysicsProcess(double delta)
 	{
-		if (Active)
-		{
-			Vector2 Movement = Vector2.Zero;
-			if (Pilot != null)
-			{
-				Movement = Pilot.direction;
-			}
-
-			// Update TargetPosition based on Movement
-			if (Movement != Vector2.Zero)
-			{
-				TargetPosition = GlobalPosition + Movement;
-			}
-
-			if (ParentGrid != null && ParentGrid is Ship ParentShip)
-			{
-				ParentShip.DesiredMovement = TargetPosition - GlobalPosition;
-
-				// Check if the ship has reached the target position
-				if (TargetPosition.DistanceSquaredTo(GlobalPosition) < 0.6)
-				{
-					ParentShip.DesiredMovement = Vector2.Zero;
-					TargetPosition = GlobalPosition;
-				}
-			}
+		if(TargetPosition==Vector2.Zero)TargetPosition=GlobalPosition;
+		if(Pilot!=null){
+			if(Pilot.direction.X!=0)TargetPosition.X=GlobalPosition.X+Pilot.direction.X*10;
+			if(Pilot.direction.Y!=0)TargetPosition.Y=GlobalPosition.Y+Pilot.direction.Y*-10;
+		}
+		if(ParentGrid is Ship ParentShip){
+			ParentShip.DesiredMovement = (TargetPosition-GlobalPosition).Normalized();
+			if(TargetPosition.DistanceTo(GlobalPosition)<5)ParentShip.DesiredMovement=Vector2.Zero;
 		}
 	}
 	public override void interact(Node source)
