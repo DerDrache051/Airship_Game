@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://ccdim1yvr8knl"]
 
 [ext_resource type="PackedScene" uid="uid://dywe70koqakb0" path="res://Game/Core/Items/item.tscn" id="1_uilb5"]
-[ext_resource type="Script" path="res://Game/Core/Items/PickaxeItem.cs" id="2_tdsdx"]
+[ext_resource type="Script" uid="uid://bplxcl76d1kw2" path="res://Game/Core/Items/PickaxeItem.cs" id="2_tdsdx"]
 
 [node name="PickaxeItem" instance=ExtResource("1_uilb5")]
 script = ExtResource("2_tdsdx")

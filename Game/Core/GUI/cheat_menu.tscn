@@ -1,10 +1,10 @@
 [gd_scene load_steps=6 format=3 uid="uid://dc4kqqh6rextu"]
 
-[ext_resource type="Script" path="res://Game/Core/GUI/TileCheatList.cs" id="1_jj5si"]
-[ext_resource type="Script" path="res://Game/Core/GUI/PlayerInventoryTabBar.cs" id="1_os1pc"]
-[ext_resource type="Script" path="res://Game/Core/GUI/ItemCheatList.cs" id="2_ojt3q"]
-[ext_resource type="Script" path="res://Game/Core/GUI/EntitySpawnList.cs" id="4_ngkkn"]
-[ext_resource type="Script" path="res://Game/Core/GUI/InvoulnerableToggle.cs" id="5_cuucn"]
+[ext_resource type="Script" uid="uid://bb6rsm0t34dme" path="res://Game/Core/GUI/TileCheatList.cs" id="1_jj5si"]
+[ext_resource type="Script" uid="uid://c2pb4f76rtu4x" path="res://Game/Core/GUI/PlayerInventoryTabBar.cs" id="1_os1pc"]
+[ext_resource type="Script" uid="uid://iwsd4t517is7" path="res://Game/Core/GUI/ItemCheatList.cs" id="2_ojt3q"]
+[ext_resource type="Script" uid="uid://fcsb8x80kria" path="res://Game/Core/GUI/EntitySpawnList.cs" id="4_ngkkn"]
+[ext_resource type="Script" uid="uid://bfhj56kjc7oi1" path="res://Game/Core/GUI/InvoulnerableToggle.cs" id="5_cuucn"]
 
 [node name="CheatMenu" type="Control"]
 layout_mode = 3

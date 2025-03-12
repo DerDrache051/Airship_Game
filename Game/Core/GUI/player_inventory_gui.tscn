@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://o5wyudsh8s13" path="res://Game/Core/GUI/gui_base.tscn" id="1_r04ma"]
 [ext_resource type="PackedScene" uid="uid://bba4tw8ysthvs" path="res://Game/Core/GUI/player_item_slots.tscn" id="2_yj1b8"]
-[ext_resource type="Script" path="res://Game/Core/GUI/PlayerInventoryTabBar.cs" id="3_bhg7l"]
+[ext_resource type="Script" uid="uid://c2pb4f76rtu4x" path="res://Game/Core/GUI/PlayerInventoryTabBar.cs" id="3_bhg7l"]
 [ext_resource type="PackedScene" uid="uid://dc4kqqh6rextu" path="res://Game/Core/GUI/cheat_menu.tscn" id="4_hp73m"]
 
 [node name="PlayerInventoryGUI" instance=ExtResource("1_r04ma")]

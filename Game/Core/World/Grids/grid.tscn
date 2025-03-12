@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://wdterhqnd1gw"]
 
-[ext_resource type="Script" path="res://Game/Core/World/Grids/Grid.cs" id="1_luk0n"]
+[ext_resource type="Script" uid="uid://cf6xicihoqv34" path="res://Game/Core/World/Grids/Grid.cs" id="1_luk0n"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_p8shl"]
 friction = 0.5

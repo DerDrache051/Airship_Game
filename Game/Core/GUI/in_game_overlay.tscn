@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://fiem4dgpg40v"]
 
 [ext_resource type="PackedScene" uid="uid://vf8wlkmwj6bb" path="res://Game/Core/GUI/ItemDisplay.tscn" id="1_6au8m"]
-[ext_resource type="Script" path="res://Game/Core/GUI/HealthBar.cs" id="2_ugb4j"]
+[ext_resource type="Script" uid="uid://bis2s0fvtm22y" path="res://Game/Core/GUI/HealthBar.cs" id="2_ugb4j"]
 
 [node name="InGameOverlay" type="Control"]
 layout_mode = 3

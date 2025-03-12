@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://cubt6mw4dupdk"]
 
 [ext_resource type="PackedScene" uid="uid://btid0ccdcd7xc" path="res://Game/Core/World/Tiles/tile.tscn" id="1_skutx"]
-[ext_resource type="Script" path="res://Game/Core/World/Tiles/Engine_Tile.cs" id="2_reu22"]
+[ext_resource type="Script" uid="uid://bn4d1ol43rsmi" path="res://Game/Core/World/Tiles/Engine_Tile.cs" id="2_reu22"]
 [ext_resource type="Texture2D" uid="uid://3f5x5jx45p2p" path="res://Game/Assets/Airship_Tiles/Ship_Tile_Sprites_8.png" id="3_d2bds"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_1qvsh"]

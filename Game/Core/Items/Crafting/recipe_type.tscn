@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://dxnn3lyvbf6j1"]
 
-[ext_resource type="Script" path="res://Game/Core/Items/Crafting/RecipeType.cs" id="1_nn25c"]
+[ext_resource type="Script" uid="uid://rury1lc1hfen" path="res://Game/Core/Items/Crafting/RecipeType.cs" id="1_nn25c"]
 
 [node name="RecipeType" type="Node"]
 script = ExtResource("1_nn25c")

@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://dhagi8nq43woc"]
 
 [ext_resource type="PackedScene" uid="uid://d18fhhpoihqhb" path="res://Game/Core/World/Entities/entity.tscn" id="1_d5yrw"]
-[ext_resource type="Script" path="res://Game/Core/World/Entities/AnimatedEntity.cs" id="2_xky8m"]
+[ext_resource type="Script" uid="uid://6ic0wi14qnfb" path="res://Game/Core/World/Entities/AnimatedEntity.cs" id="2_xky8m"]
 
 [node name="AnimatedEntity" node_paths=PackedStringArray("animationPlayer", "itemInHand") instance=ExtResource("1_d5yrw")]
 script = ExtResource("2_xky8m")

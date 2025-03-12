@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://b8t46cshswy8v"]
 
 [ext_resource type="PackedScene" uid="uid://btid0ccdcd7xc" path="res://Game/Core/World/Tiles/tile.tscn" id="1_247be"]
-[ext_resource type="Script" path="res://Game/Core/World/Tiles/UiTile.cs" id="2_n3bhs"]
+[ext_resource type="Script" uid="uid://c87vpxq57vct1" path="res://Game/Core/World/Tiles/UiTile.cs" id="2_n3bhs"]
 
 [node name="UI_Tile" groups=["Interaction"] instance=ExtResource("1_247be")]
 script = ExtResource("2_n3bhs")

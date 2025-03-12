@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://b7e5gthxfljt6"]
 
 [ext_resource type="PackedScene" uid="uid://dywe70koqakb0" path="res://Game/Core/Items/item.tscn" id="1_vfftp"]
-[ext_resource type="Script" path="res://Game/Core/Items/MeleWeapon.cs" id="2_u1nx6"]
+[ext_resource type="Script" uid="uid://celo3j0a4pkse" path="res://Game/Core/Items/MeleWeapon.cs" id="2_u1nx6"]
 [ext_resource type="Texture2D" uid="uid://cpnrb2wc421wa" path="res://Game/Assets/Items/Item_Sprites.png" id="3_uq5fr"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_4fi6j"]

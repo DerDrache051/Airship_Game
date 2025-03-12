@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://qtq0k36kdhjp"]
 
 [ext_resource type="PackedScene" uid="uid://dywe70koqakb0" path="res://Game/Core/Items/item.tscn" id="1_bxjnf"]
-[ext_resource type="Script" path="res://Game/Core/Items/MeleWeapon.cs" id="2_pendm"]
+[ext_resource type="Script" uid="uid://celo3j0a4pkse" path="res://Game/Core/Items/MeleWeapon.cs" id="2_pendm"]
 
 [node name="MeleWeapon" instance=ExtResource("1_bxjnf")]
 script = ExtResource("2_pendm")
