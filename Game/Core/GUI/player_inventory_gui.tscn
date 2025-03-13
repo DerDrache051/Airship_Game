@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://dbch04d4s8m4t"]
+[gd_scene load_steps=6 format=3 uid="uid://dbch04d4s8m4t"]
 
 [ext_resource type="PackedScene" uid="uid://o5wyudsh8s13" path="res://Game/Core/GUI/gui_base.tscn" id="1_r04ma"]
 [ext_resource type="PackedScene" uid="uid://bba4tw8ysthvs" path="res://Game/Core/GUI/player_item_slots.tscn" id="2_yj1b8"]
 [ext_resource type="Script" uid="uid://c2pb4f76rtu4x" path="res://Game/Core/GUI/PlayerInventoryTabBar.cs" id="3_bhg7l"]
 [ext_resource type="PackedScene" uid="uid://dc4kqqh6rextu" path="res://Game/Core/GUI/cheat_menu.tscn" id="4_hp73m"]
+[ext_resource type="Script" uid="uid://b2oveiyeox8cl" path="res://Game/Core/GUI/Options.cs" id="5_2q4oe"]
 
 [node name="PlayerInventoryGUI" instance=ExtResource("1_r04ma")]
 
@@ -15,6 +16,7 @@ offset_right = 881.0
 offset_bottom = 540.0
 
 [node name="PlayerInventory" parent="." index="1" instance=ExtResource("2_yj1b8")]
+visible = false
 offset_left = 381.0
 offset_top = 332.0
 offset_right = 421.0
@@ -37,16 +39,34 @@ tab_2/disabled = true
 tab_3/title = "Book of Knowledge"
 tab_3/disabled = true
 tab_4/title = "Options"
-tab_4/disabled = true
 tab_5/title = "Multiplayer"
 tab_5/disabled = true
 tab_6/title = "Cheats"
 script = ExtResource("3_bhg7l")
-Tabs = [NodePath("../PlayerInventory"), null, null, null, null, null, NodePath("../CheatMenu")]
+Tabs = [NodePath("../PlayerInventory"), null, null, null, NodePath("../Options"), null, NodePath("../CheatMenu")]
 
 [node name="CheatMenu" parent="." index="3" instance=ExtResource("4_hp73m")]
+visible = false
 layout_mode = 1
 offset_left = 23.0
 offset_top = 55.0
 offset_right = 23.0
 offset_bottom = 55.0
+
+[node name="Options" type="Control" parent="." index="4"]
+anchors_preset = 0
+offset_left = 228.0
+offset_top = 184.0
+offset_right = 875.0
+offset_bottom = 534.0
+script = ExtResource("5_2q4oe")
+
+[node name="Button" type="Button" parent="Options" index="0"]
+layout_mode = 0
+offset_left = 66.0
+offset_top = 26.0
+offset_right = 227.0
+offset_bottom = 74.0
+text = "Save"
+
+[connection signal="pressed" from="Options/Button" to="Options" method="Save"]

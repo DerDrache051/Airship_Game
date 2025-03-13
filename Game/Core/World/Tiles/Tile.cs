@@ -1,10 +1,8 @@
 using System;
-using System.Collections.Generic;
-using System.Runtime.CompilerServices;
 using Godot;
 
 
-public partial class Tile : Node2D, IDamageable
+public partial class Tile : Node2D, IDamageable,ISerializable
 {
 	[ExportGroup("Size")]
 	[Export] public int SizeX = 1;
@@ -116,7 +114,7 @@ public partial class Tile : Node2D, IDamageable
 	}
 	public virtual void onTileRemove()
 	{
-
+		GD.Print(Serialize());
 	}
 	public void onTileAddGrid(Grid grid)
 	{
@@ -297,5 +295,36 @@ public partial class Tile : Node2D, IDamageable
 			else lightReduction=1;
 		}
 	}
-	
+	public virtual Godot.Collections.Dictionary<String,String> SerializeComponents(Godot.Collections.Dictionary<String,String> dict){
+		dict.Add("SceneFile",SceneFilePath);
+		dict.Add("X",X+"");
+		dict.Add("Y",Y+"");
+		dict.Add("Health",Health+"");
+		return dict;
+	}
+	public virtual void DeserializeComponents(Godot.Collections.Dictionary<String,String> dict){
+		SceneFilePath=dict["SceneFile"];
+		X=int.Parse(dict["X"]);
+		Y=int.Parse(dict["Y"]);
+		Health=int.Parse(dict["Health"]);
+	}
+	public static Tile CreateTileFromDataComponents(Godot.Collections.Dictionary<String,String> dict){
+		Tile tile=GD.Load<PackedScene>(dict["SceneFile"]).Instantiate<Tile>();
+		if(tile==null) return null;
+		tile.DeserializeComponents(dict);
+		return tile;
+	}
+	public String Serialize(){
+		String Out=Godot.Json.Stringify(SerializeComponents(new Godot.Collections.Dictionary<String,String>()));
+		return Out;
+	}
+	public void Deserialize(String data){
+		DeserializeComponents(Godot.Json.ParseString(data).As<Godot.Collections.Dictionary<String,String>>());
+	}
+	public static Node CreateFromData(String data){
+		Tile tile=CreateTileFromDataComponents(Godot.Json.ParseString(data).As<Godot.Collections.Dictionary<String,String>>());
+		return tile;
+	}
+	public void finishLoad(){}
+
 }

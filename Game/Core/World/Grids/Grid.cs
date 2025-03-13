@@ -8,7 +8,7 @@ using System.Linq;
 using System.Security.Cryptography.X509Certificates;
 using System.Threading;
 
-public partial class Grid : RigidBody2D, IDamageable
+public partial class Grid : RigidBody2D, IDamageable, ISerializable
 {
 	[Export] public int TilePixelSize = 8;
 	[Export] public Node team;
@@ -243,6 +243,7 @@ public partial class Grid : RigidBody2D, IDamageable
 		if(isLive)	UpdateBorderLights(tile);
 		if (tile.GetParent() == null) AddChild(tile);
 		if (tile.Layers[1] && isLive) addAndOptimizeShapes(tile);
+		if(IsInGroup("Save"))tile.AddToGroup("Save");
 		return true;
 	}
 	public bool addTile(String SceneFile, int x, int y)
@@ -588,4 +589,47 @@ public partial class Grid : RigidBody2D, IDamageable
 	{
 
 	}*/
+	public virtual Godot.Collections.Dictionary<String,String> SerializeComponents(Godot.Collections.Dictionary<String,String> dict){
+		dict.Add("TilePixelSize",TilePixelSize+"");
+		dict.Add("X",GlobalPosition.X+"");
+		dict.Add("Y",GlobalPosition.Y+"");
+		dict.Add("SceneFile",SceneFilePath);
+		return dict;
+	}
+	public virtual void DeserializeComponents(Godot.Collections.Dictionary<String,String> dict){
+		TilePixelSize=int.Parse(dict["TilePixelSize"]);
+		GlobalPosition=new Vector2(float.Parse(dict["X"]),float.Parse(dict["Y"]));
+		SceneFilePath=dict["SceneFile"];
+	}
+	public String Serialize(){
+		String Out=Godot.Json.Stringify(SerializeComponents(new Godot.Collections.Dictionary<String,String>()));
+		return Out;
+	}
+	public void Deserialize(String data){
+		DeserializeComponents(Godot.Json.ParseString(data).As<Godot.Collections.Dictionary<String,String>>());
+	}
+	public String WriteBlueprint(String filePath,String fileName){
+		
+		Godot.Collections.Dictionary<String,String>[] dict=new Godot.Collections.Dictionary<String,String>[Tiles.Values.Count];
+		for(int i=0;i<Tiles.Values.Count;i++){
+			dict[i]=Tiles.Values.ElementAt(i).SerializeComponents(new Godot.Collections.Dictionary<String,String>());
+		}
+		Godot.Collections.Array<Godot.Collections.Dictionary<String,String>> dict2=new(dict);
+		String Out=Godot.Json.Stringify(dict2, "\t");
+		FileAccess file= FileAccess.Open(filePath+"/"+fileName+".blueprint",FileAccess.ModeFlags.Write);
+		file.Close();
+		return Out;
+	}
+	public void finishLoad(){
+		buildGridFromChildren();
+	}
+
+	public void buildGridFromChildren(){
+		foreach(Node node in GetChildren()){
+			if(node is Tile tile){
+				addTile(tile,tile.X,tile.Y);
+			}
+		}
+	}
+
 }

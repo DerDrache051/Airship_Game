@@ -30,6 +30,7 @@ ItemContainer="Accepts item drag_and_drop"
 Entity=""
 Interaction=""
 Player=""
+Save="Will Be Saved"
 
 [godot_resource_groups]
 
