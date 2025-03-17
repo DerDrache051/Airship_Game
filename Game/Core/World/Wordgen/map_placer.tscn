@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://3iimgmpwt4w2"]
+
+[ext_resource type="Script" uid="uid://b5vb26l1b11y5" path="res://Game/Core/World/Wordgen/MapPlacer.cs" id="1_m0xif"]
+
+[node name="MapPlacer" type="Node2D"]
+script = ExtResource("1_m0xif")

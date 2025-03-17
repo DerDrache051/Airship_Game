@@ -1,11 +1,10 @@
-[gd_scene load_steps=18 format=3 uid="uid://cvw7m07ahsp61"]
+[gd_scene load_steps=17 format=3 uid="uid://cvw7m07ahsp61"]
 
 [ext_resource type="PackedScene" uid="uid://dhagi8nq43woc" path="res://Game/Core/World/Entities/animated_entity.tscn" id="1_37575"]
 [ext_resource type="Script" uid="uid://fr7rk0uf1n1h" path="res://Game/Core/World/Entities/PlayerCharacter.cs" id="2_fouph"]
 [ext_resource type="AnimationLibrary" uid="uid://b14kj05gblnl6" path="res://Game/Assets/Entities/humanoid_animations.res" id="2_xjseo"]
 [ext_resource type="Texture2D" uid="uid://b2r0s3e5oj78k" path="res://Game/Assets/Entities/New Piskel.png" id="3_6vnxw"]
 [ext_resource type="PackedScene" uid="uid://cme4yhfrk70b8" path="res://Game/Core/Items/inventory.tscn" id="6_ora7t"]
-[ext_resource type="PackedScene" uid="uid://rvnalvrp2d02" path="res://Game/Content/Items/Steel_Pickaxe.tscn" id="7_kgf6f"]
 [ext_resource type="Script" uid="uid://xw5yf8kwstu5" path="res://Game/Core/GUI/BuildPreview.cs" id="8_drh0h"]
 [ext_resource type="Script" uid="uid://h215kr675knk" path="res://Game/Core/GUI/InteractionHighlight.cs" id="9_hgsyu"]
 
@@ -75,7 +74,7 @@ texture = SubResource("AtlasTexture_wjnn0")
 
 [node name="AnimationPlayer" parent="." index="6"]
 libraries = {
-"humanoid_animations": ExtResource("2_xjseo")
+&"humanoid_animations": ExtResource("2_xjseo")
 }
 speed_scale = 3.0
 
@@ -86,9 +85,9 @@ shape = SubResource("RectangleShape2D_15ktb")
 [node name="Camera2D" type="Camera2D" parent="." index="8"]
 zoom = Vector2(5, 5)
 
-[node name="Inventory" parent="." index="9" instance=ExtResource("6_ora7t")]
+[node name="Inventory" parent="." index="9" groups=["Save"] instance=ExtResource("6_ora7t")]
 InventorySize = 50
-StartingItems = Array[PackedScene]([ExtResource("7_kgf6f")])
+StartingItems = Array[PackedScene]([])
 
 [node name="BuildPreview" type="Sprite2D" parent="." index="10"]
 z_index = 100

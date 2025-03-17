@@ -132,6 +132,11 @@ public partial class PlayerCharacter : AnimatedEntity
 		}
 		base._PhysicsProcess(delta);
 	}
+    public override void _ExitTree()
+    {
+		ClientStatics.UI_Selector.ShownGUI_ID = 4;
+        base._ExitTree();
+    }
 
 }
 

@@ -1,0 +1,284 @@
+[gd_scene load_steps=6 format=3 uid="uid://cqnlqaytj5xqw"]
+
+[ext_resource type="Texture2D" uid="uid://3f5x5jx45p2p" path="res://Game/Assets/Airship_Tiles/Ship_Tile_Sprites_8.png" id="1_7vrkn"]
+[ext_resource type="SystemFont" uid="uid://dgvkmv1h6l3e4" path="res://Game/Assets/other_resources/game_font.tres" id="2_fu7sn"]
+[ext_resource type="Script" uid="uid://dvdqkpbo75eb0" path="res://QuitButton2.cs" id="3_fu7sn"]
+[ext_resource type="Script" uid="uid://bxkeh3oqjrtut" path="res://MisionMenu.cs" id="4_jix8l"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jix8l"]
+atlas = ExtResource("1_7vrkn")
+region = Rect2(0, 0, 8, 8)
+
+[node name="Main Menu" type="Control"]
+texture_filter = 1
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 0
+offset_right = 1151.0
+offset_bottom = 646.0
+texture = SubResource("AtlasTexture_jix8l")
+stretch_mode = 1
+
+[node name="Singleplayer" type="Button" parent="."]
+texture_filter = 1
+layout_mode = 0
+offset_left = 33.0
+offset_top = 48.0
+offset_right = 342.0
+offset_bottom = 99.0
+theme_override_fonts/font = ExtResource("2_fu7sn")
+theme_override_font_sizes/font_size = 30
+text = "Singleplayer"
+
+[node name="Multiplayer" type="Button" parent="."]
+texture_filter = 1
+layout_mode = 0
+offset_left = 33.0
+offset_top = 112.0
+offset_right = 342.0
+offset_bottom = 163.0
+theme_override_fonts/font = ExtResource("2_fu7sn")
+theme_override_font_sizes/font_size = 30
+disabled = true
+text = "Multiplayer"
+
+[node name="Tutorial" type="Button" parent="."]
+texture_filter = 1
+layout_mode = 0
+offset_left = 33.0
+offset_top = 176.0
+offset_right = 342.0
+offset_bottom = 227.0
+theme_override_fonts/font = ExtResource("2_fu7sn")
+theme_override_font_sizes/font_size = 30
+disabled = true
+text = "Tutorial"
+
+[node name="Book of Knowledge" type="Button" parent="."]
+texture_filter = 1
+layout_mode = 0
+offset_left = 32.0
+offset_top = 240.0
+offset_right = 341.0
+offset_bottom = 291.0
+theme_override_fonts/font = ExtResource("2_fu7sn")
+theme_override_font_sizes/font_size = 30
+disabled = true
+text = "Book of Knowledge"
+
+[node name="Blueprints" type="Button" parent="."]
+texture_filter = 1
+layout_mode = 0
+offset_left = 33.0
+offset_top = 304.0
+offset_right = 342.0
+offset_bottom = 355.0
+theme_override_fonts/font = ExtResource("2_fu7sn")
+theme_override_font_sizes/font_size = 30
+disabled = true
+text = "Blueprints"
+
+[node name="Mods" type="Button" parent="."]
+texture_filter = 1
+layout_mode = 0
+offset_left = 32.0
+offset_top = 368.0
+offset_right = 341.0
+offset_bottom = 419.0
+theme_override_fonts/font = ExtResource("2_fu7sn")
+theme_override_font_sizes/font_size = 30
+disabled = true
+text = "Mods
+"
+
+[node name="Settings" type="Button" parent="."]
+texture_filter = 1
+layout_mode = 0
+offset_left = 32.0
+offset_top = 440.0
+offset_right = 341.0
+offset_bottom = 491.0
+theme_override_fonts/font = ExtResource("2_fu7sn")
+theme_override_font_sizes/font_size = 30
+disabled = true
+text = "Settings"
+
+[node name="Exit" type="Button" parent="."]
+texture_filter = 1
+layout_mode = 0
+offset_left = 32.0
+offset_top = 512.0
+offset_right = 341.0
+offset_bottom = 563.0
+theme_override_fonts/font = ExtResource("2_fu7sn")
+theme_override_font_sizes/font_size = 30
+text = "Exit
+"
+script = ExtResource("3_fu7sn")
+
+[node name="Singleplayer Menu" type="Control" parent="."]
+visible = false
+anchors_preset = 0
+offset_left = 375.0
+offset_top = 56.0
+offset_right = 1104.0
+offset_bottom = 568.0
+
+[node name="TabBar" type="TabBar" parent="Singleplayer Menu"]
+texture_filter = 2
+layout_mode = 0
+offset_left = 15.0
+offset_top = -8.0
+offset_right = 744.0
+offset_bottom = 43.0
+theme_override_fonts/font = ExtResource("2_fu7sn")
+theme_override_font_sizes/font_size = 30
+current_tab = 1
+tab_alignment = 1
+tab_count = 2
+tab_0/title = "Campaign"
+tab_0/disabled = true
+tab_1/title = "Mission"
+
+[node name="Mision Menu" type="Control" parent="Singleplayer Menu"]
+anchors_preset = 0
+offset_left = 76.0
+offset_top = 56.0
+offset_right = 744.0
+offset_bottom = 512.0
+script = ExtResource("4_jix8l")
+
+[node name="Online Mode" type="Label" parent="Singleplayer Menu/Mision Menu"]
+texture_filter = 2
+layout_mode = 0
+offset_left = 376.0
+offset_top = 338.0
+offset_right = 475.0
+offset_bottom = 361.0
+text = "Online Mode"
+
+[node name="Seed" type="Label" parent="Singleplayer Menu/Mision Menu"]
+texture_filter = 2
+layout_mode = 0
+offset_left = 376.0
+offset_top = 256.0
+offset_right = 436.0
+offset_bottom = 279.0
+text = "Seed"
+
+[node name="Ship" type="Label" parent="Singleplayer Menu/Mision Menu"]
+texture_filter = 2
+layout_mode = 0
+offset_left = 380.0
+offset_top = 179.0
+offset_right = 440.0
+offset_bottom = 202.0
+text = "Ship"
+
+[node name="Resources" type="HSlider" parent="Singleplayer Menu/Mision Menu"]
+layout_mode = 0
+offset_left = 376.0
+offset_top = 64.0
+offset_right = 581.0
+offset_bottom = 115.0
+
+[node name="Label" type="Label" parent="Singleplayer Menu/Mision Menu/Resources"]
+layout_mode = 0
+offset_right = 205.0
+offset_bottom = 23.0
+text = "Resources"
+
+[node name="Mission" type="Label" parent="Singleplayer Menu/Mision Menu"]
+texture_filter = 2
+layout_mode = 0
+offset_left = 147.0
+offset_top = 8.0
+offset_right = 207.0
+offset_bottom = 31.0
+text = "Missions"
+
+[node name="Mission Select List" type="ItemList" parent="Singleplayer Menu/Mision Menu"]
+texture_filter = 2
+layout_mode = 0
+offset_left = 38.0
+offset_top = 31.0
+offset_right = 328.0
+offset_bottom = 473.0
+select_mode = 2
+
+[node name="Difficulty" type="HSlider" parent="Singleplayer Menu/Mision Menu"]
+layout_mode = 0
+offset_left = 376.0
+offset_top = 8.0
+offset_right = 581.0
+offset_bottom = 59.0
+
+[node name="Label" type="Label" parent="Singleplayer Menu/Mision Menu/Difficulty"]
+layout_mode = 0
+offset_right = 205.0
+offset_bottom = 23.0
+text = "Difficulty"
+
+[node name="Biome" type="Label" parent="Singleplayer Menu/Mision Menu"]
+texture_filter = 2
+layout_mode = 0
+offset_left = 380.0
+offset_top = 115.0
+offset_right = 440.0
+offset_bottom = 138.0
+text = "Biome"
+
+[node name="START" type="Button" parent="Singleplayer Menu/Mision Menu"]
+layout_mode = 0
+offset_left = 380.0
+offset_top = 440.0
+offset_right = 581.0
+offset_bottom = 475.0
+text = "Start"
+
+[node name="Biome Selector" type="OptionButton" parent="Singleplayer Menu/Mision Menu"]
+layout_mode = 0
+offset_left = 380.0
+offset_top = 138.0
+offset_right = 554.0
+offset_bottom = 169.0
+allow_reselect = true
+item_count = 1
+popup/item_0/text = "Windy Iles"
+popup/item_0/id = 0
+
+[node name="Ship Selector" type="Button" parent="Singleplayer Menu/Mision Menu"]
+layout_mode = 0
+offset_left = 380.0
+offset_top = 202.0
+offset_right = 554.0
+offset_bottom = 228.0
+text = "Select
+"
+
+[node name="Seed Selector" type="LineEdit" parent="Singleplayer Menu/Mision Menu"]
+layout_mode = 0
+offset_left = 376.0
+offset_top = 282.0
+offset_right = 554.0
+offset_bottom = 313.0
+
+[node name="OptionButton" type="OptionButton" parent="Singleplayer Menu"]
+layout_mode = 0
+offset_left = 456.0
+offset_top = 435.0
+offset_right = 630.0
+offset_bottom = 466.0
+allow_reselect = true
+item_count = 1
+popup/item_0/text = "Windy Iles"
+popup/item_0/id = 0
+
+[connection signal="pressed" from="Singleplayer" to="Singleplayer Menu" method="set_visible" binds= [true]]
+[connection signal="pressed" from="Singleplayer Menu/Mision Menu/START" to="Singleplayer Menu/Mision Menu" method="StartMission"]

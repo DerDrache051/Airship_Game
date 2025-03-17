@@ -1,5 +1,7 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Text.Json.Serialization;
 using Godot;
 public interface ISerializable
@@ -35,26 +37,38 @@ public class SaveAndLoad(){
         file.Close();
         Godot.Collections.Dictionary<String,Godot.Collections.Dictionary<String,String>> dict=Godot.Json.ParseString(data).As<Godot.Collections.Dictionary<String,Godot.Collections.Dictionary<String,String>>>();
         SceneTree Tree=Registry.instance.GetTree();
-        LinkedList<ISerializable> serializables=new LinkedList<ISerializable>();
         foreach(String path in dict.Keys){
-            GD.Print("loading:"+path);
+            LoadNode(dict,path,Tree);
+        }
+        foreach(Node node in Tree.GetNodesInGroup("Save")){
+            if(node is ISerializable serializable){
+                serializable.finishLoad();
+            }
+        }
+ 
+    }
+    private static void LoadNode(Godot.Collections.Dictionary<String,Godot.Collections.Dictionary<String,String>> dict,String path,SceneTree Tree){
+        GD.Print("loading:"+path);
+            Node existingNode=Tree.Root.GetNodeOrNull(path);
+            if(existingNode!=null) return;
             Godot.Collections.Dictionary<String,String> components=dict[path];
             PackedScene scene=GD.Load<PackedScene>(components["SceneFile"]);
             Node node=scene.Instantiate();
             if(node is ISerializable serializable){
                 serializable.DeserializeComponents(components);
                 String ParentPath=path.Substring(0,path.LastIndexOf("/"));
-                Node ParentNode=Tree.Root.GetNode(ParentPath);
-                if(ParentNode==null) continue;
+                Node ParentNode=Tree.Root.GetNodeOrNull(ParentPath);
+                if(ParentNode==null){ 
+                    if(dict.ContainsKey(ParentPath)){
+                        LoadNode(dict,ParentPath,Tree);
+                    }
+                    else
+                    GD.Print("parent not found"+ParentPath);
+                    return;
+                }
                 ParentNode.AddChild(node);
-                serializables.AddLast(serializable);
             }
+            dict.Remove(path);
             node.AddToGroup("Save");
-           
-        }
-        foreach(ISerializable serializable in serializables){
-            serializable.finishLoad();
-        }
-        
     } 
 }

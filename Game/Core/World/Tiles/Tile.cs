@@ -4,7 +4,9 @@ using Godot;
 
 public partial class Tile : Node2D, IDamageable,ISerializable
 {
+	
 	[ExportGroup("Size")]
+
 	[Export] public int SizeX = 1;
 	[Export] public int SizeY = 1;
 
@@ -14,6 +16,7 @@ public partial class Tile : Node2D, IDamageable,ISerializable
 	[Export] public string ID;
 	[Export] public string DisplayName;
 	[Export] public bool CanBeReplaced;
+	[Export] public bool usesComplexLogic;
 	public int Health;
 	[Export] public float PiercingDamageMultiplier = 1;
 	[Export] public float ImpactDamageMultiplier = 1;
@@ -198,6 +201,7 @@ public partial class Tile : Node2D, IDamageable,ISerializable
 	public Item getTileItem(){
 		TileItem item=new TileItem();
 		item.DisplayName=DisplayName;
+		item.SceneFilePath="res://Game/Core/Items/tile_item.tscn";
 		item.ID=ID;
 		item.MaxStackSize=16;
 		item.StackSize=1;

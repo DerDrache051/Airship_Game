@@ -18,7 +18,7 @@ config/icon="res://icon.svg"
 [display]
 
 window/size/mode=2
-window/stretch/mode="canvas_items"
+window/stretch/mode="viewport"
 
 [dotnet]
 
@@ -31,6 +31,7 @@ Entity=""
 Interaction=""
 Player=""
 Save="Will Be Saved"
+Grid=""
 
 [godot_resource_groups]
 

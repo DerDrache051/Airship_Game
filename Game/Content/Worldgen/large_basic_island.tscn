@@ -1,0 +1,19 @@
+[gd_scene load_steps=8 format=3 uid="uid://b3b8ybg261jwg"]
+
+[ext_resource type="PackedScene" uid="uid://cplnoxn83swwf" path="res://Game/Core/World/Grids/floating_island.tscn" id="1_a0j0w"]
+[ext_resource type="PackedScene" uid="uid://cpoymar1oxpv" path="res://Game/Content/Airship_Tiles/grass_tile.tscn" id="2_clufl"]
+[ext_resource type="PackedScene" uid="uid://cs44p48l0rwk8" path="res://Game/Content/Airship_Tiles/dirt_tile.tscn" id="3_lyqfr"]
+[ext_resource type="PackedScene" uid="uid://ho40dxc8sj54" path="res://Game/Content/Airship_Tiles/stone_tile.tscn" id="4_pprjg"]
+[ext_resource type="PackedScene" uid="uid://c6y5hwyc1qut5" path="res://Game/Content/Airship_Tiles/background_grass_tile.tscn" id="5_gtnfs"]
+[ext_resource type="PackedScene" uid="uid://rsn43iyanlo4" path="res://Game/Content/Airship_Tiles/background_dirt_tile.tscn" id="6_dvx3e"]
+[ext_resource type="PackedScene" uid="uid://cypkt3ew24hov" path="res://Game/Content/Airship_Tiles/background_stone_tile.tscn" id="7_mx5h6"]
+
+[node name="Floating_Island" instance=ExtResource("1_a0j0w")]
+VerticalSize = 10
+HillMultiplier = 2
+Grass = ExtResource("2_clufl")
+Dirt = ExtResource("3_lyqfr")
+Stone = ExtResource("4_pprjg")
+BackgroundGrass = ExtResource("5_gtnfs")
+BackgroundDirt = ExtResource("6_dvx3e")
+BackgroundStone = ExtResource("7_mx5h6")

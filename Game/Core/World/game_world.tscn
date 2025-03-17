@@ -1,0 +1,55 @@
+[gd_scene load_steps=8 format=3 uid="uid://dejkpsiwlsrh8"]
+
+[ext_resource type="Script" uid="uid://b4h51fhq1l3jo" path="res://Game/Core/World/GameWorld.cs" id="1_uwwym"]
+[ext_resource type="Texture2D" uid="uid://dcvry553x61ut" path="res://Game/Assets/background.jpg" id="2_1xdf3"]
+[ext_resource type="PackedScene" uid="uid://bf6lmgavncbly" path="res://Game/Core/World/Grids/ship.tscn" id="3_a6a0s"]
+[ext_resource type="PackedScene" uid="uid://cvw7m07ahsp61" path="res://Game/Content/Entities/Player.tscn" id="4_08wuq"]
+[ext_resource type="PackedScene" uid="uid://bf034i4yrcg0i" path="res://mapgen.tscn" id="5_fmb01"]
+[ext_resource type="Script" uid="uid://bbxc8x6xmobqe" path="res://Game/Core/World/WorldArea.cs" id="7_2gixf"]
+[ext_resource type="Texture2D" uid="uid://coib7on855rec" path="res://Game/Assets/GUI/item_display_frame.png" id="8_execg"]
+
+[node name="Game_World" type="Node2D" node_paths=PackedStringArray("worldBoundary", "worldBoundarySprite", "spawnArea", "finishArea")]
+texture_filter = 1
+script = ExtResource("1_uwwym")
+worldBoundary = NodePath("WorldArea")
+worldBoundarySprite = NodePath("World Border Sprite")
+spawnArea = NodePath("SpawnArea")
+finishArea = NodePath("FinishArea")
+WorldSize = Vector2(10000, 2000)
+SpawnAreaSize = 100
+FinishAreaSize = 100
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_scale = Vector2(0, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer"]
+texture_filter = 2
+position = Vector2(174.75, 104.5)
+scale = Vector2(1.55818, 1.84153)
+texture = ExtResource("2_1xdf3")
+
+[node name="Ship" parent="." instance=ExtResource("3_a6a0s")]
+position = Vector2(-26, 84)
+constant_force = Vector2(200, 0)
+DebugSpawn = true
+isStatic = false
+
+[node name="AnimatedEntity" parent="." groups=["Save"] instance=ExtResource("4_08wuq")]
+
+[node name="Mapgen" parent="." instance=ExtResource("5_fmb01")]
+
+[node name="WorldArea" type="Area2D" parent="."]
+script = ExtResource("7_2gixf")
+
+[node name="SpawnArea" type="Area2D" parent="."]
+
+[node name="FinishArea" type="Area2D" parent="."]
+
+[node name="World Border Sprite" type="Sprite2D" parent="."]
+visible = false
+scale = Vector2(2, 1)
+texture = ExtResource("8_execg")
+
+[connection signal="body_exited" from="WorldArea" to="WorldArea" method="removeBody"]

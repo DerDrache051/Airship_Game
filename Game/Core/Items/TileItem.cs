@@ -1,4 +1,5 @@
 using Godot;
+using Godot.Collections;
 using System;
 
 public partial class TileItem : Item
@@ -42,6 +43,46 @@ public partial class TileItem : Item
 			if(!tile.isSame(tileItem.tile))return false;
 		}
 		return base.isSame(item);
+	}
+    public override void DeserializeComponents(Dictionary<string, string> dict)
+    {
+		base.DeserializeComponents(dict);
+		PackedScene scene=GD.Load<PackedScene>(dict["TileScene"]);
+		tile=scene.Instantiate<Tile>();
+		DisplayName=tile.DisplayName;
+		SceneFilePath="res://Game/Core/Items/tile_item.tscn";
+		ID=tile.ID;
+		MaxStackSize=16;
+		StackSize=1;
+		if(tile.itemTexture!=null)
+			ItemTexture=tile.itemTexture;
+		else if(tile.ForegroundDecorationLayer!=null)
+			ItemTexture=tile.ForegroundDecorationLayer;
+		else if(tile.CollisionLayer!=null)
+			ItemTexture=tile.CollisionLayer;
+		else if(tile.InBetweenDecorationLayer!=null)
+			ItemTexture=tile.InBetweenDecorationLayer;
+		else if(tile.InteractionLayer!=null)
+			ItemTexture=tile.InteractionLayer;
+		else if(tile.ConnectionLayer!=null)
+			ItemTexture=tile.ConnectionLayer;
+		else if(tile.BackgroundDecorationLayer!=null)
+			ItemTexture=tile.BackgroundDecorationLayer;
+		else if(tile.BackgroundLayer!=null)
+			ItemTexture=tile.BackgroundLayer;
+		else if(tile.BehindShipMapDecorationLayer!=null)
+			ItemTexture=tile.BehindShipMapDecorationLayer;
+		else if(tile.BehindShipMapLayer!=null)
+			ItemTexture=tile.BehindShipMapLayer;
+		
+		cursorState=CursorStates.Build;
+
+    }
+	public override Dictionary<string, string> SerializeComponents(Dictionary<string, string> dict)
+	{
+		dict.Add("TileScene",tile.SceneFilePath);
+		base.SerializeComponents(dict);
+		return dict;
 	}
 
 }

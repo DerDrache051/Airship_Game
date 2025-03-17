@@ -1,8 +1,5 @@
-[gd_scene load_steps=27 format=3 uid="uid://hx0unydlx7hi"]
+[gd_scene load_steps=30 format=3 uid="uid://hx0unydlx7hi"]
 
-[ext_resource type="Script" uid="uid://b4h51fhq1l3jo" path="res://Game/Core/World/GameWorld.cs" id="1_13yik"]
-[ext_resource type="Texture2D" uid="uid://dcvry553x61ut" path="res://Game/Assets/background.jpg" id="2_vyjmp"]
-[ext_resource type="PackedScene" uid="uid://cvw7m07ahsp61" path="res://Game/Content/Entities/Player.tscn" id="8_iu3t0"]
 [ext_resource type="Script" uid="uid://e5dkbl1fven" path="res://Game/Core/World/Registry.cs" id="9_xsgwy"]
 [ext_resource type="PackedScene" uid="uid://c1rkkwtcu6l65" path="res://Game/Content/Items/small_basic_bullet.tscn" id="10_lgq5x"]
 [ext_resource type="PackedScene" uid="uid://rvnalvrp2d02" path="res://Game/Content/Items/Steel_Pickaxe.tscn" id="11_sxcmq"]
@@ -15,53 +12,55 @@
 [ext_resource type="PackedScene" uid="uid://djk84sbp4v0cp" path="res://Game/Content/Airship_Tiles/metal_tile.tscn" id="17_6ib8o"]
 [ext_resource type="PackedScene" uid="uid://dfsyk2ld76hu8" path="res://Game/Content/Airship_Tiles/reinforced_wood_tile.tscn" id="18_guoa3"]
 [ext_resource type="PackedScene" uid="uid://cubt6mw4dupdk" path="res://Game/Content/Airship_Tiles/small_burner_engine.tscn" id="19_11g6r"]
+[ext_resource type="PackedScene" uid="uid://bnl0o3xru0uvt" path="res://Game/Core/World/Tiles/crafting_tile.tscn" id="19_x72xa"]
+[ext_resource type="Texture2D" uid="uid://3f5x5jx45p2p" path="res://Game/Assets/Airship_Tiles/Ship_Tile_Sprites_8.png" id="20_eem2l"]
 [ext_resource type="PackedScene" uid="uid://ho40dxc8sj54" path="res://Game/Content/Airship_Tiles/stone_tile.tscn" id="20_g53vf"]
 [ext_resource type="PackedScene" uid="uid://cdsjapauo4ssp" path="res://Game/Content/Airship_Tiles/torch.tscn" id="21_luwyy"]
-[ext_resource type="PackedScene" uid="uid://v872aibaf5s3" path="res://Game/Content/Airship_Tiles/workbench.tscn" id="22_3lvd8"]
 [ext_resource type="PackedScene" uid="uid://bvs2crymhqni6" path="res://Game/Core/World/Entities/test.tscn" id="23_brt5e"]
+[ext_resource type="PackedScene" uid="uid://cqnlqaytj5xqw" path="res://main_menu.tscn" id="23_lxc43"]
+[ext_resource type="PackedScene" uid="uid://ttuegs58cpix" path="res://loading_screen.tscn" id="24_kvj2l"]
 [ext_resource type="PackedScene" uid="uid://fiem4dgpg40v" path="res://Game/Core/GUI/in_game_overlay.tscn" id="24_mgpxi"]
 [ext_resource type="PackedScene" uid="uid://dbch04d4s8m4t" path="res://Game/Core/GUI/player_inventory_gui.tscn" id="25_lvwpj"]
 [ext_resource type="PackedScene" uid="uid://cgo6awdoxc12u" path="res://Game/Core/GUI/crafting_ui.tscn" id="26_vavxq"]
 [ext_resource type="PackedScene" uid="uid://5xw0t2aejb2d" path="res://Game/Core/GUI/flight_gui.tscn" id="27_b5lag"]
 [ext_resource type="Script" uid="uid://e56o4xe5fywu" path="res://Game/Core/World/UI_Selector.cs" id="28_x1cis"]
 [ext_resource type="PackedScene" uid="uid://3yhqp8i7ungy" path="res://Game/Core/GUI/cursor.tscn" id="29_u5cdp"]
+[ext_resource type="PackedScene" uid="uid://bp037i0bolvff" path="res://death_screen.tscn" id="30_b6fgr"]
 [ext_resource type="PackedScene" uid="uid://c6j0k61m6fxb5" path="res://Game/Core/Items/Crafting/recipe_system.tscn" id="30_g2vn0"]
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_ietp8"]
+atlas = ExtResource("20_eem2l")
+region = Rect2(8, 16, 8, 8)
+
+[sub_resource type="PackedScene" id="PackedScene_k1ji5"]
+_bundled = {
+"base_scene": 0,
+"conn_count": 0,
+"conns": PackedInt32Array(),
+"editable_instances": [],
+"names": PackedStringArray("InventoryTile", "texture_filter", "InteractionLayer"),
+"node_count": 1,
+"node_paths": [],
+"nodes": PackedInt32Array(-1, -1, 2147483647, 0, -1, 2, 1, 1, 2, 2, 0),
+"variants": [ExtResource("19_x72xa"), 1, SubResource("AtlasTexture_ietp8")],
+"version": 3
+}
+
 [node name="Game" type="Node"]
-
-[node name="Game_World" type="Node2D" parent="."]
-texture_filter = 1
-script = ExtResource("1_13yik")
-
-[node name="ParallaxBackground" type="ParallaxBackground" parent="Game_World"]
-
-[node name="ParallaxLayer" type="ParallaxLayer" parent="Game_World/ParallaxBackground"]
-motion_scale = Vector2(0, 0)
-
-[node name="Sprite2D" type="Sprite2D" parent="Game_World/ParallaxBackground/ParallaxLayer"]
-texture_filter = 2
-position = Vector2(174.75, 104.5)
-scale = Vector2(1.55818, 1.84153)
-texture = ExtResource("2_vyjmp")
-
-[node name="Player" parent="Game_World" groups=["Save"] instance=ExtResource("8_iu3t0")]
-position = Vector2(118, -368)
-maxHealth = 0
-DisplayName = ""
-isInvulnerable = true
-isUntargetable = true
 
 [node name="Registry" type="Node" parent="."]
 script = ExtResource("9_xsgwy")
 Items = Array[PackedScene]([ExtResource("10_lgq5x"), ExtResource("11_sxcmq"), ExtResource("12_d4hlm"), ExtResource("16_bqpap")])
-Tiles = Array[PackedScene]([ExtResource("13_28284"), ExtResource("14_cpq5p"), ExtResource("15_llkrf"), ExtResource("16_r6hyy"), ExtResource("17_6ib8o"), ExtResource("18_guoa3"), ExtResource("19_11g6r"), ExtResource("20_g53vf"), ExtResource("21_luwyy"), ExtResource("22_3lvd8")])
+Tiles = Array[PackedScene]([ExtResource("13_28284"), ExtResource("14_cpq5p"), ExtResource("15_llkrf"), ExtResource("16_r6hyy"), ExtResource("17_6ib8o"), ExtResource("18_guoa3"), ExtResource("19_11g6r"), ExtResource("20_g53vf"), ExtResource("21_luwyy"), SubResource("PackedScene_k1ji5")])
 Entities = Array[PackedScene]([ExtResource("23_brt5e")])
-UIs = Array[PackedScene]([ExtResource("24_mgpxi"), ExtResource("25_lvwpj"), ExtResource("26_vavxq"), ExtResource("27_b5lag")])
+UIs = Array[PackedScene]([ExtResource("24_mgpxi"), ExtResource("25_lvwpj"), ExtResource("26_vavxq"), ExtResource("27_b5lag"), ExtResource("30_b6fgr"), ExtResource("23_lxc43"), ExtResource("24_kvj2l")])
 
 [node name="UI" type="CanvasLayer" parent="."]
+layer = 100
 script = ExtResource("28_x1cis")
 
 [node name="Cursor" parent="UI" instance=ExtResource("29_u5cdp")]
+z_index = 1000
 offset_left = -576.0
 offset_top = -324.0
 offset_right = -1728.0

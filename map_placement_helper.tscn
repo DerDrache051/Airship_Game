@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://bkhcq72evplhb"]
+
+[ext_resource type="Script" uid="uid://cpo2g044tmwm4" path="res://MapPlacementHelper.cs" id="1_giluv"]
+
+[node name="MapPlacementHelper" type="Node2D"]
+script = ExtResource("1_giluv")

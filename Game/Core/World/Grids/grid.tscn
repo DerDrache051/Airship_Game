@@ -5,7 +5,7 @@
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_p8shl"]
 friction = 0.5
 
-[node name="Grid" type="RigidBody2D"]
+[node name="Grid" type="RigidBody2D" groups=["Grid"]]
 collision_layer = 3
 collision_mask = 2
 physics_material_override = SubResource("PhysicsMaterial_p8shl")

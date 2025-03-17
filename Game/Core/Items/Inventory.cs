@@ -1,13 +1,13 @@
 using Godot;
+using Godot.Collections;
 using System;
 
-public partial class Inventory : Node
+public partial class Inventory : Node,ISerializable
 {
 	// Called when the node enters the scene tree for the first time.
 	[Export] public int InventorySize=6;
 	[Export] public int StackSizeMultiplier=1;
-	public Item[] Items;
-
+	private Item[] Items;
 	[Export] public PackedScene[] StartingItems;
 
 	public int SelectedItem=1;//the currently Selected item for GUI
@@ -41,6 +41,8 @@ public partial class Inventory : Node
 		if(firstEmptyStack==0)return false;
 		Items[firstEmptyStack]=item;
 		AddChild(item);
+		item.Slot=firstEmptyStack;
+		if(IsInGroup("Save"))item.AddToGroup("Save");
 		return true;
 	}
 	public bool canAddItem(Item item){
@@ -108,6 +110,14 @@ public partial class Inventory : Node
 		}
 		return count;
 	}
+	public void swapItems(int from,int to,Inventory targetInventory=null){
+		if(targetInventory==null)targetInventory=this;
+		if(Items[from]!=null)Items[from].Slot=to;
+		if(targetInventory.Items[to]!=null)targetInventory.Items[to].Slot=from;
+		Item item=Items[from];
+		Items[from]=targetInventory.Items[to];
+		targetInventory.Items[to]=item;
+	}
 	public void removeItems(String itemID,int amount){
 		int n=amount;
 		for(int i=0; i<InventorySize;i++){
@@ -126,4 +136,43 @@ public partial class Inventory : Node
 	}
 
 	public Item GetItem(int slot){return Items[slot];}
+
+    public string Serialize()
+    {
+		return Godot.Json.Stringify(SerializeComponents(new Godot.Collections.Dictionary<String,String>()));
+    }
+
+    public void Deserialize(string data)
+    {
+		DeserializeComponents(Godot.Json.ParseString(data).As<Godot.Collections.Dictionary<String,String>>());
+    }
+
+    public virtual Dictionary<string, string> SerializeComponents(Dictionary<string, string> dict)
+    {
+        dict.Add("SceneFile",SceneFilePath);
+		return dict;
+    }
+
+    public virtual void DeserializeComponents(Dictionary<string, string> dict)
+    {
+		SceneFilePath=dict["SceneFile"];
+    }
+
+    public virtual void finishLoad()
+    {
+		GD.Print("loading Items");
+        foreach(Node node in GetChildren()){
+			
+			if(node is Item item)addItemToSlot(item,item.Slot);
+		}
+	}
+	public int getItemSlot(Item item){
+		for(int i=0; i<InventorySize;i++){
+			if(Items[i]==item){
+				return i;
+			}
+		}
+		return -1;
+	}
+
 }

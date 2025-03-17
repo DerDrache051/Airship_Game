@@ -4,7 +4,7 @@ using System;
 public partial class UI_Selector : CanvasLayer
 {
 	// Called when the node enters the scene tree for the first time.
-	public int ShownGUI_ID=0;
+	public int ShownGUI_ID=5;
 	private int lastGUI=-1;
 	public bool ShowCursor=true;
 	public Control currentGUI;

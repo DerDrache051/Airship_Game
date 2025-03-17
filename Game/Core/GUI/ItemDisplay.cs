@@ -28,10 +28,10 @@ public partial class ItemDisplay : TextureRect
 	public override void _Process(double delta)
 	{
 		if(inv==null)return;
-		if (inv.Items[slot] != null)
+		if (inv.GetItem(slot) != null)
 		{
-			itemDisplayRect.Texture = inv.Items[slot].ItemTexture;
-			itemCountDisplayLabel.Text = inv.Items[slot].StackSize.ToString();
+			itemDisplayRect.Texture = inv.GetItem(slot).ItemTexture;
+			itemCountDisplayLabel.Text = inv.GetItem(slot).StackSize.ToString();
 		}
 		else
 		{
@@ -61,9 +61,7 @@ public partial class ItemDisplay : TextureRect
 					{
 						if (GetGlobalMousePosition().DistanceTo(itemDisplay.GlobalPosition+itemDisplay.GetRect().Size/2) < itemDisplay.GetRect().Size.X / 1.7)
 						{
-							Item swap = itemDisplay.inv.Items[itemDisplay.slot];
-							itemDisplay.inv.Items[itemDisplay.slot] = inv.Items[slot];
-							inv.Items[slot] = swap;
+							inv.swapItems(slot, itemDisplay.slot,itemDisplay.inv);
 							break;
 						}
 					}

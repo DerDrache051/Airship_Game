@@ -1,7 +1,8 @@
 using System;
 using Godot;
+using Godot.Collections;
 
-public partial class Entity:CharacterBody2D,IDamageable{
+public partial class Entity:CharacterBody2D,IDamageable,ISerializable{
 
     [Export] public int maxHealth;
     [Export] public Node Team;
@@ -69,4 +70,36 @@ public partial class Entity:CharacterBody2D,IDamageable{
         await ToSignal(GetTree().CreateTimer(time, false, false, false),"timeout");
         isOnCooldown=false;
     }
+
+    public string Serialize()
+    {
+        return Godot.Json.Stringify(SerializeComponents(new Godot.Collections.Dictionary<String,String>()));
+    }
+
+    public void Deserialize(string data)
+    {
+        DeserializeComponents(Godot.Json.ParseString(data).As<Godot.Collections.Dictionary<String,String>>());
+    }
+
+    public virtual Dictionary<string, string> SerializeComponents(Dictionary<string, string> dict)
+    {
+        dict.Add("Health",health+"");
+        dict.Add("SceneFile",SceneFilePath);
+        dict.Add("X",GlobalPosition.X+"");
+        dict.Add("Y",GlobalPosition.Y+"");
+        return dict;
+    }
+
+    public virtual void DeserializeComponents(Dictionary<string, string> dict)
+    {
+        health=int.Parse(dict["Health"]);
+        SceneFilePath=dict["SceneFile"];
+        GlobalPosition=new Vector2(float.Parse(dict["X"]),float.Parse(dict["Y"]));
+    }
+
+    public virtual void finishLoad()
+    {
+       
+    }
+
 }

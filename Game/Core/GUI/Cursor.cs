@@ -16,6 +16,10 @@ public partial class Cursor : Control
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
 	public override void _Process(double delta)
 	{
+		if(ClientStatics.player == null) { 
+			SetCursor(CursorStates.DefaultState);
+			return;
+		}
 		GlobalPosition = GetGlobalMousePosition();
 		Item item = ClientStatics.player.inventory.GetItem(ClientStatics.player.SelectedItemSlot);
 		if (item == null)SetCursor(CursorStates.DefaultState);
