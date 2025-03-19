@@ -31,21 +31,25 @@ scale = Vector2(1.55818, 1.84153)
 texture = ExtResource("2_1xdf3")
 
 [node name="Ship" parent="." instance=ExtResource("3_a6a0s")]
-position = Vector2(-26, 84)
+position = Vector2(11, 200)
 constant_force = Vector2(200, 0)
 DebugSpawn = true
 isStatic = false
 
 [node name="AnimatedEntity" parent="." groups=["Save"] instance=ExtResource("4_08wuq")]
+position = Vector2(40, 77)
 
 [node name="Mapgen" parent="." instance=ExtResource("5_fmb01")]
 
 [node name="WorldArea" type="Area2D" parent="."]
+visible = false
 script = ExtResource("7_2gixf")
 
 [node name="SpawnArea" type="Area2D" parent="."]
+visible = false
 
 [node name="FinishArea" type="Area2D" parent="."]
+visible = false
 
 [node name="World Border Sprite" type="Sprite2D" parent="."]
 visible = false

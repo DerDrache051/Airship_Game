@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Security.Cryptography.X509Certificates;
+using System.Threading;
 
 public partial class MapPlacer : Node2D
 {
@@ -26,6 +27,7 @@ public partial class MapPlacer : Node2D
     [Export] public int MaxAmount = 1;
 
     Queue<MapPlacementHelper> helpers =new(); 
+    List<Thread> threads = new();
     public override void _Ready()
     {
         int amount = GD.RandRange(MinAmount, MaxAmount);
@@ -88,12 +90,10 @@ public partial class MapPlacer : Node2D
     }
     public override void _Process(double delta)
     {
-        if(helpers.Count == 0){
-            QueueFree();
-            return;
+        if (helpers.Count > 0)
+        {
+            MapPlacementHelper helper = helpers.Dequeue();
+            helper._Place();
         }
-        GameWorld.Instance.AddChild(helpers.First());
-        helpers.First()._Place();
-        helpers.Dequeue();
     }
 }

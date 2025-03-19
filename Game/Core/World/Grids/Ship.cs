@@ -89,9 +89,9 @@ public partial class Ship : Grid
 					tiles.AddLast(newTile);
 
 					// Check all neighboring positions
-					for (int j = -1; j <= current.SizeX; j++)
+					for (int j = -1; j <= current.Tilematerial.SizeX; j++)
 					{
-						for (int k = -1; k <= current.SizeY; k++)
+						for (int k = -1; k <= current.Tilematerial.SizeY; k++)
 						{
 							int[] neighborTile = new int[3] { tile[0] + j, tile[1] + k, i };
 							queue.Enqueue(neighborTile);
@@ -139,7 +139,7 @@ public partial class Ship : Grid
 		Weight = 0;
 		foreach (Tile tile in Tiles.Values)
 		{
-			Weight += tile.Weight;
+			Weight += tile.Tilematerial.Weight;
 		}
 	}
 }

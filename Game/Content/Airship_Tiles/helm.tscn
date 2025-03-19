@@ -1,17 +1,45 @@
-[gd_scene load_steps=5 format=3 uid="uid://7k5gp47ug3xq"]
+[gd_scene load_steps=9 format=3 uid="uid://7k5gp47ug3xq"]
 
 [ext_resource type="PackedScene" uid="uid://btid0ccdcd7xc" path="res://Game/Core/World/Tiles/tile.tscn" id="1_07a0g"]
 [ext_resource type="Script" uid="uid://btlgt8bmumfp4" path="res://Game/Core/World/Tiles/Helm_Tile.cs" id="2_aa1jx"]
+[ext_resource type="Texture2D" uid="uid://cq0d4ltui0e7o" path="res://Game/Assets/Tile_Damage_Indicator.png" id="3_1obig"]
 [ext_resource type="Texture2D" uid="uid://3f5x5jx45p2p" path="res://Game/Assets/Airship_Tiles/Ship_Tile_Sprites_8.png" id="3_vad8c"]
+[ext_resource type="PackedScene" uid="uid://6h10q3jpndd5" path="res://Game/Core/World/Entities/item_entity.tscn" id="5_jtsvw"]
+[ext_resource type="Script" uid="uid://g81hmtholqmq" path="res://Game/Core/World/Tiles/TileMaterial.cs" id="6_7ngs5"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_3i7p0"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_2w4ya"]
 atlas = ExtResource("3_vad8c")
 region = Rect2(16, 8, 8, 16)
+
+[sub_resource type="Resource" id="Resource_6docj"]
+script = ExtResource("6_7ngs5")
+SizeX = 1
+SizeY = 2
+Weight = 30
+MaxHealth = 20
+ID = "helm"
+DisplayName = "Helm"
+CanBeReplaced = false
+usesComplexLogic = false
+PiercingDamageMultiplier = 1.0
+ImpactDamageMultiplier = 1.0
+ExplosionDamageMultiplier = 1.0
+FireDamageMultiplier = 1.0
+flammable = false
+Hardness = 1.0
+lightEmission = 0
+lightReduction = 0
+Drops = [null]
+DropChances = PackedFloat32Array(1)
+DropAmounts = PackedInt32Array(1)
+itemEntity = ExtResource("5_jtsvw")
+castShadows = true
+InteractionLayer = SubResource("AtlasTexture_2w4ya")
+DamageTexture = ExtResource("3_1obig")
+metadata/_custom_type_script = "uid://g81hmtholqmq"
 
 [node name="Tile" groups=["Interaction"] instance=ExtResource("1_07a0g")]
 process_mode = 1
 script = ExtResource("2_aa1jx")
 UI_ID = 3
-SizeY = 2
-itemEntity = null
-InteractionLayer = SubResource("AtlasTexture_3i7p0")
+Tilematerial = SubResource("Resource_6docj")

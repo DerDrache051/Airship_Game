@@ -1,12 +1,62 @@
-[gd_scene load_steps=4 format=3 uid="uid://2m1hnhvjmbex"]
+[gd_scene load_steps=11 format=3 uid="uid://2m1hnhvjmbex"]
 
 [ext_resource type="PackedScene" uid="uid://b8t46cshswy8v" path="res://Game/Core/World/Tiles/ui_tile.tscn" id="1_gcfoi"]
 [ext_resource type="Texture2D" uid="uid://3f5x5jx45p2p" path="res://Game/Assets/Airship_Tiles/Ship_Tile_Sprites_8.png" id="2_loq73"]
+[ext_resource type="PackedScene" uid="uid://d18fhhpoihqhb" path="res://Game/Core/World/Entities/entity.tscn" id="3_04jax"]
+[ext_resource type="Script" uid="uid://dvelfej3wpena" path="res://Game/Core/World/Entities/ItemEntity.cs" id="4_i2y4d"]
+[ext_resource type="Script" uid="uid://g81hmtholqmq" path="res://Game/Core/World/Tiles/TileMaterial.cs" id="5_pf6u6"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_sjt06"]
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_617br"]
+load_path = "res://.godot/imported/Tile_Damage_Indicator.png-9df1bc3b5bc764aa2abc1b12c165f45b.ctex"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ik3mi"]
 atlas = ExtResource("2_loq73")
 region = Rect2(8, 16, 8, 8)
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_25ob3"]
+radius = 2.0
+
+[sub_resource type="PackedScene" id="PackedScene_esyps"]
+_bundled = {
+"base_scene": 0,
+"conn_count": 0,
+"conns": PackedInt32Array(),
+"editable_instances": [],
+"names": PackedStringArray("Item_Entity", "collision_layer", "script", "sprite", "CollisionShape2D", "CollisionShape2D", "shape", "Sprite2D", "Sprite2D", "rotation", "scale"),
+"node_count": 3,
+"node_paths": [NodePath("."), NodePath(".")],
+"nodes": PackedInt32Array(-1, -1, 2147483647, 0, -1, 3, 1, 1, 2, 2, 1073741827, 3, 0, 1073741824, 0, 5, 262148, -1, 1, 6, 4, 0, 1073741825, 0, 8, 524295, -1, 2, 9, 5, 10, 6, 0),
+"variants": [ExtResource("3_04jax"), 0, ExtResource("4_i2y4d"), NodePath("Sprite2D"), SubResource("CircleShape2D_25ob3"), 0.523599, Vector2(0.5, 0.5)],
+"version": 3
+}
+
+[sub_resource type="Resource" id="Resource_08igw"]
+script = ExtResource("5_pf6u6")
+SizeX = 1
+SizeY = 2
+Weight = 30
+MaxHealth = 20
+ID = "helm"
+DisplayName = "Helm"
+CanBeReplaced = false
+usesComplexLogic = false
+PiercingDamageMultiplier = 1.0
+ImpactDamageMultiplier = 1.0
+ExplosionDamageMultiplier = 1.0
+FireDamageMultiplier = 1.0
+flammable = false
+Hardness = 1.0
+lightEmission = 0
+lightReduction = 0
+Drops = [null]
+DropChances = PackedFloat32Array(1)
+DropAmounts = PackedInt32Array(1)
+itemEntity = SubResource("PackedScene_esyps")
+castShadows = true
+InteractionLayer = SubResource("AtlasTexture_ik3mi")
+DamageTexture = SubResource("CompressedTexture2D_617br")
+metadata/_custom_type_script = "uid://g81hmtholqmq"
+
 [node name="UI_Tile" instance=ExtResource("1_gcfoi")]
 UI_ID = 2
-InteractionLayer = SubResource("AtlasTexture_sjt06")
+Tilematerial = SubResource("Resource_08igw")

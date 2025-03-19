@@ -1,16 +1,44 @@
-[gd_scene load_steps=5 format=3 uid="uid://cubt6mw4dupdk"]
+[gd_scene load_steps=9 format=3 uid="uid://cubt6mw4dupdk"]
 
 [ext_resource type="PackedScene" uid="uid://btid0ccdcd7xc" path="res://Game/Core/World/Tiles/tile.tscn" id="1_skutx"]
 [ext_resource type="Script" uid="uid://bn4d1ol43rsmi" path="res://Game/Core/World/Tiles/Engine_Tile.cs" id="2_reu22"]
 [ext_resource type="Texture2D" uid="uid://3f5x5jx45p2p" path="res://Game/Assets/Airship_Tiles/Ship_Tile_Sprites_8.png" id="3_d2bds"]
+[ext_resource type="Texture2D" uid="uid://cq0d4ltui0e7o" path="res://Game/Assets/Tile_Damage_Indicator.png" id="4_45k2s"]
+[ext_resource type="PackedScene" uid="uid://6h10q3jpndd5" path="res://Game/Core/World/Entities/item_entity.tscn" id="5_60n5a"]
+[ext_resource type="Script" uid="uid://g81hmtholqmq" path="res://Game/Core/World/Tiles/TileMaterial.cs" id="6_jv3xv"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_1qvsh"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_45k2s"]
 atlas = ExtResource("3_d2bds")
 region = Rect2(0, 8, 16, 8)
+
+[sub_resource type="Resource" id="Resource_hlu2v"]
+script = ExtResource("6_jv3xv")
+SizeX = 2
+SizeY = 1
+Weight = 30
+MaxHealth = 20
+ID = "small_burner_engine"
+DisplayName = "Small Burner Engine"
+CanBeReplaced = false
+usesComplexLogic = false
+PiercingDamageMultiplier = 1.0
+ImpactDamageMultiplier = 1.0
+ExplosionDamageMultiplier = 1.0
+FireDamageMultiplier = 1.0
+flammable = false
+Hardness = 1.0
+lightEmission = 0
+lightReduction = 0
+Drops = [null]
+DropChances = PackedFloat32Array(1)
+DropAmounts = PackedInt32Array(1)
+itemEntity = ExtResource("5_60n5a")
+castShadows = true
+InteractionLayer = SubResource("AtlasTexture_45k2s")
+DamageTexture = ExtResource("4_45k2s")
+metadata/_custom_type_script = "uid://g81hmtholqmq"
 
 [node name="Tile" instance=ExtResource("1_skutx")]
 script = ExtResource("2_reu22")
 EnginePower = 400
-SizeX = 2
-itemEntity = null
-InteractionLayer = SubResource("AtlasTexture_1qvsh")
+Tilematerial = SubResource("Resource_hlu2v")

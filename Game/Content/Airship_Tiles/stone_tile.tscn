@@ -1,15 +1,43 @@
-[gd_scene load_steps=4 format=3 uid="uid://ho40dxc8sj54"]
+[gd_scene load_steps=8 format=3 uid="uid://ho40dxc8sj54"]
 
 [ext_resource type="PackedScene" uid="uid://btid0ccdcd7xc" path="res://Game/Core/World/Tiles/tile.tscn" id="1_0pl3i"]
-[ext_resource type="Texture2D" uid="uid://c3qn0pww86jd6" path="res://Game/Assets/Airship_Tiles/World_Tiles.png" id="2_m6xsf"]
+[ext_resource type="Texture2D" uid="uid://cq0d4ltui0e7o" path="res://Game/Assets/Tile_Damage_Indicator.png" id="3_cwxs4"]
+[ext_resource type="PackedScene" uid="uid://6h10q3jpndd5" path="res://Game/Core/World/Entities/item_entity.tscn" id="4_7guv1"]
+[ext_resource type="Script" uid="uid://g81hmtholqmq" path="res://Game/Core/World/Tiles/TileMaterial.cs" id="5_obkn5"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_yjgf6"]
-atlas = ExtResource("2_m6xsf")
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_urhbb"]
+load_path = "res://.godot/imported/World_Tiles.png-62b8cd6f85ef07c783021eb530a34519.ctex"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cwxs4"]
+atlas = SubResource("CompressedTexture2D_urhbb")
 region = Rect2(0, 8, 8, 8)
 
-[node name="Tile" instance=ExtResource("1_0pl3i")]
-Weight = 60
-MaxHealth = 40
-ID = "vanilla.stone_tile"
+[sub_resource type="Resource" id="Resource_wc1io"]
+script = ExtResource("5_obkn5")
+SizeX = 1
+SizeY = 1
+Weight = 30
+MaxHealth = 20
+ID = "stone"
 DisplayName = "Stone"
-CollisionLayer = SubResource("AtlasTexture_yjgf6")
+CanBeReplaced = false
+usesComplexLogic = false
+PiercingDamageMultiplier = 1.0
+ImpactDamageMultiplier = 1.0
+ExplosionDamageMultiplier = 1.0
+FireDamageMultiplier = 1.0
+flammable = false
+Hardness = 1.0
+lightEmission = 0
+lightReduction = 0
+Drops = [null]
+DropChances = PackedFloat32Array(1)
+DropAmounts = PackedInt32Array(1)
+itemEntity = ExtResource("4_7guv1")
+castShadows = true
+CollisionLayer = SubResource("AtlasTexture_cwxs4")
+DamageTexture = ExtResource("3_cwxs4")
+metadata/_custom_type_script = "uid://g81hmtholqmq"
+
+[node name="Tile" instance=ExtResource("1_0pl3i")]
+Tilematerial = SubResource("Resource_wc1io")

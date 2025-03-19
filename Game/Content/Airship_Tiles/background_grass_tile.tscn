@@ -1,14 +1,41 @@
-[gd_scene load_steps=4 format=3 uid="uid://c6y5hwyc1qut5"]
+[gd_scene load_steps=8 format=3 uid="uid://c6y5hwyc1qut5"]
 
 [ext_resource type="PackedScene" uid="uid://btid0ccdcd7xc" path="res://Game/Core/World/Tiles/tile.tscn" id="1_22751"]
 [ext_resource type="Texture2D" uid="uid://c3qn0pww86jd6" path="res://Game/Assets/Airship_Tiles/World_Tiles.png" id="2_tjdp1"]
+[ext_resource type="Texture2D" uid="uid://cq0d4ltui0e7o" path="res://Game/Assets/Tile_Damage_Indicator.png" id="3_0ul66"]
+[ext_resource type="PackedScene" uid="uid://6h10q3jpndd5" path="res://Game/Core/World/Entities/item_entity.tscn" id="4_nfn0i"]
+[ext_resource type="Script" uid="uid://g81hmtholqmq" path="res://Game/Core/World/Tiles/TileMaterial.cs" id="5_oe2hn"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_gik8l"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_d5g1v"]
 atlas = ExtResource("2_tjdp1")
 region = Rect2(8, 0, 8, 8)
 
-[node name="Tile" instance=ExtResource("1_22751")]
+[sub_resource type="Resource" id="Resource_fjolu"]
+script = ExtResource("5_oe2hn")
+SizeX = 1
+SizeY = 1
 Weight = 30
-ID = "vanilla.grass_tile"
+MaxHealth = 20
+ID = "background_grass"
 DisplayName = "Grass"
-BackgroundLayer = SubResource("AtlasTexture_gik8l")
+CanBeReplaced = false
+usesComplexLogic = false
+PiercingDamageMultiplier = 1.0
+ImpactDamageMultiplier = 1.0
+ExplosionDamageMultiplier = 1.0
+FireDamageMultiplier = 1.0
+flammable = false
+Hardness = 1.0
+lightEmission = 0
+lightReduction = 0
+Drops = [null]
+DropChances = PackedFloat32Array(1)
+DropAmounts = PackedInt32Array(1)
+itemEntity = ExtResource("4_nfn0i")
+castShadows = true
+BehindShipMapDecorationLayer = SubResource("AtlasTexture_d5g1v")
+DamageTexture = ExtResource("3_0ul66")
+metadata/_custom_type_script = "uid://g81hmtholqmq"
+
+[node name="Tile" instance=ExtResource("1_22751")]
+Tilematerial = SubResource("Resource_fjolu")

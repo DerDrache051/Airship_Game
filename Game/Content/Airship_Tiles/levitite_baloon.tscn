@@ -1,20 +1,41 @@
-[gd_scene load_steps=6 format=3 uid="uid://cshlmg2lnndje"]
+[gd_scene load_steps=8 format=3 uid="uid://cshlmg2lnndje"]
 
 [ext_resource type="PackedScene" uid="uid://xcafakpcnnrv" path="res://Game/Core/World/Tiles/levitating_tile.tscn" id="1_5adfn"]
 [ext_resource type="Texture2D" uid="uid://3f5x5jx45p2p" path="res://Game/Assets/Airship_Tiles/Ship_Tile_Sprites_8.png" id="2_jf4kn"]
+[ext_resource type="Texture2D" uid="uid://cq0d4ltui0e7o" path="res://Game/Assets/Tile_Damage_Indicator.png" id="3_dkivv"]
 [ext_resource type="PackedScene" uid="uid://6h10q3jpndd5" path="res://Game/Core/World/Entities/item_entity.tscn" id="3_mf0jp"]
+[ext_resource type="Script" uid="uid://g81hmtholqmq" path="res://Game/Core/World/Tiles/TileMaterial.cs" id="5_0ivob"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_52uym"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_wobks"]
 atlas = ExtResource("2_jf4kn")
 region = Rect2(0, 16, 8, 8)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_jdjpo"]
-atlas = ExtResource("2_jf4kn")
-region = Rect2(0, 16, 8, 8)
-
-[node name="LevitatingTile" instance=ExtResource("1_5adfn")]
+[sub_resource type="Resource" id="Resource_lytqj"]
+script = ExtResource("5_0ivob")
 SizeX = 2
 SizeY = 2
-itemTexture = SubResource("AtlasTexture_52uym")
+Weight = 30
+MaxHealth = 20
+ID = "basic_baloon"
+DisplayName = "Levitite Baloon"
+CanBeReplaced = false
+usesComplexLogic = false
+PiercingDamageMultiplier = 1.0
+ImpactDamageMultiplier = 1.0
+ExplosionDamageMultiplier = 1.0
+FireDamageMultiplier = 1.0
+flammable = false
+Hardness = 1.0
+lightEmission = 0
+lightReduction = 0
+Drops = [null]
+DropChances = PackedFloat32Array(1)
+DropAmounts = PackedInt32Array(1)
 itemEntity = ExtResource("3_mf0jp")
-CollisionLayer = SubResource("AtlasTexture_jdjpo")
+castShadows = true
+CollisionLayer = SubResource("AtlasTexture_wobks")
+DamageTexture = ExtResource("3_dkivv")
+metadata/_custom_type_script = "uid://g81hmtholqmq"
+
+[node name="LevitatingTile" instance=ExtResource("1_5adfn")]
+Tilematerial = SubResource("Resource_lytqj")

@@ -1,17 +1,42 @@
-[gd_scene load_steps=4 format=3 uid="uid://dfsyk2ld76hu8"]
+[gd_scene load_steps=8 format=3 uid="uid://dfsyk2ld76hu8"]
 
 [ext_resource type="PackedScene" uid="uid://btid0ccdcd7xc" path="res://Game/Core/World/Tiles/tile.tscn" id="1_733et"]
 [ext_resource type="Texture2D" uid="uid://3f5x5jx45p2p" path="res://Game/Assets/Airship_Tiles/Ship_Tile_Sprites_8.png" id="2_u1qsw"]
+[ext_resource type="Texture2D" uid="uid://cq0d4ltui0e7o" path="res://Game/Assets/Tile_Damage_Indicator.png" id="3_gu1ic"]
+[ext_resource type="PackedScene" uid="uid://6h10q3jpndd5" path="res://Game/Core/World/Entities/item_entity.tscn" id="4_ex1tv"]
+[ext_resource type="Script" uid="uid://g81hmtholqmq" path="res://Game/Core/World/Tiles/TileMaterial.cs" id="5_ue00p"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_hdomn"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_81ad2"]
 atlas = ExtResource("2_u1qsw")
 region = Rect2(8, 0, 8, 8)
 
+[sub_resource type="Resource" id="Resource_2nnsk"]
+script = ExtResource("5_ue00p")
+SizeX = 1
+SizeY = 1
+Weight = 30
+MaxHealth = 20
+ID = "reinforced_wood"
+DisplayName = "Reinforced Wood"
+CanBeReplaced = false
+usesComplexLogic = false
+PiercingDamageMultiplier = 1.0
+ImpactDamageMultiplier = 1.0
+ExplosionDamageMultiplier = 1.0
+FireDamageMultiplier = 1.0
+flammable = false
+Hardness = 1.0
+lightEmission = 0
+lightReduction = 0
+Drops = [null]
+DropChances = PackedFloat32Array(1)
+DropAmounts = PackedInt32Array(1)
+itemEntity = ExtResource("4_ex1tv")
+castShadows = true
+CollisionLayer = SubResource("AtlasTexture_81ad2")
+DamageTexture = ExtResource("3_gu1ic")
+metadata/_custom_type_script = "uid://g81hmtholqmq"
+
 [node name="Tile" instance=ExtResource("1_733et")]
 texture_filter = 1
-Weight = 30
-MaxHealth = 100
-ID = "vanilla.reinforced_wood_tile"
-DisplayName = "Reinforced_Wood"
-flammable = true
-CollisionLayer = SubResource("AtlasTexture_hdomn")
+Tilematerial = SubResource("Resource_2nnsk")

@@ -57,7 +57,7 @@ public partial class Grid : RigidBody2D, IDamageable, ISerializable
 	public void UpdateLights2(Tile tile, int layer)
 	{
 		if (!isLive || layer <= 0 || tile.isMarked) return;
-		tile.lightLevel = Math.Max(getHighestLightLevelFromNeighbours(tile) - tile.lightReduction, tile.lightEmission);
+		tile.lightLevel = Math.Max(getHighestLightLevelFromNeighbours(tile) - tile.Tilematerial.lightReduction, tile.Tilematerial.lightEmission);
 		tile.isMarked = true;
 		tile.Modulate = new Color(Math.Min(tile.lightLevel / 8f, 1), Math.Min(tile.lightLevel / 8f, 1), Math.Min(tile.lightLevel / 8f, 1), 1);
 		foreach (Tile neighbour in getNeighboursOnAllLayers(tile))
@@ -76,7 +76,7 @@ public partial class Grid : RigidBody2D, IDamageable, ISerializable
 	}
 	public void AddLight(Tile tile)
 	{
-		AddLight2(tile, tile.lightEmission);
+		AddLight2(tile, tile.Tilematerial.lightEmission);
 		UnmarkAll();
 	}
 	/*public void AddLight2(Tile tile, int level)
@@ -105,7 +105,7 @@ public partial class Grid : RigidBody2D, IDamageable, ISerializable
 			Tile currentTile = queue.Dequeue();
 			foreach (Tile neighbour in getNeighboursOnAllLayers(currentTile))
 			{
-				int newLevel = currentTile.LightUpdateLevel - currentTile.lightReduction;
+				int newLevel = currentTile.LightUpdateLevel - currentTile.Tilematerial.lightReduction;
 				if (!neighbour.isMarked && newLevel > 0)
 				{
 					neighbour.lightLevel += newLevel;
@@ -119,7 +119,7 @@ public partial class Grid : RigidBody2D, IDamageable, ISerializable
 	}
 	public void RemoveLight(Tile tile)
 	{
-		RemoveLight2(tile, tile.lightEmission);
+		RemoveLight2(tile, tile.Tilematerial.lightEmission);
 		UnmarkAll();
 	}
 	/*public void RemoveLight2(Tile tile,int level){
@@ -149,7 +149,7 @@ public partial class Grid : RigidBody2D, IDamageable, ISerializable
 			Tile currentTile = queue.Dequeue();
 			foreach (Tile neighbour in getNeighboursOnAllLayers(currentTile))
 			{
-				int newLevel = currentTile.LightUpdateLevel - currentTile.lightReduction;
+				int newLevel = currentTile.LightUpdateLevel - currentTile.Tilematerial.lightReduction;
 				if (!neighbour.isMarked && newLevel > 0)
 				{
 					neighbour.LightUpdateLevel = newLevel;
@@ -192,9 +192,9 @@ public partial class Grid : RigidBody2D, IDamageable, ISerializable
 	public bool addTileToDictOnly(Tile tile, int x, int y)
 	{
 		//CheckBounds
-		for (int i = 0; i < tile.SizeX; i++)
+		for (int i = 0; i < tile.Tilematerial.SizeX; i++)
 		{
-			for (int j = 0; j < tile.SizeY; j++)
+			for (int j = 0; j < tile.Tilematerial.SizeY; j++)
 			{
 				for (int k = 0; k < 8; k++)
 				{
@@ -210,9 +210,9 @@ public partial class Grid : RigidBody2D, IDamageable, ISerializable
 			}
 		}
 		//AddTile
-		for (int i = 0; i < tile.SizeX; i++)
+		for (int i = 0; i < tile.Tilematerial.SizeX; i++)
 		{
-			for (int j = 0; j < tile.SizeY; j++)
+			for (int j = 0; j < tile.Tilematerial.SizeY; j++)
 			{
 				for (int k = 0; k < 8; k++)
 				{
@@ -350,9 +350,9 @@ public partial class Grid : RigidBody2D, IDamageable, ISerializable
 	public void removeTilefromDictOnly(Tile tile)
 	{
 		if (tile == null) return;
-		for (int i = 0; i < tile.SizeX; i++)
+		for (int i = 0; i < tile.Tilematerial.SizeX; i++)
 		{
-			for (int j = 0; j < tile.SizeY; j++)
+			for (int j = 0; j < tile.Tilematerial.SizeY; j++)
 			{
 				for (int k = 0; k < 8; k++)
 				{
@@ -390,9 +390,9 @@ public partial class Grid : RigidBody2D, IDamageable, ISerializable
 	}
 	public bool hasNeighbourTile(Tile tile, int x, int y)
 	{
-		for (int i = -1; i < tile.SizeX + 1; i++)
+		for (int i = -1; i < tile.Tilematerial.SizeX + 1; i++)
 		{
-			for (int j = -1; j < tile.SizeY + 1; j++)
+			for (int j = -1; j < tile.Tilematerial.SizeY + 1; j++)
 			{
 				if (isTileAt(x + i, y + j)) return true;
 			}
@@ -435,9 +435,9 @@ public partial class Grid : RigidBody2D, IDamageable, ISerializable
 	{
 		if (tile == null) return 0;
 		int count = 0;
-		for (int i = -1; i < tile.SizeX + 1; i++)
+		for (int i = -1; i < tile.Tilematerial.SizeX + 1; i++)
 		{
-			for (int j = -1; j < tile.SizeY + 1; j++)
+			for (int j = -1; j < tile.Tilematerial.SizeY + 1; j++)
 			{
 				if (isTileAt(x + i, y + j, layer)) count++;
 			}
@@ -447,9 +447,9 @@ public partial class Grid : RigidBody2D, IDamageable, ISerializable
 	public bool isSurrounded(Tile tile, int x, int y, GridLayer layer)
 	{
 		if (tile == null) return false;
-		for (int i = -1; i < tile.SizeX + 1; i++)
+		for (int i = -1; i < tile.Tilematerial.SizeX + 1; i++)
 		{
-			for (int j = -1; j < tile.SizeY + 1; j++)
+			for (int j = -1; j < tile.Tilematerial.SizeY + 1; j++)
 			{
 				if (!isTileAt(x + i, y + j, layer)) return false;
 			}
@@ -463,9 +463,9 @@ public partial class Grid : RigidBody2D, IDamageable, ISerializable
 	public List<Tile> getNeighbourTiles(Tile tile, int x, int y, GridLayer layer)
 	{
 		List<Tile> tiles = new List<Tile>();
-		for (int i = -1; i < tile.SizeX + 1; i++)
+		for (int i = -1; i < tile.Tilematerial.SizeX + 1; i++)
 		{
-			for (int j = -1; j < tile.SizeY + 1; j++)
+			for (int j = -1; j < tile.Tilematerial.SizeY + 1; j++)
 			{
 				if (isTileAt(x + i, y + j, layer) && getTileAt(x + i, y + j, layer) != tile) tiles.Add(getTileAt(x + i, y + j, layer));
 			}
@@ -500,7 +500,7 @@ public partial class Grid : RigidBody2D, IDamageable, ISerializable
 	}
 	public void addAndOptimizeShapes(Tile tile)
 	{
-		addAndOptimizeShapes(tile.X, tile.Y, tile.SizeX, tile.SizeY);
+		addAndOptimizeShapes(tile.X, tile.Y, tile.Tilematerial.SizeX, tile.Tilematerial.SizeY);
 	}
 	public void removeShape(int x, int y, int sizeX, int sizeY)
 	{
@@ -527,26 +527,26 @@ public partial class Grid : RigidBody2D, IDamageable, ISerializable
 	}
 	public void removeAndOptimizeShapes(Tile tile)
 	{
-		removeAndOptimizeShapes(tile.X, tile.Y, tile.SizeX, tile.SizeY);
+		removeAndOptimizeShapes(tile.X, tile.Y, tile.Tilematerial.SizeX, tile.Tilematerial.SizeY);
 	}
 	public void addShape(Tile tile)
 	{
-		addShape(tile.X, tile.Y, tile.SizeX, tile.SizeY);
+		addShape(tile.X, tile.Y, tile.Tilematerial.SizeX, tile.Tilematerial.SizeY);
 	}
 	public void removeShape(Tile tile)
 	{
-		removeShape(tile.X, tile.Y, tile.SizeX, tile.SizeY);
+		removeShape(tile.X, tile.Y, tile.Tilematerial.SizeX, tile.Tilematerial.SizeY);
 	}
 	public List<Tile> getNeighboursOnAllLayers(Tile tile)
 	{
 		List<Tile> tiles = new();
-		for (int i = -1; i < tile.SizeX + 1; i++)
+		for (int i = -1; i < tile.Tilematerial.SizeX + 1; i++)
 		{
-			for (int j = -1; j < tile.SizeY + 1; j++)
+			for (int j = -1; j < tile.Tilematerial.SizeY + 1; j++)
 			{
 				for (int k = 0; k < 8; k++)
 				{
-					if(i==-1 && j==-1||i==-1 && j==tile.SizeY||i==tile.SizeX && j==-1||i==tile.SizeX && j==tile.SizeY) continue;
+					if(i==-1 && j==-1||i==-1 && j==tile.Tilematerial.SizeY||i==tile.Tilematerial.SizeX && j==-1||i==tile.Tilematerial.SizeX && j==tile.Tilematerial.SizeY) continue;
 					if (isTileAt(tile.X + i, tile.Y + j, (GridLayer)k)) tiles.Add(getTileAt(tile.X + i, tile.Y + j, (GridLayer)k));
 				}
 			}
@@ -631,5 +631,6 @@ public partial class Grid : RigidBody2D, IDamageable, ISerializable
 			}
 		}
 	}
+
 
 }
