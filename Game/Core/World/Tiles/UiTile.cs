@@ -3,7 +3,7 @@ using System;
 
 public partial class UiTile : Tile,IIntractable
 {
-	[Export] public int UI_ID;
+	[Export] public PackedScene UI;
     // Called when the node enters the scene tree for the first time.
 
     public override void _Ready()
@@ -16,11 +16,10 @@ public partial class UiTile : Tile,IIntractable
 	}
 	public virtual void interact(Node source)
 	{
-		ClientStatics.UI_Selector.ShownGUI_ID=UI_ID;
-		ClientStatics.UI_Selector.updateGUI();
+		ClientStatics.player.isInUI=true;
+		ClientStatics.UI_Selector.ShowGUI(UI);
 	}
 	public virtual void endInteraction()
 	{
-		ClientStatics.UI_Selector.ShownGUI_ID=0;
 	}
 }

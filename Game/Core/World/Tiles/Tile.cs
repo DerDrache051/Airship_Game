@@ -1,5 +1,6 @@
 using System;
 using System.Runtime.CompilerServices;
+using Airship_Game.Game.Core.Events;
 using Airship_Game.Game.Core.World.Tiles;
 using Godot;
 
@@ -24,6 +25,8 @@ public partial class Tile : Node2D, IDamageable, ISerializable
 	public Sprite2D damageSprite;
 
 	public bool wasVisibleOnScreen;
+
+	public bool hasSprites;
 
 	// Called when the node enters the scene tree for the first time.
 	public Tile()
@@ -164,7 +167,7 @@ public partial class Tile : Node2D, IDamageable, ISerializable
 	}
 	public Item getTileItem()
 	{
-		TileItem item = new TileItem();
+		TileItem item = new();
 		item.DisplayName = Tilematerial.DisplayName;
 		item.SceneFilePath = "res://Game/Core/Items/tile_item.tscn";
 		item.ID = Tilematerial.ID;
@@ -273,7 +276,10 @@ public partial class Tile : Node2D, IDamageable, ISerializable
 		if (Tilematerial.BackgroundLayer != null) AddChild(CreateTileSprite(Tilematerial.BackgroundLayer, ParentGrid, 6));
 		if (Tilematerial.BehindShipMapDecorationLayer != null) AddChild(CreateTileSprite(Tilematerial.BehindShipMapDecorationLayer, ParentGrid, 7));
 		if (Tilematerial.BehindShipMapLayer != null) AddChild(CreateTileSprite(Tilematerial.BehindShipMapLayer, ParentGrid, 8));
-
+		CreateDamageSprite();
+		hasSprites = true;
+	}
+	private void CreateDamageSprite(){
 		for (int i = 0; i < Layers.Length; i++)
 		{
 			if (Layers[i])
@@ -301,53 +307,92 @@ public partial class Tile : Node2D, IDamageable, ISerializable
 
 	public override void _Draw()
 	{
+		
 		if (Tilematerial.useSprites)
 		{
-			CreateSprites();
+			if(!hasSprites)CreateSprites();
 		}
 		else
 		{
 			Texture2D text=null;
+			int layer = 0;
 			if (Tilematerial.ForegroundDecorationLayer != null)
 			{
 				text = Tilematerial.ForegroundDecorationLayer;
+				layer=0;
 			}
 			else if (Tilematerial.CollisionLayer != null)
 			{
 				text = Tilematerial.CollisionLayer;
+				layer=1;
 			}
 			else if (Tilematerial.InBetweenDecorationLayer != null)
 			{
 				text = Tilematerial.InBetweenDecorationLayer;
+				layer=2;
 			}
 			else if (Tilematerial.InteractionLayer != null)
 			{
 				text = Tilematerial.InteractionLayer;
+				layer=3;
 			}
 			else if (Tilematerial.ConnectionLayer != null)
 			{
 				text = Tilematerial.ConnectionLayer;
+				layer=4;
 			}
 			else if (Tilematerial.BackgroundDecorationLayer != null)
 			{
 				text = Tilematerial.BackgroundDecorationLayer;
+				layer=5;
 			}
 			else if (Tilematerial.BackgroundLayer != null)
 			{
 				text = Tilematerial.BackgroundLayer;
+				layer=6;
 			}
 			else if (Tilematerial.BehindShipMapDecorationLayer != null)
 			{
 				text = Tilematerial.BehindShipMapDecorationLayer;
+				layer=7;
 			}
 			else if (Tilematerial.BehindShipMapLayer != null)
 			{
 				text = Tilematerial.BehindShipMapLayer;
+				layer=8;
 			}
 			if (text != null)
 			{
-				DrawTextureRect(text,new Rect2(ParentGrid.TilePixelSize*-0.5f,ParentGrid.TilePixelSize*-0.5f,ParentGrid.TilePixelSize*Tilematerial.SizeX,ParentGrid.TilePixelSize*Tilematerial.SizeY),false);
+				float ModulationFactor=1-(layer*0.08f);
+				this.ZIndex = 10 - layer * 10;
+				DrawTextureRect(text,new Rect2(ParentGrid.TilePixelSize*-0.5f,ParentGrid.TilePixelSize*-0.5f,ParentGrid.TilePixelSize*Tilematerial.SizeX,ParentGrid.TilePixelSize*Tilematerial.SizeY),false,new Color(Modulate.R*ModulationFactor,Modulate.G*ModulationFactor,Modulate.B*ModulationFactor,1));
 			}
+			CreateDamageSprite();
 		}
 	}
+}
+
+public class TilePlacedEvent(Tile tile, Grid grid, int x, int y) : CancelableEvent{
+	public Tile tile = tile;
+	public Grid Grid = grid;
+	public int X = x;
+	public int Y = y;
+}
+public class TileDestroyedEvent(Tile tile, Grid grid, int x, int y) : CancelableEvent{
+	public Tile tile = tile;
+	public Grid Grid = grid;
+	public int X = x;
+	public int Y = y;
+}
+public class TileDamagedEvent(Tile tile, Grid grid, int x, int y, float damage, DamageTypes damageType, Node2D source, Node2D projectile) : CancelableEvent{
+	public Tile tile = tile;
+	public Grid Grid = grid;
+	public int X = x;
+	public int Y = y;
+	public float Damage = damage;
+	public DamageTypes DamageType = damageType;
+	public Node2D Source = source;
+	public Node2D Projectile = projectile;
+    private DamageTypes type;
+
 }

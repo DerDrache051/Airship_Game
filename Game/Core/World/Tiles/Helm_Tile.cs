@@ -44,7 +44,7 @@ public partial class Helm_Tile : UiTile, IIntractable
 		Pilot.isInUI = false;
 		Pilot.controlPlayer = true;
 		Pilot = null;
-		TargetPosition = Position;
+		TargetPosition = GlobalPosition;
 		Active = false;
 		base.endInteraction();
 	}

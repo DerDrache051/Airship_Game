@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using System.Xml.Resolvers;
 using Godot;
 
 namespace Airship_Game.Game.Core.World.Tiles;
@@ -38,7 +39,7 @@ public partial class TileMaterial : Resource
 	[Export] public float[] DropChances = { 1 };
 	[Export] public int[] DropAmounts = { 1 };
 	[Export] public Texture2D itemTexture;
-	[Export] public PackedScene itemEntity;
+	[Export] public PackedScene itemEntity=GD.Load<PackedScene>("res://Game/Core/World/Entities/item_entity.tscn");
 
 	[ExportGroup("GridLayers")]
 	[Export] public bool castShadows = true;
@@ -51,6 +52,5 @@ public partial class TileMaterial : Resource
 	[Export] public Texture2D BackgroundLayer;
 	[Export] public Texture2D BehindShipMapDecorationLayer;
 	[Export] public Texture2D BehindShipMapLayer;
-
-	[Export] public Texture2D DamageTexture;
+	[Export] public Texture2D DamageTexture=GD.Load<Texture2D>("res://Game/Assets/Tile_Damage_Indicator.png");
 }

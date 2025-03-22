@@ -6,7 +6,6 @@ public partial class GameWorld : Node2D
 	public static GameWorld Instance { get; set; }
 
 	[Export] public Area2D worldBoundary;
-
 	[Export] public Sprite2D worldBoundarySprite;
 	[Export] public Area2D spawnArea;
 	[Export] public Area2D finishArea;
@@ -22,7 +21,7 @@ public partial class GameWorld : Node2D
 	}
     public override void _Ready()
     {
-		ClientStatics.UI_Selector.ShownGUI_ID=0;
+		ClientStatics.UI_Selector.ShowGUI(ClientStatics.UI_Selector.InGameOverlay);
 		setShape(WorldSize*1.5f,worldBoundary,new Vector2(0-(SpawnAreaSize/2),0));
 		setShape(new Vector2(SpawnAreaSize,WorldSize.Y),spawnArea,new Vector2(0-(SpawnAreaSize/2),0));
 		setShape(new Vector2(FinishAreaSize,WorldSize.Y),finishArea,new Vector2((WorldSize.X-(SpawnAreaSize/2))-FinishAreaSize,0));

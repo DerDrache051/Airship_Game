@@ -85,12 +85,6 @@ public partial class PlayerCharacter : AnimatedEntity
 			}
 		};
 		//End_Interaction
-		if (Input.IsActionJustPressed("Exit_UI"))
-		{
-			if (currentInteraction != null)
-				currentInteraction.endInteraction();
-			currentInteraction = null;
-		}
 		if (Input.IsActionJustPressed("UseItemPrimary"))
 		{
 			PlayAnimation("attack");
@@ -124,17 +118,27 @@ public partial class PlayerCharacter : AnimatedEntity
 		}
 		if (Input.IsActionJustPressed("Inventory"))
 		{
-			ClientStatics.UI_Selector.ShownGUI_ID = 1;
+			if(isInUI){
+				ClientStatics.UI_Selector.ShowGUI(ClientStatics.UI_Selector.InGameOverlay);
+				isInUI = false;
+			}
+			else{
+				ClientStatics.UI_Selector.ShowGUI(ClientStatics.UI_Selector.InventoryGUI);
+				isInUI = true;
+			}
+			
 		}
-		if (Input.IsActionJustPressed("Exit_UI"))
+		if (Input.IsActionJustPressed("Exit_UI")&& isInUI)
 		{
-			ClientStatics.UI_Selector.ShownGUI_ID = 0;
+			if(currentInteraction!=null){ currentInteraction.endInteraction();currentInteraction=null;}
+			ClientStatics.UI_Selector.ShowGUI(ClientStatics.UI_Selector.InGameOverlay);
+			isInUI = false;
 		}
 		base._PhysicsProcess(delta);
 	}
     public override void _ExitTree()
     {
-		ClientStatics.UI_Selector.ShownGUI_ID = 4;
+		ClientStatics.UI_Selector.ShowGUI(ClientStatics.UI_Selector.DeathScreen);
         base._ExitTree();
     }
 

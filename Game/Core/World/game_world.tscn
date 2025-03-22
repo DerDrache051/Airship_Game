@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://b4h51fhq1l3jo" path="res://Game/Core/World/GameWorld.cs" id="1_uwwym"]
 [ext_resource type="Texture2D" uid="uid://dcvry553x61ut" path="res://Game/Assets/background.jpg" id="2_1xdf3"]
 [ext_resource type="PackedScene" uid="uid://bf6lmgavncbly" path="res://Game/Core/World/Grids/ship.tscn" id="3_a6a0s"]
-[ext_resource type="PackedScene" uid="uid://cvw7m07ahsp61" path="res://Game/Content/Entities/Player.tscn" id="4_08wuq"]
+[ext_resource type="PackedScene" uid="uid://cvw7m07ahsp61" path="res://Game/Content/Private/Entities/Player.tscn" id="4_08wuq"]
 [ext_resource type="PackedScene" uid="uid://bf034i4yrcg0i" path="res://mapgen.tscn" id="5_fmb01"]
 [ext_resource type="Script" uid="uid://bbxc8x6xmobqe" path="res://Game/Core/World/WorldArea.cs" id="7_2gixf"]
 [ext_resource type="Texture2D" uid="uid://coib7on855rec" path="res://Game/Assets/GUI/item_display_frame.png" id="8_execg"]
@@ -15,7 +15,7 @@ worldBoundary = NodePath("WorldArea")
 worldBoundarySprite = NodePath("World Border Sprite")
 spawnArea = NodePath("SpawnArea")
 finishArea = NodePath("FinishArea")
-WorldSize = Vector2(10000, 2000)
+WorldSize = Vector2(1000, 500)
 SpawnAreaSize = 100
 FinishAreaSize = 100
 

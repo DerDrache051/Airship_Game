@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Godot;
 
 namespace Airship_Game.Game.Core.Events
 {
@@ -11,7 +12,7 @@ namespace Airship_Game.Game.Core.Events
         public static Dictionary<Type, object> eventActions = new();
         public static Dictionary<Type, object> eventChecks = new();
         public static LinkedList<IEventAction<Event>> universalActions = new();
-        public static void addEventAction<T>  (IEventAction<T> action)where T:Event
+        public static void addEventAction<T>(IEventAction<T> action) where T : Event
         {
             if (!eventActions.ContainsKey(typeof(T)))
             {
@@ -22,7 +23,7 @@ namespace Airship_Game.Game.Core.Events
                 actions.AddLast(action);
             }
         }
-        public static void addEventCheck<T>(IEventCheck<T> check)where T:CancelableEvent
+        public static void addEventCheck<T>(IEventCheck<T> check) where T : CancelableEvent
         {
             if (!eventChecks.ContainsKey(typeof(T)))
             {
@@ -33,37 +34,40 @@ namespace Airship_Game.Game.Core.Events
                 checks.AddLast(check);
             }
         }
-        public static void removeEventAction<T>(IEventAction<T> action)where T:Event
+        public static void removeEventAction<T>(IEventAction<T> action) where T : Event
         {
             if (eventActions[typeof(T)] is LinkedList<IEventAction<T>> actions)
             {
                 actions.Remove(action);
             }
         }
-        public static void removeEventCheck<T>(IEventCheck<T> check)where T:CancelableEvent
+        public static void removeEventCheck<T>(IEventCheck<T> check) where T : CancelableEvent
         {
             if (eventChecks[typeof(T)] is LinkedList<IEventCheck<T>> checks)
             {
                 checks.Remove(check);
             }
         }
-        public static bool triggerEvent<T>(T t)where T:Event
+        public static bool triggerEvent<T>(T t) where T : Event
         {
-
-            if (eventChecks[typeof(T)] is LinkedList<IEventCheck<T>> checks)
-            {
-                foreach (IEventCheck<T> check in checks)
+            //Debug
+            GD.Print(t.GetType().Name);
+            if (eventChecks.ContainsKey(typeof(T)))
+                if (eventChecks[typeof(T)] is LinkedList<IEventCheck<T>> checks)
                 {
-                    if (!check.CheckEvent(t)) return false;
+                    foreach (IEventCheck<T> check in checks)
+                    {
+                        if (!check.CheckEvent(t)) return false;
+                    }
                 }
-            }
-            if (eventActions[typeof(T)] is LinkedList<IEventAction<T>> actions)
-            {
-                foreach (IEventAction<T> action in actions)
+            if (eventActions.ContainsKey(typeof(T)))
+                if (eventActions[typeof(T)] is LinkedList<IEventAction<T>> actions)
                 {
-                    action.EventAction(t);
+                    foreach (IEventAction<T> action in actions)
+                    {
+                        action.EventAction(t);
+                    }
                 }
-            }
             foreach (IEventAction<Event> action in universalActions)
             {
                 action.EventAction(t);
@@ -72,7 +76,7 @@ namespace Airship_Game.Game.Core.Events
         }
         public static void addUniversalAction(IEventAction<Event> action)
         {
-            universalActions.AddLast(action);   
+            universalActions.AddLast(action);
         }
         public static void removeUniversalAction(IEventAction<Event> action)
         {

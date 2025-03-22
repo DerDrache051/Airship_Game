@@ -18,15 +18,15 @@ public partial class Ship : Grid
 		//Testin
 		if (DebugSpawn)
 		{
-			addTile("res://Game/Content/Airship_Tiles/levitite_baloon.tscn", 0, 0);
-			addTile("res://Game/Content/Airship_Tiles/levitite_baloon.tscn", 5, 0);
-			addTile("res://Game/Content/Airship_Tiles/wood_tile.tscn", 1, 2);
-			addTile("res://Game/Content/Airship_Tiles/wood_tile.tscn", 2, 2);
-			addTile("res://Game/Content/Airship_Tiles/wood_tile.tscn", 3, 2);
-			addTile("res://Game/Content/Airship_Tiles/wood_tile.tscn", 4, 2);
-			addTile("res://Game/Content/Airship_Tiles/wood_tile.tscn", 5, 2);
-			addTile("res://Game/Content/Airship_Tiles/small_burner_engine.tscn", 2, 1);
-			addTile("res://Game/Content/Airship_Tiles/helm.tscn", 4, 0);
+			addTile("res://Game/Content/Tiles/levitite_baloon.tscn", 0, 0);
+			addTile("res://Game/Content/Tiles/levitite_baloon.tscn", 5, 0);
+			addTile("res://Game/Content/Tiles/wood_tile.tscn", 1, 2);
+			addTile("res://Game/Content/Tiles/wood_tile.tscn", 2, 2);
+			addTile("res://Game/Content/Tiles/wood_tile.tscn", 3, 2);
+			addTile("res://Game/Content/Tiles/wood_tile.tscn", 4, 2);
+			addTile("res://Game/Content/Tiles/wood_tile.tscn", 5, 2);
+			addTile("res://Game/Content/Tiles/small_burner_engine.tscn", 2, 1);
+			addTile("res://Game/Content/Tiles/helm.tscn", 4, 0);
 		}
 		this.LinearDamp=70;
 		base._Ready();
