@@ -42,5 +42,6 @@ public partial class GameWorld : Node2D
 		collisionShape.Shape = shape;
 		collisionShape.Position=size/2;
 		area.AddChild(collisionShape);
+		
 	}
 }

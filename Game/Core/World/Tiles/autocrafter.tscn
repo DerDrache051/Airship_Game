@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://bcpp6ewjwattn"]
+
+[ext_resource type="PackedScene" uid="uid://c017tb61dwttp" path="res://Game/Core/World/Tiles/inventory_tile.tscn" id="1_houqn"]
+[ext_resource type="Script" uid="uid://cb7touot3urm7" path="res://Game/Core/World/Tiles/Autocrafter.cs" id="2_eabj1"]
+
+[node name="Autocrafter" instance=ExtResource("1_houqn")]
+script = ExtResource("2_eabj1")
+Speed = 0
+UI = null

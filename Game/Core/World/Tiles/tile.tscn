@@ -1,11 +1,7 @@
-[gd_scene load_steps=4 format=3 uid="uid://btid0ccdcd7xc"]
+[gd_scene load_steps=2 format=3 uid="uid://btid0ccdcd7xc"]
 
 [ext_resource type="Script" uid="uid://cyblv036a260j" path="res://Game/Core/World/Tiles/Tile.cs" id="1_0uj6a"]
-[ext_resource type="PackedScene" uid="uid://6h10q3jpndd5" path="res://Game/Core/World/Entities/item_entity.tscn" id="2_dwr7d"]
-[ext_resource type="Texture2D" uid="uid://cq0d4ltui0e7o" path="res://Game/Assets/Tile_Damage_Indicator.png" id="3_rnhtv"]
 
 [node name="Tile" type="Node2D"]
 process_mode = 4
 script = ExtResource("1_0uj6a")
-itemEntity = ExtResource("2_dwr7d")
-DamageTexture = ExtResource("3_rnhtv")

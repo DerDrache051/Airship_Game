@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://cvw7m07ahsp61"]
+[gd_scene load_steps=19 format=3 uid="uid://cvw7m07ahsp61"]
 
 [ext_resource type="PackedScene" uid="uid://dhagi8nq43woc" path="res://Game/Core/World/Entities/animated_entity.tscn" id="1_37575"]
 [ext_resource type="Script" uid="uid://fr7rk0uf1n1h" path="res://Game/Core/World/Entities/PlayerCharacter.cs" id="2_fouph"]
@@ -40,7 +40,15 @@ size = Vector2(7, 15)
 [sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_bi17l"]
 size = Vector2(5, 5)
 
-[node name="AnimatedEntity" groups=["Player"] instance=ExtResource("1_37575")]
+[sub_resource type="Gradient" id="Gradient_o0w6s"]
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_ehkt5"]
+gradient = SubResource("Gradient_o0w6s")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+
+[node name="Player" groups=["Player"] instance=ExtResource("1_37575")]
 script = ExtResource("2_fouph")
 animationLibrary = "humanoid_animations"
 maxHealth = 20
@@ -98,3 +106,15 @@ breakRectangle = SubResource("PlaceholderTexture2D_ko1lu")
 z_index = 100
 texture = SubResource("PlaceholderTexture2D_bi17l")
 script = ExtResource("9_hgsyu")
+
+[node name="Headlight" type="PointLight2D" parent="." index="12"]
+position = Vector2(1.49999, 7.39098e-06)
+scale = Vector2(0.97555, 0.558614)
+energy = 3.0
+range_layer_min = -1
+range_layer_max = 1
+shadow_enabled = true
+shadow_filter_smooth = 64.0
+texture = SubResource("GradientTexture2D_ehkt5")
+texture_scale = 2.0
+height = 300.0

@@ -1,12 +1,13 @@
-[gd_scene load_steps=8 format=3 uid="uid://dejkpsiwlsrh8"]
+[gd_scene load_steps=9 format=3 uid="uid://dejkpsiwlsrh8"]
 
 [ext_resource type="Script" uid="uid://b4h51fhq1l3jo" path="res://Game/Core/World/GameWorld.cs" id="1_uwwym"]
 [ext_resource type="Texture2D" uid="uid://dcvry553x61ut" path="res://Game/Assets/background.jpg" id="2_1xdf3"]
 [ext_resource type="PackedScene" uid="uid://bf6lmgavncbly" path="res://Game/Core/World/Grids/ship.tscn" id="3_a6a0s"]
-[ext_resource type="PackedScene" uid="uid://cvw7m07ahsp61" path="res://Game/Content/Private/Entities/Player.tscn" id="4_08wuq"]
+[ext_resource type="PackedScene" uid="uid://cvw7m07ahsp61" path="res://Game/Content/Internal/Entities/Player.tscn" id="4_08wuq"]
 [ext_resource type="PackedScene" uid="uid://bf034i4yrcg0i" path="res://mapgen.tscn" id="5_fmb01"]
 [ext_resource type="Script" uid="uid://bbxc8x6xmobqe" path="res://Game/Core/World/WorldArea.cs" id="7_2gixf"]
 [ext_resource type="Texture2D" uid="uid://coib7on855rec" path="res://Game/Assets/GUI/item_display_frame.png" id="8_execg"]
+[ext_resource type="PackedScene" uid="uid://b3b8ybg261jwg" path="res://Game/Content/Worldgen/large_basic_island.tscn" id="8_uwwym"]
 
 [node name="Game_World" type="Node2D" node_paths=PackedStringArray("worldBoundary", "worldBoundarySprite", "spawnArea", "finishArea")]
 texture_filter = 1
@@ -26,9 +27,11 @@ motion_scale = Vector2(0, 0)
 
 [node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer"]
 texture_filter = 2
-position = Vector2(174.75, 104.5)
+position = Vector2(34, 77)
 scale = Vector2(1.55818, 1.84153)
 texture = ExtResource("2_1xdf3")
+region_enabled = true
+region_rect = Rect2(8, 24, 256, 136)
 
 [node name="Ship" parent="." instance=ExtResource("3_a6a0s")]
 position = Vector2(11, 200)
@@ -55,5 +58,17 @@ visible = false
 visible = false
 scale = Vector2(2, 1)
 texture = ExtResource("8_execg")
+
+[node name="CanvasModulate" type="CanvasModulate" parent="."]
+color = Color(0, 0, 0, 1)
+
+[node name="DirectionalLight2D" type="DirectionalLight2D" parent="."]
+position = Vector2(461, -362)
+blend_mode = 2
+shadow_enabled = true
+height = 1.0
+
+[node name="Floating_Island" parent="." instance=ExtResource("8_uwwym")]
+position = Vector2(79, 78)
 
 [connection signal="body_exited" from="WorldArea" to="WorldArea" method="removeBody"]

@@ -16,7 +16,7 @@ public partial class Grid : RigidBody2D, IDamageable, ISerializable, IEventActio
 	[Export] public bool isStatic = true;
 	public System.Collections.Generic.Dictionary<String, Tile> Tiles = new();
 	public System.Collections.Generic.Dictionary<String, Rid> physicsShapes = new();
-	public List<Polygon2D> polygon;
+	public System.Collections.Generic.Dictionary<String, LightOccluder2D> lightOccluders = new();
 	public int Weight = 0;
 
 	public bool isLive = false;//if phyiscs and light shapes should be updated. set to true after the grid is ready. set to false when making large changes, like breaking a ship or during world generation or loading
@@ -33,7 +33,7 @@ public partial class Grid : RigidBody2D, IDamageable, ISerializable, IEventActio
 	{
 		isLive = true;
 		RecalulatePhysicsShapes();
-		RecalculateLights();
+		//RecalculateLights();
 		if (isStatic) PhysicsServer2D.BodySetMode(GetRid(), PhysicsServer2D.BodyMode.Static);
 		EventManager.triggerEvent(new GridAddedEvent(this, Tiles.Values.ToList()));
 	}
@@ -43,7 +43,7 @@ public partial class Grid : RigidBody2D, IDamageable, ISerializable, IEventActio
 	{
 
 	}
-
+	/*
 	public void UpdateLights(Tile tile, int layer)
 	{
 		UpdateLights2(tile, layer);
@@ -55,7 +55,7 @@ public partial class Grid : RigidBody2D, IDamageable, ISerializable, IEventActio
 		{
 			tile.QueueRedraw();
 		}
-	}
+	}*/
 	public void UnmarkAll()//removes all markers used by internal processes
 	{
 		foreach (Tile tile in Tiles.Values)
@@ -64,7 +64,7 @@ public partial class Grid : RigidBody2D, IDamageable, ISerializable, IEventActio
 			tile.LightUpdateLevel = 0;
 		}
 
-	}
+	}/*
 	public void UpdateLights2(Tile tile, int layer)
 	{
 		if (!isLive || layer <= 0 || tile.isMarked) return;
@@ -101,6 +101,7 @@ public partial class Grid : RigidBody2D, IDamageable, ISerializable, IEventActio
 			AddLight2(neighbour, level - tile.lightReduction);
 		}
 	}*/
+	/*
 	private void AddLight2(Tile tile, int level)
 	{
 		if (tile.isMarked || level <= 0) return;
@@ -142,7 +143,7 @@ public partial class Grid : RigidBody2D, IDamageable, ISerializable, IEventActio
 		GD.Print("removing light");
 		RemoveLight2(tile, tile.Tilematerial.lightEmission);
 		UnmarkAll();
-	}
+	}*/
 	/*public void RemoveLight2(Tile tile,int level){
 		if (tile.isMarked || level <= 0) return;
 		GD.Print(level);
@@ -153,7 +154,7 @@ public partial class Grid : RigidBody2D, IDamageable, ISerializable, IEventActio
 			RemoveLight2(neighbour, level - tile.lightReduction);
 		}
 	}*/
-	private void RemoveLight2(Tile tile, int level)
+	/*private void RemoveLight2(Tile tile, int level)
 	{
 		if (tile.isMarked || level <= 0) return;
 		tile.lightLevel -= level;
@@ -218,7 +219,7 @@ public partial class Grid : RigidBody2D, IDamageable, ISerializable, IEventActio
 		{
 			UpdateBorderLights2(neighbour);
 		}
-	}
+	}*/ 
 	//Adds a tile to the grid
 	public bool addTileToDictOnly(Tile tile, int x, int y)
 	{
@@ -270,8 +271,8 @@ public partial class Grid : RigidBody2D, IDamageable, ISerializable, IEventActio
 		}
 		//addNeighbours
 		tile.onTileAddGrid(this);
-		if (isLive) AddLight(tile);
-		if (isLive) UpdateBorderLights(tile);
+		//if (isLive) AddLight(tile);
+		//if (isLive) UpdateBorderLights(tile);
 		if (tile.GetParent() == null) AddChild(tile);
 		if (tile.Layers[1] && isLive) addAndOptimizeShapes(tile);
 		if (IsInGroup("Save")) tile.AddToGroup("Save");
@@ -372,9 +373,9 @@ public partial class Grid : RigidBody2D, IDamageable, ISerializable, IEventActio
 		if (tile == null) return;
 		tile.onTileRemoveGrid(this);
 		if (tile.Layers[1] && isLive) removeAndOptimizeShapes(tile);
-		if (isLive) RemoveLight(tile);
+		//if (isLive) RemoveLight(tile);
 		removeTilefromDictOnly(tile);
-		if (isLive) UpdateBorderLights(tile);
+		//if (isLive) UpdateBorderLights(tile);
 		RemoveChild(tile);
 	}
 	public void removeTilefromDictOnly(Tile tile)
@@ -518,6 +519,13 @@ public partial class Grid : RigidBody2D, IDamageable, ISerializable, IEventActio
 		PhysicsServer2D.BodyAddShape(GetRid(), rid);
 		physicsShapes.Add(x + "," + y + "," + sizeX + "," + sizeY, rid);
 
+		if(lightOccluders.ContainsKey(x + "," + y + "," + sizeX + "," + sizeY))return;
+		LightOccluder2D lightOccluder = new LightOccluder2D();
+		lightOccluder.SetOccluderPolygon(new OccluderPolygon2D());
+		//lightOccluder.Occluder.CullMode=OccluderPolygon2D.CullModeEnum.Clockwise;
+		lightOccluder.Occluder.Polygon=vertices;
+		lightOccluders.Add(x + "," + y + "," + sizeX + "," + sizeY, lightOccluder);
+		AddChild(lightOccluder);
 	}
 	public void addAndOptimizeShapes(int x, int y, int sizeX, int sizeY)
 	{
@@ -547,6 +555,12 @@ public partial class Grid : RigidBody2D, IDamageable, ISerializable, IEventActio
 				}
 			}
 			physicsShapes.Remove(x + "," + y + "," + sizeX + "," + sizeY);
+		}
+		if (lightOccluders.ContainsKey(x + "," + y + "," + sizeX + "," + sizeY))
+		{
+			RemoveChild(lightOccluders[x + "," + y + "," + sizeX + "," + sizeY]);
+			lightOccluders[x + "," + y + "," + sizeX + "," + sizeY].QueueFree();
+			lightOccluders.Remove(x + "," + y + "," + sizeX + "," + sizeY);
 		}
 	}
 	public void removeAndOptimizeShapes(int x, int y, int sizeX, int sizeY)
