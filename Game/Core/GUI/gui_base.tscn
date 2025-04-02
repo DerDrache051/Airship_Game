@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://o5wyudsh8s13"]
 
-[ext_resource type="Texture2D" uid="uid://qx4rol3n7icy" path="res://Game/Assets/Airship_Tiles/airship_tiles_1.png" id="1_xtuml"]
+[ext_resource type="Texture2D" uid="uid://qx4rol3n7icy" path="res://Game/Content/Assets/Airship_Tiles/airship_tiles_1.png" id="1_xtuml"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_stfct"]
 atlas = ExtResource("1_xtuml")

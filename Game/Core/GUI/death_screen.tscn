@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://bp037i0bolvff"]
 
-[ext_resource type="SystemFont" uid="uid://dgvkmv1h6l3e4" path="res://Game/Assets/other_resources/game_font.tres" id="1_if853"]
-[ext_resource type="Script" uid="uid://csowsxhd47g66" path="res://QuitToMenuButton.cs" id="2_ex68u"]
+[ext_resource type="SystemFont" uid="uid://dgvkmv1h6l3e4" path="res://Game/Core/Assetts/other_resources/game_font.tres" id="1_if853"]
+[ext_resource type="Script" uid="uid://csowsxhd47g66" path="res://Game/Core/GUI/QuitToMenuButton.cs" id="2_ex68u"]
 
 [node name="Death Screen" type="Control"]
 layout_mode = 3

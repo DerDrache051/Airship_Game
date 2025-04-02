@@ -1,13 +1,13 @@
 [gd_scene load_steps=10 format=3 uid="uid://hx0unydlx7hi"]
 
 [ext_resource type="Script" uid="uid://e5dkbl1fven" path="res://Game/Core/World/Registry.cs" id="9_xsgwy"]
-[ext_resource type="PackedScene" uid="uid://cqnlqaytj5xqw" path="res://main_menu.tscn" id="23_lxc43"]
-[ext_resource type="PackedScene" uid="uid://ttuegs58cpix" path="res://loading_screen.tscn" id="24_kvj2l"]
+[ext_resource type="PackedScene" uid="uid://cqnlqaytj5xqw" path="res://Game/Core/GUI/main_menu.tscn" id="23_lxc43"]
+[ext_resource type="PackedScene" uid="uid://ttuegs58cpix" path="res://Game/Core/GUI/loading_screen.tscn" id="24_kvj2l"]
 [ext_resource type="PackedScene" uid="uid://fiem4dgpg40v" path="res://Game/Core/GUI/in_game_overlay.tscn" id="24_mgpxi"]
 [ext_resource type="PackedScene" uid="uid://dbch04d4s8m4t" path="res://Game/Core/GUI/player_inventory_gui.tscn" id="25_lvwpj"]
 [ext_resource type="Script" uid="uid://e56o4xe5fywu" path="res://Game/Core/World/UI_Selector.cs" id="28_x1cis"]
 [ext_resource type="PackedScene" uid="uid://3yhqp8i7ungy" path="res://Game/Core/GUI/cursor.tscn" id="29_u5cdp"]
-[ext_resource type="PackedScene" uid="uid://bp037i0bolvff" path="res://death_screen.tscn" id="30_b6fgr"]
+[ext_resource type="PackedScene" uid="uid://bp037i0bolvff" path="res://Game/Core/GUI/death_screen.tscn" id="30_b6fgr"]
 [ext_resource type="PackedScene" uid="uid://c6j0k61m6fxb5" path="res://Game/Core/Items/Crafting/recipe_system.tscn" id="30_g2vn0"]
 
 [node name="Game" type="Node"]

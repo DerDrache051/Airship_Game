@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bv5cfj4f2bnme"
-path="res://.godot/imported/dev_player.png-4116bff5e10f96f0fb858b4a14ae51bd.ctex"
+uid="uid://cq0d4ltui0e7o"
+path="res://.godot/imported/Tile_Damage_Indicator.png-40419ffa35162db0c26807a211a61246.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Game/Assets/dev_player.png"
-dest_files=["res://.godot/imported/dev_player.png-4116bff5e10f96f0fb858b4a14ae51bd.ctex"]
+source_file="res://Game/Core/Assetts/Tile_Damage_Indicator.png"
+dest_files=["res://.godot/imported/Tile_Damage_Indicator.png-40419ffa35162db0c26807a211a61246.ctex"]
 
 [params]
 

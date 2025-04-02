@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://qx4rol3n7icy"
-path="res://.godot/imported/airship_tiles_1.png-99e8f6dadc132cb0b46be6b63e81b250.ctex"
+uid="uid://bv5cfj4f2bnme"
+path="res://.godot/imported/dev_player.png-892a4b4b56708707e06e1151ae618024.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Game/Assets/Airship_Tiles/airship_tiles_1.png"
-dest_files=["res://.godot/imported/airship_tiles_1.png-99e8f6dadc132cb0b46be6b63e81b250.ctex"]
+source_file="res://Game/Core/Assetts/dev_player.png"
+dest_files=["res://.godot/imported/dev_player.png-892a4b4b56708707e06e1151ae618024.ctex"]
 
 [params]
 

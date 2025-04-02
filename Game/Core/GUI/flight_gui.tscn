@@ -1,6 +1,6 @@
 [gd_scene load_steps=6 format=3 uid="uid://5xw0t2aejb2d"]
 
-[ext_resource type="SystemFont" uid="uid://dgvkmv1h6l3e4" path="res://Game/Assets/other_resources/game_font.tres" id="1_5armc"]
+[ext_resource type="SystemFont" uid="uid://dgvkmv1h6l3e4" path="res://Game/Core/Assetts/other_resources/game_font.tres" id="1_5armc"]
 [ext_resource type="Script" uid="uid://dmma86onlxnbq" path="res://Game/Core/GUI/VelocityIndicator.cs" id="2_3w05w"]
 [ext_resource type="Script" uid="uid://dswiar61g6b8d" path="res://Game/Core/GUI/PositionIndicator.cs" id="3_3w05w"]
 [ext_resource type="Script" uid="uid://dx60lue5ltmy4" path="res://Game/Core/GUI/WeightIndicator.cs" id="4_xt484"]

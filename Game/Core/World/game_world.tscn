@@ -1,12 +1,12 @@
 [gd_scene load_steps=9 format=3 uid="uid://dejkpsiwlsrh8"]
 
 [ext_resource type="Script" uid="uid://b4h51fhq1l3jo" path="res://Game/Core/World/GameWorld.cs" id="1_uwwym"]
-[ext_resource type="Texture2D" uid="uid://dcvry553x61ut" path="res://Game/Assets/background.jpg" id="2_1xdf3"]
+[ext_resource type="Texture2D" uid="uid://dcvry553x61ut" path="res://Game/Core/Assetts/background.jpg" id="2_1xdf3"]
 [ext_resource type="PackedScene" uid="uid://bf6lmgavncbly" path="res://Game/Core/World/Grids/ship.tscn" id="3_a6a0s"]
 [ext_resource type="PackedScene" uid="uid://cvw7m07ahsp61" path="res://Game/Content/Internal/Entities/Player.tscn" id="4_08wuq"]
-[ext_resource type="PackedScene" uid="uid://bf034i4yrcg0i" path="res://mapgen.tscn" id="5_fmb01"]
+[ext_resource type="PackedScene" uid="uid://bf034i4yrcg0i" path="res://Game/Core/GUI/mapgen.tscn" id="5_fmb01"]
 [ext_resource type="Script" uid="uid://bbxc8x6xmobqe" path="res://Game/Core/World/WorldArea.cs" id="7_2gixf"]
-[ext_resource type="Texture2D" uid="uid://coib7on855rec" path="res://Game/Assets/GUI/item_display_frame.png" id="8_execg"]
+[ext_resource type="Texture2D" uid="uid://coib7on855rec" path="res://Game/Core/Assetts/GUI/item_display_frame.png" id="8_execg"]
 [ext_resource type="PackedScene" uid="uid://b3b8ybg261jwg" path="res://Game/Content/Worldgen/large_basic_island.tscn" id="8_uwwym"]
 
 [node name="Game_World" type="Node2D" node_paths=PackedStringArray("worldBoundary", "worldBoundarySprite", "spawnArea", "finishArea")]

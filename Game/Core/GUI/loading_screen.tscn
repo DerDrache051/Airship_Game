@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://ttuegs58cpix"]
 
-[ext_resource type="SystemFont" uid="uid://dgvkmv1h6l3e4" path="res://Game/Assets/other_resources/game_font.tres" id="1_htrc2"]
-[ext_resource type="Texture2D" uid="uid://3f5x5jx45p2p" path="res://Game/Assets/Airship_Tiles/Ship_Tile_Sprites_8.png" id="2_weff3"]
+[ext_resource type="SystemFont" uid="uid://dgvkmv1h6l3e4" path="res://Game/Core/Assetts/other_resources/game_font.tres" id="1_htrc2"]
+[ext_resource type="Texture2D" uid="uid://3f5x5jx45p2p" path="res://Game/Content/Assets/Airship_Tiles/Ship_Tile_Sprites_8.png" id="2_weff3"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_fgney"]
 atlas = ExtResource("2_weff3")

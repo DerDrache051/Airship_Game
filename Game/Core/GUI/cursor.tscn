@@ -1,7 +1,7 @@
 [gd_scene load_steps=7 format=3 uid="uid://3yhqp8i7ungy"]
 
 [ext_resource type="Script" uid="uid://cstpndh34c6ks" path="res://Game/Core/GUI/Cursor.cs" id="1_lqus5"]
-[ext_resource type="Texture2D" uid="uid://bhvfntrk53p7m" path="res://Game/Assets/Cursor_Sprites.png" id="2_gura8"]
+[ext_resource type="Texture2D" uid="uid://upmptrrlsrqv" path="res://Game/Core/Assetts/Cursor_Sprites.png" id="2_gura8"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ym6u5"]
 atlas = ExtResource("2_gura8")

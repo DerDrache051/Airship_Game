@@ -1,8 +1,8 @@
 [gd_scene load_steps=8 format=3 uid="uid://rsn43iyanlo4"]
 
 [ext_resource type="PackedScene" uid="uid://btid0ccdcd7xc" path="res://Game/Core/World/Tiles/tile.tscn" id="1_ldw3f"]
-[ext_resource type="Texture2D" uid="uid://c3qn0pww86jd6" path="res://Game/Assets/Airship_Tiles/World_Tiles.png" id="2_4mtt2"]
-[ext_resource type="Texture2D" uid="uid://cq0d4ltui0e7o" path="res://Game/Assets/Tile_Damage_Indicator.png" id="3_o4iri"]
+[ext_resource type="Texture2D" uid="uid://c3qn0pww86jd6" path="res://Game/Content/Assets/Airship_Tiles/World_Tiles.png" id="2_4mtt2"]
+[ext_resource type="Texture2D" uid="uid://cq0d4ltui0e7o" path="res://Game/Core/Assetts/Tile_Damage_Indicator.png" id="3_o4iri"]
 [ext_resource type="PackedScene" uid="uid://6h10q3jpndd5" path="res://Game/Core/World/Entities/item_entity.tscn" id="3_revi4"]
 [ext_resource type="Script" uid="uid://g81hmtholqmq" path="res://Game/Core/World/Tiles/TileMaterial.cs" id="4_o4iri"]
 

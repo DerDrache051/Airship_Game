@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://c3qn0pww86jd6"
-path="res://.godot/imported/World_Tiles.png-62b8cd6f85ef07c783021eb530a34519.ctex"
+path="res://.godot/imported/World_Tiles.png-eba989dacc7523c003358e02f873efc3.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Game/Assets/Airship_Tiles/World_Tiles.png"
-dest_files=["res://.godot/imported/World_Tiles.png-62b8cd6f85ef07c783021eb530a34519.ctex"]
+source_file="res://Game/Content/Assets/Airship_Tiles/World_Tiles.png"
+dest_files=["res://.godot/imported/World_Tiles.png-eba989dacc7523c003358e02f873efc3.ctex"]
 
 [params]
 

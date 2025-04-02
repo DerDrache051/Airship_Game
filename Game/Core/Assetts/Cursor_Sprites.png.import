@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cpnrb2wc421wa"
-path="res://.godot/imported/Item_Sprites.png-4134c6e33e62c7065e6e68df101bd896.ctex"
+uid="uid://bhvfntrk53p7m"
+path="res://.godot/imported/Cursor_Sprites.png-3611e2a9bf809e3990f7e8ba1c5b8ffb.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Game/Assets/Items/Item_Sprites.png"
-dest_files=["res://.godot/imported/Item_Sprites.png-4134c6e33e62c7065e6e68df101bd896.ctex"]
+source_file="res://Game/Core/Assetts/Cursor_Sprites.png"
+dest_files=["res://.godot/imported/Cursor_Sprites.png-3611e2a9bf809e3990f7e8ba1c5b8ffb.ctex"]
 
 [params]
 

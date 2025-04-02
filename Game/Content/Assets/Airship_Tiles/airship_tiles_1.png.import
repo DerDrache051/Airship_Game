@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b2r0s3e5oj78k"
-path="res://.godot/imported/New Piskel.png-645a310f3b0d58bc82d8b89f0ee57e8f.ctex"
+uid="uid://qx4rol3n7icy"
+path="res://.godot/imported/airship_tiles_1.png-2c95e39d984f011bdd865e751e73095e.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Game/Assets/Entities/New Piskel.png"
-dest_files=["res://.godot/imported/New Piskel.png-645a310f3b0d58bc82d8b89f0ee57e8f.ctex"]
+source_file="res://Game/Content/Assets/Airship_Tiles/airship_tiles_1.png"
+dest_files=["res://.godot/imported/airship_tiles_1.png-2c95e39d984f011bdd865e751e73095e.ctex"]
 
 [params]
 

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cq0d4ltui0e7o"
-path="res://.godot/imported/Tile_Damage_Indicator.png-9df1bc3b5bc764aa2abc1b12c165f45b.ctex"
+uid="uid://3f5x5jx45p2p"
+path="res://.godot/imported/Ship_Tile_Sprites_8.png-2e20560ca5a1e36ccf912af42c5665f4.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Game/Assets/Tile_Damage_Indicator.png"
-dest_files=["res://.godot/imported/Tile_Damage_Indicator.png-9df1bc3b5bc764aa2abc1b12c165f45b.ctex"]
+source_file="res://Game/Content/Assets/Airship_Tiles/Ship_Tile_Sprites_8.png"
+dest_files=["res://.godot/imported/Ship_Tile_Sprites_8.png-2e20560ca5a1e36ccf912af42c5665f4.ctex"]
 
 [params]
 

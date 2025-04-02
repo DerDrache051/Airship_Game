@@ -1,9 +1,9 @@
 [gd_scene load_steps=14 format=3 uid="uid://bvs2crymhqni6"]
 
 [ext_resource type="PackedScene" uid="uid://dxd8b2h5fnft2" path="res://Game/Core/World/Entities/Living_Entity.tscn" id="1_jk2up"]
-[ext_resource type="AnimationLibrary" uid="uid://b14kj05gblnl6" path="res://Game/Assets/Entities/humanoid_animations.res" id="2_a10k0"]
+[ext_resource type="AnimationLibrary" uid="uid://b14kj05gblnl6" path="res://Game/Content/Assets/Entities/humanoid_animations.res" id="2_a10k0"]
 [ext_resource type="PackedScene" uid="uid://ddi0x8o36nniu" path="res://Game/Core/World/Entities/Entity Behaviors/basic_move_to_nearest_player.tscn" id="2_xhgdp"]
-[ext_resource type="Texture2D" uid="uid://b2r0s3e5oj78k" path="res://Game/Assets/Entities/New Piskel.png" id="3_so43y"]
+[ext_resource type="Texture2D" uid="uid://b2r0s3e5oj78k" path="res://Game/Content/Assets/Entities/New Piskel.png" id="3_so43y"]
 [ext_resource type="PackedScene" uid="uid://c3mwxbgs6vy5t" path="res://Game/Core/World/Entities/Entity Behaviors/mele_attack_player.tscn" id="5_erlle"]
 [ext_resource type="Script" uid="uid://b1k4kkjgasrqh" path="res://Game/Core/World/Entities/Entity Behaviors/SelectPlayerAsTarget.cs" id="6_cdid6"]
 

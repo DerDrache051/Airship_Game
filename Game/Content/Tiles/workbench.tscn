@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://b8t46cshswy8v" path="res://Game/Core/World/Tiles/ui_tile.tscn" id="1_gcfoi"]
 [ext_resource type="PackedScene" uid="uid://cgo6awdoxc12u" path="res://Game/Core/GUI/crafting_ui.tscn" id="2_16pek"]
-[ext_resource type="Texture2D" uid="uid://3f5x5jx45p2p" path="res://Game/Assets/Airship_Tiles/Ship_Tile_Sprites_8.png" id="2_loq73"]
+[ext_resource type="Texture2D" uid="uid://3f5x5jx45p2p" path="res://Game/Content/Assets/Airship_Tiles/Ship_Tile_Sprites_8.png" id="2_loq73"]
 [ext_resource type="PackedScene" uid="uid://d18fhhpoihqhb" path="res://Game/Core/World/Entities/entity.tscn" id="3_04jax"]
 [ext_resource type="Script" uid="uid://dvelfej3wpena" path="res://Game/Core/World/Entities/ItemEntity.cs" id="4_i2y4d"]
 [ext_resource type="Script" uid="uid://g81hmtholqmq" path="res://Game/Core/World/Tiles/TileMaterial.cs" id="5_pf6u6"]

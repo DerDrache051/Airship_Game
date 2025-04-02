@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://b872knh0qng7y" path="res://Game/Core/Items/projectile_spawning_item.tscn" id="1_bqjk6"]
 [ext_resource type="PackedScene" uid="uid://dgkw7ralm4q0f" path="res://Game/Core/World/Projectiles/testProjectile.tscn" id="2_pp5f7"]
-[ext_resource type="Texture2D" uid="uid://cpnrb2wc421wa" path="res://Game/Assets/Items/Item_Sprites.png" id="3_rkkf8"]
+[ext_resource type="Texture2D" uid="uid://cpnrb2wc421wa" path="res://Game/Content/Assets/Items/Item_Sprites.png" id="3_rkkf8"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_iptx4"]
 atlas = ExtResource("3_rkkf8")
