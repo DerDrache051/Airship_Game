@@ -33,7 +33,7 @@ public partial class Grid : RigidBody2D, IDamageable, ISerializable, IEventActio
 	{
 		isLive = true;
 		RecalulatePhysicsShapes();
-		//RecalculateLights();
+		RecalculateLights();
 		if (isStatic) PhysicsServer2D.BodySetMode(GetRid(), PhysicsServer2D.BodyMode.Static);
 		EventManager.triggerEvent(new GridAddedEvent(this, Tiles.Values.ToList()));
 	}
@@ -43,7 +43,7 @@ public partial class Grid : RigidBody2D, IDamageable, ISerializable, IEventActio
 	{
 
 	}
-	/*
+	
 	public void UpdateLights(Tile tile, int layer)
 	{
 		UpdateLights2(tile, layer);
@@ -53,9 +53,10 @@ public partial class Grid : RigidBody2D, IDamageable, ISerializable, IEventActio
 	{
 		foreach (Tile tile in Tiles.Values)
 		{
+			tile.Modulate = new Color(Math.Min(tile.lightLevel / 8f, 1f), Math.Min(tile.lightLevel / 8f, 1f), Math.Min(tile.lightLevel / 8f, 1f), 1f);
 			tile.QueueRedraw();
 		}
-	}*/
+	}
 	public void UnmarkAll()//removes all markers used by internal processes
 	{
 		foreach (Tile tile in Tiles.Values)
@@ -64,7 +65,7 @@ public partial class Grid : RigidBody2D, IDamageable, ISerializable, IEventActio
 			tile.LightUpdateLevel = 0;
 		}
 
-	}/*
+	}
 	public void UpdateLights2(Tile tile, int layer)
 	{
 		if (!isLive || layer <= 0 || tile.isMarked) return;
@@ -83,30 +84,24 @@ public partial class Grid : RigidBody2D, IDamageable, ISerializable, IEventActio
 		{
 			AddLight(tile);
 			UpdateBorderLights(tile);
+
 		}
+		RedrawAllTiles();
 	}
+	
+	
+	
 	public void AddLight(Tile tile)
 	{
 		AddLight2(tile, tile.Tilematerial.lightEmission);
 		UnmarkAll();
 	}
-	/*public void AddLight2(Tile tile, int level)
-	{
-		if (tile.isMarked || level <= 0) return;
-		tile.lightLevel += level;
-		tile.Modulate = new Color(Math.Min(tile.lightLevel / 4f, 1), Math.Min(tile.lightLevel / 4f, 1), Math.Min(tile.lightLevel / 4f, 1), 1);
-		tile.isMarked = true;
-		foreach (Tile neighbour in getNeighboursOnAllLayers(tile))
-		{
-			AddLight2(neighbour, level - tile.lightReduction);
-		}
-	}*/
-	/*
+	
 	private void AddLight2(Tile tile, int level)
 	{
 		if (tile.isMarked || level <= 0) return;
 		tile.lightLevel += level;
-		tile.Modulate = new Color(Math.Min(tile.lightLevel / 4f, 1), Math.Min(tile.lightLevel / 4f, 1), Math.Min(tile.lightLevel / 4f, 1), 1);
+		tile.Modulate = new Color(Math.Min(tile.lightLevel / 8f, 1f), Math.Min(tile.lightLevel / 8f, 1f), Math.Min(tile.lightLevel / 8f, 1f), 1f);
 		tile.isMarked = true;
 		Queue<Tile> queue = new Queue<Tile>();
 		queue.Enqueue(tile);
@@ -130,7 +125,7 @@ public partial class Grid : RigidBody2D, IDamageable, ISerializable, IEventActio
 				{
 					neighbour.lightLevel += newLevel;
 					neighbour.LightUpdateLevel = newLevel;
-					neighbour.Modulate = new Color(Math.Min(neighbour.lightLevel / 4f, 1), Math.Min(neighbour.lightLevel / 4f, 1), Math.Min(neighbour.lightLevel / 4f, 1), 1);
+					neighbour.Modulate = new Color(Math.Min(neighbour.lightLevel / 8f, 1f), Math.Min(neighbour.lightLevel / 8f, 1f), Math.Min(neighbour.lightLevel / 8f, 1f), 1);
 					neighbour.isMarked = true;
 					neighbour.QueueRedraw();
 					queue.Enqueue(neighbour);
@@ -143,22 +138,12 @@ public partial class Grid : RigidBody2D, IDamageable, ISerializable, IEventActio
 		GD.Print("removing light");
 		RemoveLight2(tile, tile.Tilematerial.lightEmission);
 		UnmarkAll();
-	}*/
-	/*public void RemoveLight2(Tile tile,int level){
-		if (tile.isMarked || level <= 0) return;
-		GD.Print(level);
-		tile.lightLevel -= level;
-		tile.Modulate = new Color(Math.Min(tile.lightLevel / 4f, 1), Math.Min(tile.lightLevel / 4f, 1), Math.Min(tile.lightLevel / 4f, 1), 1);
-		tile.isMarked = true;
-		foreach (Tile neighbour in getNeighboursOnAllLayers(tile)){
-			RemoveLight2(neighbour, level - tile.lightReduction);
-		}
-	}*/
-	/*private void RemoveLight2(Tile tile, int level)
+	}
+	private void RemoveLight2(Tile tile, int level)
 	{
 		if (tile.isMarked || level <= 0) return;
 		tile.lightLevel -= level;
-		tile.Modulate = new Color(Math.Min(tile.lightLevel / 4f, 1), Math.Min(tile.lightLevel / 4f, 1), Math.Min(tile.lightLevel / 4f, 1), 1);
+		tile.Modulate = new Color(Math.Min(tile.lightLevel / 8f, 1f), Math.Min(tile.lightLevel / 8f, 1f), Math.Min(tile.lightLevel / 8f, 1f), 1);
 		tile.isMarked = true;
 		Queue<Tile> queue = new Queue<Tile>();
 		queue.Enqueue(tile);
@@ -182,7 +167,7 @@ public partial class Grid : RigidBody2D, IDamageable, ISerializable, IEventActio
 				{
 					neighbour.LightUpdateLevel = newLevel;
 					neighbour.lightLevel -= newLevel;
-					neighbour.Modulate = new Color(Math.Min(neighbour.lightLevel / 4f, 1), Math.Min(neighbour.lightLevel / 4f, 1), Math.Min(neighbour.lightLevel / 4f, 1), 1);
+					neighbour.Modulate = new Color(Math.Min(neighbour.lightLevel / 8f, 1f), Math.Min(neighbour.lightLevel / 8f, 1f), Math.Min(neighbour.lightLevel / 8f, 1f), 1);
 					neighbour.isMarked = true;
 					neighbour.QueueRedraw();
 					queue.Enqueue(neighbour);
@@ -219,7 +204,7 @@ public partial class Grid : RigidBody2D, IDamageable, ISerializable, IEventActio
 		{
 			UpdateBorderLights2(neighbour);
 		}
-	}*/ 
+	}
 	//Adds a tile to the grid
 	public bool addTileToDictOnly(Tile tile, int x, int y)
 	{
@@ -271,8 +256,8 @@ public partial class Grid : RigidBody2D, IDamageable, ISerializable, IEventActio
 		}
 		//addNeighbours
 		tile.onTileAddGrid(this);
-		//if (isLive) AddLight(tile);
-		//if (isLive) UpdateBorderLights(tile);
+		if (isLive) AddLight(tile);
+		if (isLive) UpdateBorderLights(tile);
 		if (tile.GetParent() == null) AddChild(tile);
 		if (tile.Layers[1] && isLive) addAndOptimizeShapes(tile);
 		if (IsInGroup("Save")) tile.AddToGroup("Save");
@@ -373,9 +358,9 @@ public partial class Grid : RigidBody2D, IDamageable, ISerializable, IEventActio
 		if (tile == null) return;
 		tile.onTileRemoveGrid(this);
 		if (tile.Layers[1] && isLive) removeAndOptimizeShapes(tile);
-		//if (isLive) RemoveLight(tile);
+		if (isLive) RemoveLight(tile);
 		removeTilefromDictOnly(tile);
-		//if (isLive) UpdateBorderLights(tile);
+		if (isLive) UpdateBorderLights(tile);
 		RemoveChild(tile);
 	}
 	public void removeTilefromDictOnly(Tile tile)

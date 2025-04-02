@@ -11,35 +11,38 @@ layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_top = -3.0
+offset_right = -478.0
+offset_bottom = -147.0
 grow_horizontal = 2
 grow_vertical = 2
 
 [node name="TileCheatList" type="ItemList" parent="."]
 texture_filter = 1
 layout_mode = 0
-offset_left = 196.0
-offset_top = 130.0
-offset_right = 864.0
-offset_bottom = 570.0
+offset_left = -1.0
+offset_top = 54.0
+offset_right = 667.0
+offset_bottom = 494.0
 fixed_icon_size = Vector2i(25, 25)
 script = ExtResource("1_jj5si")
 
 [node name="ItemCheatList" type="ItemList" parent="."]
 texture_filter = 1
 layout_mode = 0
-offset_left = 194.0
-offset_top = 128.0
-offset_right = 865.0
-offset_bottom = 572.0
+offset_left = -3.0
+offset_top = 52.0
+offset_right = 668.0
+offset_bottom = 496.0
 fixed_icon_size = Vector2i(25, 25)
 script = ExtResource("2_ojt3q")
 
 [node name="TabBar" type="TabBar" parent="." node_paths=PackedStringArray("Tabs")]
 layout_mode = 0
-offset_left = 196.0
-offset_top = 77.0
-offset_right = 855.0
-offset_bottom = 117.0
+offset_left = -1.0
+offset_top = 1.0
+offset_right = 658.0
+offset_bottom = 41.0
 current_tab = 0
 tab_alignment = 1
 tab_count = 5
@@ -55,19 +58,19 @@ Tabs = [NodePath("../Admin_Tools"), NodePath("../ItemCheatList"), NodePath("../T
 [node name="EntitySpawnList" type="ItemList" parent="."]
 texture_filter = 1
 layout_mode = 0
-offset_left = 194.0
-offset_top = 128.0
-offset_right = 865.0
-offset_bottom = 572.0
+offset_left = -3.0
+offset_top = 52.0
+offset_right = 668.0
+offset_bottom = 496.0
 fixed_icon_size = Vector2i(25, 25)
 script = ExtResource("4_ngkkn")
 
 [node name="Admin_Tools" type="Panel" parent="."]
 layout_mode = 0
-offset_left = 194.0
-offset_top = 127.0
-offset_right = 867.0
-offset_bottom = 570.0
+offset_left = -3.0
+offset_top = 51.0
+offset_right = 670.0
+offset_bottom = 494.0
 
 [node name="CheckBox" type="CheckBox" parent="Admin_Tools"]
 layout_mode = 0

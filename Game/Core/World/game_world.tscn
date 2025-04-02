@@ -59,15 +59,6 @@ visible = false
 scale = Vector2(2, 1)
 texture = ExtResource("8_execg")
 
-[node name="CanvasModulate" type="CanvasModulate" parent="."]
-color = Color(0, 0, 0, 1)
-
-[node name="DirectionalLight2D" type="DirectionalLight2D" parent="."]
-position = Vector2(461, -362)
-blend_mode = 2
-shadow_enabled = true
-height = 1.0
-
 [node name="Floating_Island" parent="." instance=ExtResource("8_uwwym")]
 position = Vector2(79, 78)
 

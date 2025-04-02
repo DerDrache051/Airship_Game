@@ -46,12 +46,11 @@ script = ExtResource("3_bhg7l")
 Tabs = [NodePath("../PlayerInventory"), null, null, null, NodePath("../Options"), null, NodePath("../CheatMenu")]
 
 [node name="CheatMenu" parent="." index="3" instance=ExtResource("4_hp73m")]
-visible = false
 layout_mode = 1
-offset_left = 23.0
-offset_top = 55.0
-offset_right = 23.0
-offset_bottom = 55.0
+offset_left = 215.0
+offset_top = 138.0
+offset_right = -271.0
+offset_bottom = -11.0
 
 [node name="Options" type="Control" parent="." index="4"]
 anchors_preset = 0
