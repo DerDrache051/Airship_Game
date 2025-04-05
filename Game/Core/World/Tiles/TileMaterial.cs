@@ -21,8 +21,11 @@ public partial class TileMaterial : Resource
 	[Export] public int MaxHealth = 20;
 	[Export] public string ID;
 	[Export] public string DisplayName;
-	[Export] public bool CanBeReplaced;
+	[Export] public TileCollisionShape CollisionShape = TileCollisionShape.Rectangle;
+	[Export] public bool SemiSolid;
 	[Export] public bool useSprites;
+	[Export] public TileRotationMode RotationMode = TileRotationMode.NoRotation;
+	[Export] public bool canBeClimbed;
 	[Export] public float PiercingDamageMultiplier = 1;
 	[Export] public float ImpactDamageMultiplier = 1;
 	[Export] public float ExplosionDamageMultiplier = 1;
@@ -53,4 +56,20 @@ public partial class TileMaterial : Resource
 	[Export] public Texture2D BehindShipMapDecorationLayer;
 	[Export] public Texture2D BehindShipMapLayer;
 	[Export] public Texture2D DamageTexture=GD.Load<Texture2D>("res://Game/Assets/Tile_Damage_Indicator.png");
+}
+
+public enum TileRotationMode{
+	NoRotation,
+	Rotate90,
+	mirrorX,
+	mirrorY
+}
+
+public enum TileCollisionShape{
+	Rectangle,
+	Triangle_tl,
+	Triangle_tr,
+	Triangle_bl,
+	Triangle_br,
+	Disabled,
 }

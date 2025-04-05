@@ -29,8 +29,7 @@ public partial class Entity:CharacterBody2D,IDamageable,ISerializable{
     }
     public override void _PhysicsProcess(double delta)
     {
-        MoveAndSlide();
-
+        
         for (int i = 0; i < GetSlideCollisionCount(); i++)
         {
             GodotObject collider = GetSlideCollision(i).GetCollider();
@@ -43,7 +42,8 @@ public partial class Entity:CharacterBody2D,IDamageable,ISerializable{
                 }
             }
         }
-
+        MoveAndSlide();
+        
         base._PhysicsProcess(delta);
     }
     public virtual float dealDamage(float damage,DamageTypes damageTypes,Node2D source,Node2D projectile){

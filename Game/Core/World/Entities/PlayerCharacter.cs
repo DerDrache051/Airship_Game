@@ -37,6 +37,8 @@ public partial class PlayerCharacter : AnimatedEntity
 
 	public override void _PhysicsProcess(double delta)
 	{
+		this.FloorStopOnSlope = true;
+		this.FloorMaxAngle=Mathf.DegToRad(60);
 		CurserPosition = GetGlobalMousePosition();
 		//Movement
 		direction = Input.GetVector("Character_Left", "Character_Right", "Character_Down", "Character_Up");
@@ -59,6 +61,27 @@ public partial class PlayerCharacter : AnimatedEntity
 		}
 		else velocity.X = 0;
 		Velocity = velocity;
+		//passing through semi solids
+		if (lastCollidedGrid != null && direction.Y < 0)
+		{
+			int[] tilepos = lastCollidedGrid.getTilePos(new Vector2(GlobalPosition.X, GlobalPosition.Y+16)-lastCollidedGrid.GlobalPosition);
+			Tile tile = lastCollidedGrid.getTileAt(tilepos[0], tilepos[1], GridLayer.CollisionLayer);
+			//if(tile!=null)GD.Print(tile.SceneFilePath);
+			if (tile != null && tile.Tilematerial.SemiSolid)
+			{
+				GlobalPosition = new Vector2(GlobalPosition.X, GlobalPosition.Y+2);
+			}
+		}
+				if (lastCollidedGrid != null && direction.Y > 0)
+		{
+			int[] tilepos = lastCollidedGrid.getTilePos(new Vector2(GlobalPosition.X, GlobalPosition.Y)-lastCollidedGrid.GlobalPosition);
+			Tile tile = lastCollidedGrid.getTileAt(tilepos[0], tilepos[1], GridLayer.InteractionLayer);
+			//if(tile!=null)GD.Print(tile.SceneFilePath);
+			if (tile != null && tile.Tilematerial.canBeClimbed)
+			{
+				Velocity=new Vector2(Velocity.X,direction.Y*-Speed);
+			}
+		}
 		//Interaction
 		if (Input.IsActionJustPressed("Interact"))
 		{
@@ -83,7 +106,8 @@ public partial class PlayerCharacter : AnimatedEntity
 				currentInteraction = target;
 				target.interact(this);
 			}
-		};
+		}
+		;
 		//End_Interaction
 		if (Input.IsActionJustPressed("UseItemPrimary"))
 		{
@@ -118,29 +142,31 @@ public partial class PlayerCharacter : AnimatedEntity
 		}
 		if (Input.IsActionJustPressed("Inventory"))
 		{
-			if(isInUI){
+			if (isInUI)
+			{
 				ClientStatics.UI_Selector.ShowGUI(ClientStatics.UI_Selector.InGameOverlay);
 				isInUI = false;
 			}
-			else{
+			else
+			{
 				ClientStatics.UI_Selector.ShowGUI(ClientStatics.UI_Selector.InventoryGUI);
 				isInUI = true;
 			}
-			
+
 		}
-		if (Input.IsActionJustPressed("Exit_UI")&& isInUI)
+		if (Input.IsActionJustPressed("Exit_UI") && isInUI)
 		{
-			if(currentInteraction!=null){ currentInteraction.endInteraction();currentInteraction=null;}
+			if (currentInteraction != null) { currentInteraction.endInteraction(); currentInteraction = null; }
 			ClientStatics.UI_Selector.ShowGUI(ClientStatics.UI_Selector.InGameOverlay);
 			isInUI = false;
 		}
 		base._PhysicsProcess(delta);
 	}
-    public override void _ExitTree()
-    {
+	public override void _ExitTree()
+	{
 		ClientStatics.UI_Selector.ShowGUI(ClientStatics.UI_Selector.DeathScreen);
-        base._ExitTree();
-    }
+		base._ExitTree();
+	}
 
 }
 

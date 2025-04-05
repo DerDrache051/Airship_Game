@@ -1,16 +1,38 @@
-[gd_scene load_steps=8 format=3 uid="uid://cs44p48l0rwk8"]
+[gd_scene load_steps=11 format=3 uid="uid://cs44p48l0rwk8"]
 
 [ext_resource type="PackedScene" uid="uid://btid0ccdcd7xc" path="res://Game/Core/World/Tiles/tile.tscn" id="1_o5w4w"]
-[ext_resource type="Texture2D" uid="uid://c3qn0pww86jd6" path="res://Game/Content/Assets/Airship_Tiles/World_Tiles.png" id="2_c6ayc"]
-[ext_resource type="Texture2D" uid="uid://cq0d4ltui0e7o" path="res://Game/Core/Assetts/Tile_Damage_Indicator.png" id="3_1vet3"]
-[ext_resource type="PackedScene" uid="uid://6h10q3jpndd5" path="res://Game/Core/World/Entities/item_entity.tscn" id="4_a8hbh"]
+[ext_resource type="PackedScene" uid="uid://d18fhhpoihqhb" path="res://Game/Core/World/Entities/entity.tscn" id="2_x8vj3"]
+[ext_resource type="Script" uid="uid://dvelfej3wpena" path="res://Game/Core/World/Entities/ItemEntity.cs" id="3_pbugd"]
 [ext_resource type="Script" uid="uid://g81hmtholqmq" path="res://Game/Core/World/Tiles/TileMaterial.cs" id="5_e0mwr"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_81ad2"]
-atlas = ExtResource("2_c6ayc")
-region = Rect2(8, 0, 8, 8)
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_vjces"]
+load_path = "res://.godot/imported/World_Tiles.png-eba989dacc7523c003358e02f873efc3.ctex"
 
-[sub_resource type="Resource" id="Resource_ykvlx"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_r1qn4"]
+atlas = SubResource("CompressedTexture2D_vjces")
+region = Rect2(16, 0, 8, 8)
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_ebkma"]
+load_path = "res://.godot/imported/Tile_Damage_Indicator.png-40419ffa35162db0c26807a211a61246.ctex"
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_25ob3"]
+radius = 2.0
+
+[sub_resource type="PackedScene" id="PackedScene_ymejs"]
+_bundled = {
+"base_scene": 0,
+"conn_count": 0,
+"conns": PackedInt32Array(),
+"editable_instances": [],
+"names": PackedStringArray("Item_Entity", "collision_layer", "script", "sprite", "CollisionShape2D", "CollisionShape2D", "shape", "Sprite2D", "Sprite2D", "rotation", "scale"),
+"node_count": 3,
+"node_paths": [NodePath("."), NodePath(".")],
+"nodes": PackedInt32Array(-1, -1, 2147483647, 0, -1, 3, 1, 1, 2, 2, 1073741827, 3, 0, 1073741824, 0, 5, 262148, -1, 1, 6, 4, 0, 1073741825, 0, 8, 524295, -1, 2, 9, 5, 10, 6, 0),
+"variants": [ExtResource("2_x8vj3"), 0, ExtResource("3_pbugd"), NodePath("Sprite2D"), SubResource("CircleShape2D_25ob3"), 0.523599, Vector2(0.5, 0.5)],
+"version": 3
+}
+
+[sub_resource type="Resource" id="Resource_dy8nr"]
 script = ExtResource("5_e0mwr")
 SizeX = 1
 SizeY = 1
@@ -19,7 +41,8 @@ MaxHealth = 20
 ID = "dirt"
 DisplayName = "Dirt"
 CanBeReplaced = false
-usesComplexLogic = false
+useSprites = false
+RotationMode = 0
 PiercingDamageMultiplier = 1.0
 ImpactDamageMultiplier = 1.0
 ExplosionDamageMultiplier = 1.0
@@ -31,11 +54,11 @@ lightReduction = 0
 Drops = [null]
 DropChances = PackedFloat32Array(1)
 DropAmounts = PackedInt32Array(1)
-itemEntity = ExtResource("4_a8hbh")
+itemEntity = SubResource("PackedScene_ymejs")
 castShadows = true
-CollisionLayer = SubResource("AtlasTexture_81ad2")
-DamageTexture = ExtResource("3_1vet3")
+CollisionLayer = SubResource("AtlasTexture_r1qn4")
+DamageTexture = SubResource("CompressedTexture2D_ebkma")
 metadata/_custom_type_script = "uid://g81hmtholqmq"
 
 [node name="Tile" instance=ExtResource("1_o5w4w")]
-Tilematerial = SubResource("Resource_ykvlx")
+Tilematerial = SubResource("Resource_dy8nr")

@@ -22,6 +22,7 @@ ID = "helm"
 DisplayName = "Helm"
 CanBeReplaced = false
 useSprites = false
+RotationMode = 0
 PiercingDamageMultiplier = 1.0
 ImpactDamageMultiplier = 1.0
 ExplosionDamageMultiplier = 1.0

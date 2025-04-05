@@ -1,3 +1,4 @@
+using Airship_Game.Game.Core.World.Tiles;
 using Godot;
 using Godot.Collections;
 using System;
@@ -15,9 +16,9 @@ public partial class TileItem : Item
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
 	public override void _Process(double delta)
 	{
-	}
 
-	public override void onSecondaryInteraction(Node node)
+	}
+	public override void onPrimaryInteraction(Node node)//placement
 	{
 		if (node is PlayerCharacter)
 		{
@@ -35,52 +36,67 @@ public partial class TileItem : Item
 		}
 		base.onSecondaryInteraction(node);
 	}
+
+	public override void onSecondaryInteraction(Node node)//rotate
+	{
+		if(tile!=null && tile.Tilematerial.RotationMode!=TileRotationMode.NoRotation){
+			if(tile.Tilematerial.RotationMode==TileRotationMode.Rotate90){
+				tile.RotateTile90();
+			}
+			else if(tile.Tilematerial.RotationMode==TileRotationMode.mirrorX){
+				tile.mirrorX();
+			}
+			else if(tile.Tilematerial.RotationMode==TileRotationMode.mirrorY){
+				tile.mirrorY();
+			}
+		}
+	}
 	public override bool isSame(Item item)
 	{
-		if(item is TileItem)
+		if (item is TileItem)
 		{
 			TileItem tileItem = (TileItem)item;
-			if(!tile.isSame(tileItem.tile))return false;
+			if (!tile.isSame(tileItem.tile)) return false;
 		}
 		return base.isSame(item);
 	}
-    public override void DeserializeComponents(Dictionary<string, string> dict)
-    {
+	public override void DeserializeComponents(Dictionary<string, string> dict)
+	{
 		base.DeserializeComponents(dict);
-		PackedScene scene=GD.Load<PackedScene>(dict["TileScene"]);
-		tile=scene.Instantiate<Tile>();
-		DisplayName=tile.Tilematerial.DisplayName;
-		SceneFilePath="res://Game/Core/Items/tile_item.tscn";
-		ID=tile.Tilematerial.ID;
-		MaxStackSize=16;
-		StackSize=1;
-		if(tile.Tilematerial.itemTexture!=null)
-			ItemTexture=tile.Tilematerial.itemTexture;
-		else if(tile.Tilematerial.ForegroundDecorationLayer!=null)
-			ItemTexture=tile.Tilematerial.ForegroundDecorationLayer;
-		else if(tile.Tilematerial.CollisionLayer!=null)
-			ItemTexture=tile.Tilematerial.CollisionLayer;
-		else if(tile.Tilematerial.InBetweenDecorationLayer!=null)
-			ItemTexture=tile.Tilematerial.InBetweenDecorationLayer;
-		else if(tile.Tilematerial.InteractionLayer!=null)
-			ItemTexture=tile.Tilematerial.InteractionLayer;
-		else if(tile.Tilematerial.ConnectionLayer!=null)
-			ItemTexture=tile.Tilematerial.ConnectionLayer;
-		else if(tile.Tilematerial.BackgroundDecorationLayer!=null)
-			ItemTexture=tile.Tilematerial.BackgroundDecorationLayer;
-		else if(tile.Tilematerial.BackgroundLayer!=null)
-			ItemTexture=tile.Tilematerial.BackgroundLayer;
-		else if(tile.Tilematerial.BehindShipMapDecorationLayer!=null)
-			ItemTexture=tile.Tilematerial.BehindShipMapDecorationLayer;
-		else if(tile.Tilematerial.BehindShipMapLayer!=null)
-			ItemTexture=tile.Tilematerial.BehindShipMapLayer;
-		
-		cursorState=CursorStates.Build;
+		PackedScene scene = GD.Load<PackedScene>(dict["TileScene"]);
+		tile = scene.Instantiate<Tile>();
+		DisplayName = tile.Tilematerial.DisplayName;
+		SceneFilePath = "res://Game/Core/Items/tile_item.tscn";
+		ID = tile.Tilematerial.ID;
+		MaxStackSize = 16;
+		StackSize = 1;
+		if (tile.Tilematerial.itemTexture != null)
+			ItemTexture = tile.Tilematerial.itemTexture;
+		else if (tile.Tilematerial.ForegroundDecorationLayer != null)
+			ItemTexture = tile.Tilematerial.ForegroundDecorationLayer;
+		else if (tile.Tilematerial.CollisionLayer != null)
+			ItemTexture = tile.Tilematerial.CollisionLayer;
+		else if (tile.Tilematerial.InBetweenDecorationLayer != null)
+			ItemTexture = tile.Tilematerial.InBetweenDecorationLayer;
+		else if (tile.Tilematerial.InteractionLayer != null)
+			ItemTexture = tile.Tilematerial.InteractionLayer;
+		else if (tile.Tilematerial.ConnectionLayer != null)
+			ItemTexture = tile.Tilematerial.ConnectionLayer;
+		else if (tile.Tilematerial.BackgroundDecorationLayer != null)
+			ItemTexture = tile.Tilematerial.BackgroundDecorationLayer;
+		else if (tile.Tilematerial.BackgroundLayer != null)
+			ItemTexture = tile.Tilematerial.BackgroundLayer;
+		else if (tile.Tilematerial.BehindShipMapDecorationLayer != null)
+			ItemTexture = tile.Tilematerial.BehindShipMapDecorationLayer;
+		else if (tile.Tilematerial.BehindShipMapLayer != null)
+			ItemTexture = tile.Tilematerial.BehindShipMapLayer;
 
-    }
+		cursorState = CursorStates.Build;
+
+	}
 	public override Dictionary<string, string> SerializeComponents(Dictionary<string, string> dict)
 	{
-		dict.Add("TileScene",tile.SceneFilePath);
+		dict.Add("TileScene", tile.SceneFilePath);
 		base.SerializeComponents(dict);
 		return dict;
 	}

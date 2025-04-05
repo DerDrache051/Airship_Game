@@ -131,6 +131,11 @@ UI_Select={
 ]
 }
 
+[layer_names]
+
+2d_physics/layer_1="Entity Collision"
+2d_physics/layer_2="Ship Collision"
+
 [physics]
 
 2d/physics_engine="GodotPhysics2D"

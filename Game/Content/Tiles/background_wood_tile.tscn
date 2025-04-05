@@ -1,0 +1,63 @@
+[gd_scene load_steps=11 format=3 uid="uid://bgje0divfri44"]
+
+[ext_resource type="PackedScene" uid="uid://btid0ccdcd7xc" path="res://Game/Core/World/Tiles/tile.tscn" id="1_q4gwq"]
+[ext_resource type="Texture2D" uid="uid://3f5x5jx45p2p" path="res://Game/Content/Assets/Airship_Tiles/Ship_Tile_Sprites_8.png" id="2_rrqrk"]
+[ext_resource type="PackedScene" uid="uid://d18fhhpoihqhb" path="res://Game/Core/World/Entities/entity.tscn" id="3_q4gwq"]
+[ext_resource type="Script" uid="uid://dvelfej3wpena" path="res://Game/Core/World/Entities/ItemEntity.cs" id="4_rrqrk"]
+[ext_resource type="Script" uid="uid://g81hmtholqmq" path="res://Game/Core/World/Tiles/TileMaterial.cs" id="5_ut3vk"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ydp5j"]
+atlas = ExtResource("2_rrqrk")
+region = Rect2(0, 0, 8, 8)
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_uuc24"]
+load_path = "res://.godot/imported/Tile_Damage_Indicator.png-40419ffa35162db0c26807a211a61246.ctex"
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_25ob3"]
+radius = 2.0
+
+[sub_resource type="PackedScene" id="PackedScene_ut3vk"]
+_bundled = {
+"base_scene": 0,
+"conn_count": 0,
+"conns": PackedInt32Array(),
+"editable_instances": [],
+"names": PackedStringArray("Item_Entity", "collision_layer", "script", "sprite", "CollisionShape2D", "CollisionShape2D", "shape", "Sprite2D", "Sprite2D", "rotation", "scale"),
+"node_count": 3,
+"node_paths": [NodePath("."), NodePath(".")],
+"nodes": PackedInt32Array(-1, -1, 2147483647, 0, -1, 3, 1, 1, 2, 2, 1073741827, 3, 0, 1073741824, 0, 5, 262148, -1, 1, 6, 4, 0, 1073741825, 0, 8, 524295, -1, 2, 9, 5, 10, 6, 0),
+"variants": [ExtResource("3_q4gwq"), 0, ExtResource("4_rrqrk"), NodePath("Sprite2D"), SubResource("CircleShape2D_25ob3"), 0.523599, Vector2(0.5, 0.5)],
+"version": 3
+}
+
+[sub_resource type="Resource" id="Resource_04aa7"]
+script = ExtResource("5_ut3vk")
+SizeX = 1
+SizeY = 1
+Weight = 30
+MaxHealth = 20
+ID = "background_wood"
+DisplayName = "Background Wood"
+CanBeReplaced = false
+useSprites = false
+RotationMode = 0
+PiercingDamageMultiplier = 1.0
+ImpactDamageMultiplier = 1.0
+ExplosionDamageMultiplier = 1.0
+FireDamageMultiplier = 1.0
+flammable = false
+Hardness = 1.0
+lightEmission = 0
+lightReduction = 0
+Drops = [null]
+DropChances = PackedFloat32Array(1)
+DropAmounts = PackedInt32Array(1)
+itemEntity = SubResource("PackedScene_ut3vk")
+castShadows = true
+BackgroundLayer = SubResource("AtlasTexture_ydp5j")
+DamageTexture = SubResource("CompressedTexture2D_uuc24")
+metadata/_custom_type_script = "uid://g81hmtholqmq"
+
+[node name="Tile" instance=ExtResource("1_q4gwq")]
+texture_filter = 1
+Tilematerial = SubResource("Resource_04aa7")

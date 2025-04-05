@@ -20,10 +20,13 @@ public partial class BuildPreview : Sprite2D
 		if(item==null){Visible=false;return;};
 		if(item.cursorState==CursorStates.Build){
 			Visible=true;
+			
 			GlobalPosition=grid.snapToNearestTile(ClientStatics.player.CurserPosition);
 			Texture=item.ItemTexture;
 			this.Modulate=new Color(1,1,1,0.5f);
 			if(item is TileItem tileItem &&tileItem.tile!=null){
+				Transform=tileItem.tile.Transform;
+				GlobalPosition=grid.snapToNearestTile(ClientStatics.player.CurserPosition);
 				Scale=new Vector2(tileItem.tile.Tilematerial.SizeX*grid.TilePixelSize,tileItem.tile.Tilematerial.SizeY*grid.TilePixelSize)/Texture.GetSize();
 				GlobalPosition+=new Vector2(grid.TilePixelSize*(tileItem.tile.Tilematerial.SizeX-1),grid.TilePixelSize*(tileItem.tile.Tilematerial.SizeY-1))/2;
 			}

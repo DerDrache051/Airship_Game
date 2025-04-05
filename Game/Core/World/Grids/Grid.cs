@@ -1,4 +1,5 @@
 using Airship_Game.Game.Core.Events;
+using Airship_Game.Game.Core.World.Tiles;
 using Godot;
 using Godot.Collections;
 using System;
@@ -43,7 +44,7 @@ public partial class Grid : RigidBody2D, IDamageable, ISerializable, IEventActio
 	{
 
 	}
-	
+
 	public void UpdateLights(Tile tile, int layer)
 	{
 		UpdateLights2(tile, layer);
@@ -495,13 +496,22 @@ public partial class Grid : RigidBody2D, IDamageable, ISerializable, IEventActio
 	{
 		if (physicsShapes.ContainsKey(x + "," + y + "," + sizeX + "," + sizeY)) return;
 		Vector2[] vertices = new Vector2[4];
+		Tile tile= getTileAt(x, y, GridLayer.CollisionLayer);
+		if(tile!=null && tile.Tilematerial.CollisionShape!=TileCollisionShape.Disabled&&tile.GetLocalCollisionShape()!=TileCollisionShape.Triangle_tl)
 		vertices[0] = new Vector2(x * TilePixelSize, y * TilePixelSize) - new Vector2(TilePixelSize / 2, TilePixelSize / 2);
+		if(tile!=null && tile.Tilematerial.CollisionShape!=TileCollisionShape.Disabled&&tile.GetLocalCollisionShape()!=TileCollisionShape.Triangle_tr)
 		vertices[1] = new Vector2((x + sizeX) * TilePixelSize, y * TilePixelSize) - new Vector2(TilePixelSize / 2, TilePixelSize / 2);
+		if(tile!=null && tile.Tilematerial.CollisionShape!=TileCollisionShape.Disabled&&tile.GetLocalCollisionShape()!=TileCollisionShape.Triangle_br)
 		vertices[2] = new Vector2((x + sizeX) * TilePixelSize, (y + sizeY) * TilePixelSize) - new Vector2(TilePixelSize / 2, TilePixelSize / 2);
+		if(tile!=null && tile.Tilematerial.CollisionShape!=TileCollisionShape.Disabled&&tile.GetLocalCollisionShape()!=TileCollisionShape.Triangle_bl)
 		vertices[3] = new Vector2(x * TilePixelSize, (y + sizeY) * TilePixelSize) - new Vector2(TilePixelSize / 2, TilePixelSize / 2);
+		
 		Rid rid = PhysicsServer2D.ConvexPolygonShapeCreate();
 		PhysicsServer2D.ShapeSetData(rid, vertices);
+		
 		PhysicsServer2D.BodyAddShape(GetRid(), rid);
+		if(tile!=null&&tile.Tilematerial.SemiSolid)
+		PhysicsServer2D.BodySetShapeAsOneWayCollision(GetRid(),PhysicsServer2D.BodyGetShapeCount(GetRid())-1,true,1);
 		physicsShapes.Add(x + "," + y + "," + sizeX + "," + sizeY, rid);
 
 		if(lightOccluders.ContainsKey(x + "," + y + "," + sizeX + "," + sizeY))return;

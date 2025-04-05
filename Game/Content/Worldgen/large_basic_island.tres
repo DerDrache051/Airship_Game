@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="WorldgenObjectPlacer" load_steps=2 format=3 uid="uid://cbougtwb1ksuk"]
+
+[ext_resource type="Script" uid="uid://dsch3nq4vwlkm" path="res://Game/Core/World/Wordgen/WorldgenObjectPlacer.cs" id="1_hrr22"]
+
+[resource]
+script = ExtResource("1_hrr22")
+minDistancetoGrids = 200
+maxDistancetoGrids = 0
+attempts = 100
+objects = null
+weight = PackedInt32Array()
+size = PackedInt32Array()
+offsett = Vector2(0, 0)
+MinAmount = 1
+MaxAmount = 1
+metadata/_custom_type_script = "uid://dsch3nq4vwlkm"

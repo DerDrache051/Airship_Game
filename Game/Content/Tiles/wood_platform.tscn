@@ -1,0 +1,42 @@
+[gd_scene load_steps=7 format=3 uid="uid://bqbp6n7wl0ps7"]
+
+[ext_resource type="PackedScene" uid="uid://btid0ccdcd7xc" path="res://Game/Core/World/Tiles/tile.tscn" id="1_w6kk0"]
+[ext_resource type="Texture2D" uid="uid://bmnvprp20b5x7" path="res://Game/Content/Assets/Airship_Tiles/TileSprites4.png" id="2_jk2sc"]
+[ext_resource type="PackedScene" uid="uid://6h10q3jpndd5" path="res://Game/Core/World/Entities/item_entity.tscn" id="3_whkqw"]
+[ext_resource type="Script" uid="uid://g81hmtholqmq" path="res://Game/Core/World/Tiles/TileMaterial.cs" id="4_fopqt"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ad04i"]
+atlas = ExtResource("2_jk2sc")
+region = Rect2(8, 0, 8, 8)
+
+[sub_resource type="Resource" id="Resource_44r6a"]
+script = ExtResource("4_fopqt")
+SizeX = 1
+SizeY = 1
+Weight = 10
+MaxHealth = 20
+ID = "wood_platform"
+DisplayName = "Wood Platform"
+CollisionShape = 0
+SemiSolid = true
+useSprites = false
+RotationMode = 0
+canBeClimbed = false
+PiercingDamageMultiplier = 1.0
+ImpactDamageMultiplier = 1.0
+ExplosionDamageMultiplier = 1.0
+FireDamageMultiplier = 1.0
+flammable = false
+Hardness = 1.0
+lightEmission = 0
+lightReduction = 0
+Drops = [null]
+DropChances = PackedFloat32Array(1)
+DropAmounts = PackedInt32Array(1)
+itemEntity = ExtResource("3_whkqw")
+castShadows = true
+CollisionLayer = SubResource("AtlasTexture_ad04i")
+metadata/_custom_type_script = "uid://g81hmtholqmq"
+
+[node name="Tile" instance=ExtResource("1_w6kk0")]
+Tilematerial = SubResource("Resource_44r6a")

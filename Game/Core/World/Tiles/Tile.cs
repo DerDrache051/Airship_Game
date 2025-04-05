@@ -11,22 +11,19 @@ public partial class Tile : Node2D, IDamageable, ISerializable
 	[Export] public TileMaterial Tilematerial;
 	public bool[] Layers = new bool[9];
 	public Grid ParentGrid = null;
-
 	public int Health;
 	public int X;
 	public int Y;
 	public bool isMarked;
-
 	public int lightLevel;
-
 	public bool hasBorderLight;
 	public int LightUpdateLevel;
-
 	public Sprite2D damageSprite;
-
 	public bool wasVisibleOnScreen;
-
 	public bool hasSprites;
+
+	public TileRotation tileRotation;
+	
 
 	// Called when the node enters the scene tree for the first time.
 	public Tile()
@@ -370,7 +367,59 @@ public partial class Tile : Node2D, IDamageable, ISerializable
 			CreateDamageSprite();
 		}
 	}
+	public TileCollisionShape GetLocalCollisionShape(){
+	if (Tilematerial.CollisionShape == TileCollisionShape.Disabled) return TileCollisionShape.Disabled;
+	if (Tilematerial.CollisionShape == TileCollisionShape.Rectangle) return TileCollisionShape.Rectangle;
+	if(Tilematerial.CollisionShape == TileCollisionShape.Triangle_tl)
+	    if(tileRotation == TileRotation.Up) return TileCollisionShape.Triangle_tl;
+		if(tileRotation == TileRotation.Right) return TileCollisionShape.Triangle_tr;
+		if(tileRotation == TileRotation.Down) return TileCollisionShape.Triangle_br;
+		if(tileRotation == TileRotation.Left) return TileCollisionShape.Triangle_bl;
+		if(tileRotation == TileRotation.mirroredX) return TileCollisionShape.Triangle_tr;
+		if(tileRotation == TileRotation.mirroredY) return TileCollisionShape.Triangle_bl;
+	if(Tilematerial.CollisionShape == TileCollisionShape.Triangle_tr)
+	    if(tileRotation == TileRotation.Up) return TileCollisionShape.Triangle_tr;
+		if(tileRotation == TileRotation.Right) return TileCollisionShape.Triangle_br;
+		if(tileRotation == TileRotation.Down) return TileCollisionShape.Triangle_bl;
+		if(tileRotation == TileRotation.Left) return TileCollisionShape.Triangle_tl;
+		if(tileRotation == TileRotation.mirroredX) return TileCollisionShape.Triangle_bl;
+		if(tileRotation == TileRotation.mirroredY) return TileCollisionShape.Triangle_tr;
+	if(Tilematerial.CollisionShape == TileCollisionShape.Triangle_bl)
+	    if(tileRotation == TileRotation.Up) return TileCollisionShape.Triangle_bl;
+		if(tileRotation == TileRotation.Right) return TileCollisionShape.Triangle_tl;
+		if(tileRotation == TileRotation.Down) return TileCollisionShape.Triangle_tr;
+		if(tileRotation == TileRotation.Left) return TileCollisionShape.Triangle_br;
+		if(tileRotation == TileRotation.mirroredX) return TileCollisionShape.Triangle_tr;
+		if(tileRotation == TileRotation.mirroredY) return TileCollisionShape.Triangle_bl;
+	if(Tilematerial.CollisionShape == TileCollisionShape.Triangle_br)
+	    if(tileRotation == TileRotation.Up) return TileCollisionShape.Triangle_br;
+		if(tileRotation == TileRotation.Right) return TileCollisionShape.Triangle_bl;
+		if(tileRotation == TileRotation.Down) return TileCollisionShape.Triangle_tl;
+		if(tileRotation == TileRotation.Left) return TileCollisionShape.Triangle_tr;
+		if(tileRotation == TileRotation.mirroredX) return TileCollisionShape.Triangle_tl;
+		if(tileRotation == TileRotation.mirroredY) return TileCollisionShape.Triangle_br;
+	return TileCollisionShape.Disabled;
+	}
+	public void RotateTile90(){
+		if (tileRotation == TileRotation.Up) tileRotation = TileRotation.Right;
+		else if (tileRotation == TileRotation.Right) tileRotation = TileRotation.Down;
+		else if (tileRotation == TileRotation.Down) tileRotation = TileRotation.Left;
+		else if (tileRotation == TileRotation.Left) tileRotation = TileRotation.Up;
+		RotationDegrees=(int)tileRotation*90;
+	}
+	public void mirrorX(){
+		if (tileRotation != TileRotation.mirroredX) tileRotation = TileRotation.mirroredX;
+		else tileRotation = TileRotation.Up;
+		Transform=new Transform2D(Transform.X*-1,Transform.Y,Transform.Origin);
+	}
+	public void mirrorY(){
+		if (tileRotation != TileRotation.mirroredY) tileRotation = TileRotation.mirroredY;
+		else tileRotation = TileRotation.Up;
+		Transform=new Transform2D(Transform.X,Transform.Y*-1,Transform.Origin);
+	}
 }
+
+
 
 public class TilePlacedEvent(Tile tile, Grid grid, int x, int y) : CancelableEvent{
 	public Tile tile = tile;
@@ -395,4 +444,13 @@ public class TileDamagedEvent(Tile tile, Grid grid, int x, int y, float damage, 
 	public Node2D Projectile = projectile;
     private DamageTypes type;
 
+}
+
+public enum TileRotation{
+	Up=0,
+	Right=1,
+	Down=2,
+	Left=3,
+	mirroredX,
+	mirroredY
 }
