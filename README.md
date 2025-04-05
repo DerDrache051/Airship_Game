@@ -10,7 +10,7 @@ I do not have an actual name for this
 
 Folder Structure:
 
--Game (where everything goes)
+Game (where everything goes)
 
   -Content (the games vanilla content is here, content and core is sepparated because i will add an option to add other content folders as a built in modding option.)  
       --Assets (images and resources)  
