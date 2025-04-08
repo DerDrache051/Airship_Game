@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://dejkpsiwlsrh8"]
+[gd_scene load_steps=8 format=3 uid="uid://dejkpsiwlsrh8"]
 
 [ext_resource type="Script" uid="uid://b4h51fhq1l3jo" path="res://Game/Core/World/GameWorld.cs" id="1_uwwym"]
 [ext_resource type="Texture2D" uid="uid://dcvry553x61ut" path="res://Game/Core/Assetts/background.jpg" id="2_1xdf3"]
@@ -7,7 +7,6 @@
 [ext_resource type="PackedScene" uid="uid://bf034i4yrcg0i" path="res://Game/Core/GUI/mapgen.tscn" id="5_fmb01"]
 [ext_resource type="Script" uid="uid://bbxc8x6xmobqe" path="res://Game/Core/World/WorldArea.cs" id="7_2gixf"]
 [ext_resource type="Texture2D" uid="uid://coib7on855rec" path="res://Game/Core/Assetts/GUI/item_display_frame.png" id="8_execg"]
-[ext_resource type="PackedScene" uid="uid://b3b8ybg261jwg" path="res://Game/Content/Worldgen/large_basic_island.tscn" id="8_uwwym"]
 
 [node name="Game_World" type="Node2D" node_paths=PackedStringArray("worldBoundary", "worldBoundarySprite", "spawnArea", "finishArea")]
 texture_filter = 1
@@ -58,8 +57,5 @@ visible = false
 visible = false
 scale = Vector2(2, 1)
 texture = ExtResource("8_execg")
-
-[node name="Floating_Island" parent="." instance=ExtResource("8_uwwym")]
-position = Vector2(79, 78)
 
 [connection signal="body_exited" from="WorldArea" to="WorldArea" method="removeBody"]

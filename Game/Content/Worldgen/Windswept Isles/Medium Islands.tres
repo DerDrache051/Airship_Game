@@ -1,0 +1,63 @@
+[gd_resource type="Resource" script_class="WorldgenObjectPlacer" load_steps=16 format=3 uid="uid://r5o56osapd37"]
+
+[ext_resource type="PackedScene" uid="uid://rsn43iyanlo4" path="res://Game/Content/Tiles/background_dirt_tile.tscn" id="1_lslwi"]
+[ext_resource type="Script" uid="uid://dsch3nq4vwlkm" path="res://Game/Core/World/Wordgen/WorldgenObjectPlacer.cs" id="1_wiqvi"]
+[ext_resource type="PackedScene" uid="uid://c6y5hwyc1qut5" path="res://Game/Content/Tiles/background_grass_tile.tscn" id="2_7s7yi"]
+[ext_resource type="PackedScene" uid="uid://cypkt3ew24hov" path="res://Game/Content/Tiles/background_stone_tile.tscn" id="3_b2cw7"]
+[ext_resource type="PackedScene" uid="uid://cs44p48l0rwk8" path="res://Game/Content/Tiles/dirt_tile.tscn" id="4_yu45v"]
+[ext_resource type="PackedScene" uid="uid://cpoymar1oxpv" path="res://Game/Content/Tiles/grass_tile.tscn" id="5_b83wc"]
+[ext_resource type="PackedScene" uid="uid://wdterhqnd1gw" path="res://Game/Core/World/Grids/grid.tscn" id="6_e5y52"]
+[ext_resource type="PackedScene" uid="uid://ho40dxc8sj54" path="res://Game/Content/Tiles/stone_tile.tscn" id="7_em1sy"]
+[ext_resource type="Script" uid="uid://b4das52qt0lnt" path="res://Game/Core/World/Wordgen/WorldgenIslandPlacer.cs" id="8_xtmva"]
+[ext_resource type="PackedScene" uid="uid://cdh6lvpb7k87o" path="res://Game/Content/Tiles/tree_base.tscn" id="9_b83wc"]
+[ext_resource type="PackedScene" uid="uid://dqbw5lvdvrgks" path="res://Game/Content/Tiles/leaves.tscn" id="10_e5y52"]
+[ext_resource type="PackedScene" uid="uid://cpdnu6qyvsti1" path="res://Game/Content/Tiles/tree_stem.tscn" id="11_em1sy"]
+[ext_resource type="Script" uid="uid://dm5vg5lkuo1sv" path="res://Game/Core/World/Wordgen/Islandgen/TreeDecorator.cs" id="12_xtmva"]
+
+[sub_resource type="Resource" id="Resource_fq1gv"]
+script = ExtResource("12_xtmva")
+Base = ExtResource("9_b83wc")
+Stem = ExtResource("11_em1sy")
+Leafs = ExtResource("10_e5y52")
+Height = 3
+HeightVariance = 0
+LeafSize = 0
+LeafSizeVariance = 0
+chance = 0.2
+metadata/_custom_type_script = "uid://dm5vg5lkuo1sv"
+
+[sub_resource type="Resource" id="Resource_osll6"]
+script = ExtResource("8_xtmva")
+GridScene = ExtResource("6_e5y52")
+HorizontalSize = 40
+VerticalSize = 20
+SizeOffsett = 5
+HillMultiplier = 5
+DirtLayer = 5
+SurfaceJaggedness = 1
+BottomJaggedness = 1
+Grass = ExtResource("5_b83wc")
+Dirt = ExtResource("4_yu45v")
+Stone = ExtResource("7_em1sy")
+BackgroundGrass = ExtResource("2_7s7yi")
+BackgroundDirt = ExtResource("1_lslwi")
+BackgroundStone = ExtResource("3_b2cw7")
+CaveSize = 1
+CaveSizeOffset = 1
+surfaceDecorators = Array[Object]([SubResource("Resource_fq1gv")])
+caveDecorators = Array[Object]([])
+islandDecorators = Array[Object]([])
+metadata/_custom_type_script = "uid://b4das52qt0lnt"
+
+[resource]
+script = ExtResource("1_wiqvi")
+minDistancetoGrids = 0
+maxDistancetoGrids = 200
+attempts = 100
+objects = Array[Object]([SubResource("Resource_osll6")])
+weight = PackedInt32Array(0)
+size = PackedInt32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+offsett = Vector2(200, 200)
+MinAmount = 1
+MaxAmount = 1
+metadata/_custom_type_script = "uid://dsch3nq4vwlkm"

@@ -1,0 +1,60 @@
+[gd_scene load_steps=10 format=3 uid="uid://dqbw5lvdvrgks"]
+
+[ext_resource type="PackedScene" uid="uid://btid0ccdcd7xc" path="res://Game/Core/World/Tiles/tile.tscn" id="1_ndkui"]
+[ext_resource type="Texture2D" uid="uid://bmnvprp20b5x7" path="res://Game/Content/Assets/Airship_Tiles/TileSprites4.png" id="2_klba4"]
+[ext_resource type="PackedScene" uid="uid://d18fhhpoihqhb" path="res://Game/Core/World/Entities/entity.tscn" id="2_tatkg"]
+[ext_resource type="Script" uid="uid://dvelfej3wpena" path="res://Game/Core/World/Entities/ItemEntity.cs" id="3_klba4"]
+[ext_resource type="Script" uid="uid://g81hmtholqmq" path="res://Game/Core/World/Tiles/TileMaterial.cs" id="4_dwqr1"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dwqr1"]
+atlas = ExtResource("2_klba4")
+region = Rect2(16, 8, 8, 8)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_25ob3"]
+radius = 2.0
+
+[sub_resource type="PackedScene" id="PackedScene_s0ar2"]
+_bundled = {
+"base_scene": 0,
+"conn_count": 0,
+"conns": PackedInt32Array(),
+"editable_instances": [],
+"names": PackedStringArray("Item_Entity", "collision_layer", "script", "sprite", "CollisionShape2D", "CollisionShape2D", "shape", "Sprite2D", "Sprite2D", "rotation", "scale"),
+"node_count": 3,
+"node_paths": [NodePath("."), NodePath(".")],
+"nodes": PackedInt32Array(-1, -1, 2147483647, 0, -1, 3, 1, 1, 2, 2, 1073741827, 3, 0, 1073741824, 0, 5, 262148, -1, 1, 6, 4, 0, 1073741825, 0, 8, 524295, -1, 2, 9, 5, 10, 6, 0),
+"variants": [ExtResource("2_tatkg"), 0, ExtResource("3_klba4"), NodePath("Sprite2D"), SubResource("CircleShape2D_25ob3"), 0.523599, Vector2(0.5, 0.5)],
+"version": 3
+}
+
+[sub_resource type="Resource" id="Resource_ga0mb"]
+script = ExtResource("4_dwqr1")
+SizeX = 1
+SizeY = 1
+Weight = 10
+MaxHealth = 20
+ID = "leaves"
+DisplayName = "Leaves"
+CollisionShape = 0
+SemiSolid = false
+useSprites = false
+RotationMode = 0
+canBeClimbed = false
+PiercingDamageMultiplier = 1.0
+ImpactDamageMultiplier = 1.0
+ExplosionDamageMultiplier = 1.0
+FireDamageMultiplier = 1.0
+flammable = false
+Hardness = 1.0
+lightEmission = 0
+lightReduction = 0
+Drops = [null]
+DropChances = PackedFloat32Array(1)
+DropAmounts = PackedInt32Array(1)
+itemEntity = SubResource("PackedScene_s0ar2")
+castShadows = true
+InteractionLayer = SubResource("AtlasTexture_dwqr1")
+metadata/_custom_type_script = "uid://g81hmtholqmq"
+
+[node name="Tile" instance=ExtResource("1_ndkui")]
+Tilematerial = SubResource("Resource_ga0mb")

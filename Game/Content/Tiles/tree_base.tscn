@@ -1,0 +1,42 @@
+[gd_scene load_steps=7 format=3 uid="uid://cdh6lvpb7k87o"]
+
+[ext_resource type="PackedScene" uid="uid://btid0ccdcd7xc" path="res://Game/Core/World/Tiles/tile.tscn" id="1_t7fnu"]
+[ext_resource type="Texture2D" uid="uid://bmnvprp20b5x7" path="res://Game/Content/Assets/Airship_Tiles/TileSprites4.png" id="2_5ywhe"]
+[ext_resource type="PackedScene" uid="uid://6h10q3jpndd5" path="res://Game/Core/World/Entities/item_entity.tscn" id="3_lin40"]
+[ext_resource type="Script" uid="uid://g81hmtholqmq" path="res://Game/Core/World/Tiles/TileMaterial.cs" id="4_83yk4"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_e2uni"]
+atlas = ExtResource("2_5ywhe")
+region = Rect2(0, 8, 8, 8)
+
+[sub_resource type="Resource" id="Resource_dwroy"]
+script = ExtResource("4_83yk4")
+SizeX = 1
+SizeY = 1
+Weight = 10
+MaxHealth = 20
+ID = "tree_base"
+DisplayName = "Tree_Base"
+CollisionShape = 0
+SemiSolid = false
+useSprites = false
+RotationMode = 0
+canBeClimbed = false
+PiercingDamageMultiplier = 1.0
+ImpactDamageMultiplier = 1.0
+ExplosionDamageMultiplier = 1.0
+FireDamageMultiplier = 1.0
+flammable = false
+Hardness = 1.0
+lightEmission = 0
+lightReduction = 0
+Drops = [null]
+DropChances = PackedFloat32Array(1)
+DropAmounts = PackedInt32Array(1)
+itemEntity = ExtResource("3_lin40")
+castShadows = true
+BackgroundDecorationLayer = SubResource("AtlasTexture_e2uni")
+metadata/_custom_type_script = "uid://g81hmtholqmq"
+
+[node name="Tile" instance=ExtResource("1_t7fnu")]
+Tilematerial = SubResource("Resource_dwroy")

@@ -10,6 +10,6 @@ namespace Airship_Game.Game.Core.World.Wordgen.Islandgen
     public abstract partial class IslandDecorator : Resource
     {
         [Export] public float chance;
-        public abstract void _Place(Vector2 position,Dictionary<string,Tile> tiles);
+        public abstract void _Place(Vector2I position,Grid grid);
     }
 }

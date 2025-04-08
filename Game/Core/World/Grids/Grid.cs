@@ -499,12 +499,16 @@ public partial class Grid : RigidBody2D, IDamageable, ISerializable, IEventActio
 		Tile tile= getTileAt(x, y, GridLayer.CollisionLayer);
 		if(tile!=null && tile.Tilematerial.CollisionShape!=TileCollisionShape.Disabled&&tile.GetLocalCollisionShape()!=TileCollisionShape.Triangle_tl)
 		vertices[0] = new Vector2(x * TilePixelSize, y * TilePixelSize) - new Vector2(TilePixelSize / 2, TilePixelSize / 2);
+		else vertices[0] = new Vector2(x * TilePixelSize, y * TilePixelSize);
 		if(tile!=null && tile.Tilematerial.CollisionShape!=TileCollisionShape.Disabled&&tile.GetLocalCollisionShape()!=TileCollisionShape.Triangle_tr)
 		vertices[1] = new Vector2((x + sizeX) * TilePixelSize, y * TilePixelSize) - new Vector2(TilePixelSize / 2, TilePixelSize / 2);
+		else vertices[0] = new Vector2(x * TilePixelSize, y * TilePixelSize);
 		if(tile!=null && tile.Tilematerial.CollisionShape!=TileCollisionShape.Disabled&&tile.GetLocalCollisionShape()!=TileCollisionShape.Triangle_br)
 		vertices[2] = new Vector2((x + sizeX) * TilePixelSize, (y + sizeY) * TilePixelSize) - new Vector2(TilePixelSize / 2, TilePixelSize / 2);
+		else vertices[0] = new Vector2(x * TilePixelSize, y * TilePixelSize);
 		if(tile!=null && tile.Tilematerial.CollisionShape!=TileCollisionShape.Disabled&&tile.GetLocalCollisionShape()!=TileCollisionShape.Triangle_bl)
 		vertices[3] = new Vector2(x * TilePixelSize, (y + sizeY) * TilePixelSize) - new Vector2(TilePixelSize / 2, TilePixelSize / 2);
+		else vertices[0] = new Vector2(x * TilePixelSize, y * TilePixelSize);
 		
 		Rid rid = PhysicsServer2D.ConvexPolygonShapeCreate();
 		PhysicsServer2D.ShapeSetData(rid, vertices);
@@ -513,7 +517,7 @@ public partial class Grid : RigidBody2D, IDamageable, ISerializable, IEventActio
 		if(tile!=null&&tile.Tilematerial.SemiSolid)
 		PhysicsServer2D.BodySetShapeAsOneWayCollision(GetRid(),PhysicsServer2D.BodyGetShapeCount(GetRid())-1,true,1);
 		physicsShapes.Add(x + "," + y + "," + sizeX + "," + sizeY, rid);
-
+		/*
 		if(lightOccluders.ContainsKey(x + "," + y + "," + sizeX + "," + sizeY))return;
 		LightOccluder2D lightOccluder = new LightOccluder2D();
 		lightOccluder.SetOccluderPolygon(new OccluderPolygon2D());
@@ -521,6 +525,7 @@ public partial class Grid : RigidBody2D, IDamageable, ISerializable, IEventActio
 		lightOccluder.Occluder.Polygon=vertices;
 		lightOccluders.Add(x + "," + y + "," + sizeX + "," + sizeY, lightOccluder);
 		AddChild(lightOccluder);
+		*/
 	}
 	public void addAndOptimizeShapes(int x, int y, int sizeX, int sizeY)
 	{
