@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://btid0ccdcd7xc" path="res://Game/Core/World/Tiles/tile.tscn" id="1_733et"]
 [ext_resource type="Texture2D" uid="uid://3f5x5jx45p2p" path="res://Game/Content/Assets/Airship_Tiles/Ship_Tile_Sprites_8.png" id="2_u1qsw"]
-[ext_resource type="Texture2D" uid="uid://cq0d4ltui0e7o" path="res://Game/Core/Assetts/Tile_Damage_Indicator.png" id="3_gu1ic"]
+[ext_resource type="Texture2D" uid="uid://cq0d4ltui0e7o" path="res://Game/Core/Assets/Tile_Damage_Indicator.png" id="3_gu1ic"]
 [ext_resource type="PackedScene" uid="uid://6h10q3jpndd5" path="res://Game/Core/World/Entities/item_entity.tscn" id="4_ex1tv"]
 [ext_resource type="Script" uid="uid://g81hmtholqmq" path="res://Game/Core/World/Tiles/TileMaterial.cs" id="5_ue00p"]
 

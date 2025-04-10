@@ -1,7 +1,7 @@
 [gd_scene load_steps=8 format=3 uid="uid://ho40dxc8sj54"]
 
 [ext_resource type="PackedScene" uid="uid://btid0ccdcd7xc" path="res://Game/Core/World/Tiles/tile.tscn" id="1_0pl3i"]
-[ext_resource type="Texture2D" uid="uid://cq0d4ltui0e7o" path="res://Game/Core/Assetts/Tile_Damage_Indicator.png" id="3_cwxs4"]
+[ext_resource type="Texture2D" uid="uid://cq0d4ltui0e7o" path="res://Game/Core/Assets/Tile_Damage_Indicator.png" id="3_cwxs4"]
 [ext_resource type="PackedScene" uid="uid://6h10q3jpndd5" path="res://Game/Core/World/Entities/item_entity.tscn" id="4_7guv1"]
 [ext_resource type="Script" uid="uid://g81hmtholqmq" path="res://Game/Core/World/Tiles/TileMaterial.cs" id="5_obkn5"]
 

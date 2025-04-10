@@ -55,7 +55,7 @@ public partial class TileMaterial : Resource
 	[Export] public Texture2D BackgroundLayer;
 	[Export] public Texture2D BehindShipMapDecorationLayer;
 	[Export] public Texture2D BehindShipMapLayer;
-	[Export] public Texture2D DamageTexture=GD.Load<Texture2D>("res://Game/Assets/Tile_Damage_Indicator.png");
+	[Export] public Texture2D DamageTexture=GD.Load<Texture2D>("res://Game/Core/Assets/Tile_Damage_Indicator.png");
 }
 
 public enum TileRotationMode{

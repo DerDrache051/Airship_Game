@@ -87,6 +87,10 @@ namespace Airship_Game.Game.Core.World.Wordgen
                     if (j == TopLayer[i])
                     {
                         grid.addTile(BackgroundGrass, i, 0 - j);
+                        for(int k=0;k<surfaceDecorators.Length;k++)
+                        {
+                            surfaceDecorators[k]._Place(new Vector2I(i,0-j),grid);
+                        }
                     }
                     else if (j > TopLayer[i] - DirtLayer + (int)GD.Randf())
                     {
@@ -109,35 +113,10 @@ namespace Airship_Game.Game.Core.World.Wordgen
                     {
                         grid.addTile(Stone, i, 0 - j);
                     }
-                }
-            }
-            //Apply Decorators
-            for (int i = 0; i < actualHorizontalSize; i++)
-            {
-                if (BottomLayer[i] > TopLayer[i])
-                {
-                    continue;
-                }
-                for (int j = TopLayer[i]; j > BottomLayer[i]; j--)
-                {
-                    if (j == TopLayer[i])
-                    {
-                        for(int k=0;k<surfaceDecorators.Length;k++)
-                        {
-                            surfaceDecorators[k]._Place(new Vector2I(i,j),grid);
-                        }
-                    }
-                    else
-                    {
-                        for(int k=0;k<islandDecorators.Length;k++)
-                        {
-                            islandDecorators[k]._Place(new Vector2I(i,j),grid);
-                        }
-                    }
                     if (CaveNoise.GetNoise2D(i * actualCaveSize, j * actualCaveSize) > (-0.2)){
                         for(int k=0;k<caveDecorators.Length;k++)
                         {
-                            caveDecorators[k]._Place(new Vector2I(i,j),grid);
+                            caveDecorators[k]._Place(new Vector2I(i,0-j),grid);
                         }
                     }
                 }

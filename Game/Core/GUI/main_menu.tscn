@@ -1,7 +1,7 @@
 [gd_scene load_steps=6 format=3 uid="uid://cqnlqaytj5xqw"]
 
 [ext_resource type="Texture2D" uid="uid://3f5x5jx45p2p" path="res://Game/Content/Assets/Airship_Tiles/Ship_Tile_Sprites_8.png" id="1_7vrkn"]
-[ext_resource type="SystemFont" uid="uid://dgvkmv1h6l3e4" path="res://Game/Core/Assetts/other_resources/game_font.tres" id="2_fu7sn"]
+[ext_resource type="SystemFont" uid="uid://dgvkmv1h6l3e4" path="res://Game/Core/Assets/other_resources/game_font.tres" id="2_fu7sn"]
 [ext_resource type="Script" uid="uid://dvdqkpbo75eb0" path="res://Game/Core/GUI/QuitButton2.cs" id="3_fu7sn"]
 [ext_resource type="Script" uid="uid://bxkeh3oqjrtut" path="res://Game/Core/GUI/MisionMenu.cs" id="4_jix8l"]
 
